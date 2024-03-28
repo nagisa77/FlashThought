@@ -8,6 +8,7 @@
 #import "FlashThoughtsViewController.h"
 #import "FlashThoughtCell.h"
 #import "NewFlashThoughtsViewController.h"
+#import <AVFoundation/AVFoundation.h>
 #import <LocalAuthentication/LocalAuthentication.h>
 #import <UIKit/UIKit.h>
 
@@ -61,6 +62,13 @@
   self.tableView.sectionHeaderHeight = 0.0;
   self.tableView.sectionFooterHeight = 0.0;
   self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+
+  UILongPressGestureRecognizer *longPressGesture =
+      [[UILongPressGestureRecognizer alloc]
+          initWithTarget:self
+                  action:@selector(handleLongPress:)];
+  longPressGesture.minimumPressDuration = 1;
+  [self.addButton addGestureRecognizer:longPressGesture];
 
   [self userAuth];
 
@@ -198,6 +206,30 @@
   }
 }
 
+- (void)handleLongPress:(UILongPressGestureRecognizer *)gestureRecognizer {
+  if (gestureRecognizer.state == UIGestureRecognizerStateBegan) {
+
+
+    [AVAudioSession.sharedInstance requestRecordPermission:^(BOOL granted) {
+      if (granted) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+          UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"NewFlashAudioThoughtViewController" bundle:nil];
+          // 使用之前设置的Storyboard ID来初始化ViewController
+          NewFlashThoughtsViewController *newFlashVC = [storyboard instantiateViewControllerWithIdentifier:@"NewFlashAudioThoughtViewControllerID"];
+
+          // 准备渐显效果
+          newFlashVC.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
+
+          // 呈现视图控制器，使用动画实现渐显效果
+          [self presentViewController:newFlashVC animated:YES completion:nil];
+        });
+      } else {
+        // todo; 
+      }
+    }];
+  }
+}
+
 - (IBAction)addButtonDidClicked:(id)sender {
   UIStoryboard *storyboard =
       [UIStoryboard storyboardWithName:@"NewFlashThoughtsViewController"
@@ -212,16 +244,22 @@
 
 - (IBAction)summaryButtonDidClicked:(id)sender {
   [self startLoading:YES];
-  [[FlashThoughtManager sharedManager] sendAllThoughtsToAI];
-  dispatch_queue_t mainQueue = dispatch_get_main_queue();
-  dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3 * NSEC_PER_SEC)),
-                 mainQueue, ^{
-                   [self startLoading:NO];
-                 });
+  BOOL realSent = [[FlashThoughtManager sharedManager] sendAllThoughtsToAI];
+  if (!realSent) {
+    [self showAlertWithTitle:@"Tips"
+                     message:@"You do not have any thought :)"
+              confirmHandler:^(UIAlertAction *action){
+              }];
+    [self startLoading:NO];
+  }
 }
 
 - (void)thoughtManagerDidAddThought:(FlashThought *)thought {
   [self.tableView reloadData];
+}
+
+- (void)allThoughtsDidHandle {
+  [self startLoading:NO];
 }
 
 - (void)thoughtManagerDidRemoveThought:(FlashThought *)thought {
@@ -232,6 +270,38 @@
 
 - (void)thoughtManagerDidUpdateThought:(FlashThought *)thought {
   [self.tableView reloadData];
+}
+
+- (void)thoughtsDidSaveToReminders:(NSArray<FlashThought *> *)thoughts {
+  for (FlashThought *thought in thoughts) {
+    NSInteger row = [[FlashThoughtManager sharedManager] removeThought:thought];
+    if (row != NSNotFound) { // 确保找到了思考并被删除
+      NSIndexPath *indexPath = [NSIndexPath indexPathForRow:row inSection:1];
+      [self.tableView deleteRowsAtIndexPaths:@[ indexPath ]
+                            withRowAnimation:UITableViewRowAnimationFade];
+    }
+  }
+}
+
+- (void)thoughtsDidSentToAI:(NSArray<FlashThought *> *)thoughts {
+}
+
+- (void)showAlertWithTitle:(NSString *)title
+                   message:(NSString *)message
+            confirmHandler:(void (^)(UIAlertAction *action))confirmHandler {
+  UIAlertController *alertController =
+      [UIAlertController alertControllerWithTitle:title
+                                          message:message
+                                   preferredStyle:UIAlertControllerStyleAlert];
+
+  UIAlertAction *confirmAction =
+      [UIAlertAction actionWithTitle:@"OK"
+                               style:UIAlertActionStyleDefault
+                             handler:confirmHandler];
+
+  [alertController addAction:confirmAction];
+
+  [self presentViewController:alertController animated:YES completion:nil];
 }
 
 @end

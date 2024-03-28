@@ -8,8 +8,9 @@
 #ifndef FlashThoughtManager_h
 #define FlashThoughtManager_h
 
-#import <Foundation/Foundation.h>
 #import "GPTVisitor.h"
+#import "ReminderManager.h"
+#import <Foundation/Foundation.h>
 
 @interface FlashThought : NSObject <NSSecureCoding>
 
@@ -23,13 +24,14 @@
 - (void)thoughtManagerDidAddThought:(FlashThought *)thought;
 - (void)thoughtManagerDidRemoveThought:(FlashThought *)thought;
 - (void)thoughtManagerDidUpdateThought:(FlashThought *)thought;
-
-- (void)thoughtDidSentToAI:(FlashThought *)thought;
-- (void)thoughtsDidResponseByAI:(NSString *)aiJsonResponse;
+- (void)thoughtsDidSentToAI:(NSArray<FlashThought *> *)thoughts;
+- (void)thoughtsDidSaveToReminders:(NSArray<FlashThought *> *)thoughts;
+- (void)allThoughtsDidHandle;
 
 @end
 
-@interface FlashThoughtManager : NSObject<GPTVisitorDelegate>
+@interface FlashThoughtManager
+    : NSObject <GPTVisitorDelegate, ReminderManagerDelegate>
 
 @property(nonatomic, weak) id<FlashThoughtManagerDelegate> delegate;
 
@@ -38,9 +40,9 @@
 - (void)loadStoredThoughts;
 - (NSArray<FlashThought *> *)allThoughts;
 - (void)addThought:(FlashThought *)thought;
-- (void)removeThought:(FlashThought *)thought;
+- (NSInteger)removeThought:(FlashThought *)thought;
 - (void)updateThought:(FlashThought *)thought withContent:(NSString *)content;
-- (void)sendAllThoughtsToAI;
+- (BOOL)sendAllThoughtsToAI;
 
 @end
 

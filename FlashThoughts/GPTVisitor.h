@@ -19,7 +19,7 @@
 
 + (instancetype)sharedInstance;
 
-- (void)visitGPTWithMessage:(NSString *)message messageId:(NSInteger)messageId;
+- (void)visitGPTWithMessage:(NSString *)message messageId:(NSUInteger)messageId;
 
 @end
 
@@ -27,10 +27,10 @@
 @optional
 - (void)visitor:(GPTVisitor *)visitor
     didVisitMessage:(NSString *)message
-          messageId:(NSInteger)messageId
+          messageId:(NSUInteger)messageId
        withResponse:(NSString *)response;
 - (void)visitor:(GPTVisitor *)visitor
-    didFailToVisitMessageWithMessageId:(NSInteger)messageId
+    didFailToVisitMessageWithMessageId:(NSUInteger)messageId
                                  error:(NSError *)error;
 @end
 

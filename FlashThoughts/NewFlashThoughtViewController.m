@@ -18,14 +18,12 @@
   self.textView.delegate = self;
   [self.view addSubview:self.textView];
 
-  // 创建并配置占位符 UILabel
   self.placeholderLabel = [[UILabel alloc]
       initWithFrame:CGRectMake(5, 0, self.textView.frame.size.width, 40)];
   self.placeholderLabel.text = DEFAULT_TEXT;
   self.placeholderLabel.textColor = [UIColor lightGrayColor];
   [self.textView addSubview:self.placeholderLabel];
 
-  // 初始时显示占位符
   self.placeholderLabel.hidden = NO;
 }
 

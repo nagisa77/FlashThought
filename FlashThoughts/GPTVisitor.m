@@ -19,7 +19,8 @@
   return sharedInstance;
 }
 
-- (void)visitGPTWithMessage:(NSString *)message messageId:(NSInteger)messageId {
+- (void)visitGPTWithMessage:(NSString *)message
+                  messageId:(NSUInteger)messageId {
   NSString *const openAIURL = @"https://api.openai.com/v1/chat/completions";
   // todo: set to config
   NSString *const apiKey =
