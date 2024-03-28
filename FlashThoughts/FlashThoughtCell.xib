@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22684"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="FlashThoughtCell"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="FlashThoughtCell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="170" id="Ts9-2W-kQT" userLabel="FlashThoughtCell" customClass="FlashThoughtCell">
+            <rect key="frame" x="0.0" y="0.0" width="393" height="170"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Ts9-2W-kQT" id="6Hv-H8-Lxv">
+                <rect key="frame" x="0.0" y="0.0" width="393" height="170"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Content" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A9g-iS-pAg">
+                        <rect key="frame" x="20" y="10" width="353" height="123"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="date" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vwu-Tl-3Oa">
+                        <rect key="frame" x="20" y="143" width="29" height="17"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <color key="textColor" systemColor="systemGray2Color"/>
+                        <color key="highlightedColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="Vwu-Tl-3Oa" firstAttribute="top" secondItem="A9g-iS-pAg" secondAttribute="bottom" constant="10" id="9Ff-po-wQG"/>
+                    <constraint firstItem="Vwu-Tl-3Oa" firstAttribute="top" secondItem="A9g-iS-pAg" secondAttribute="bottom" constant="10" id="DDe-As-idl"/>
+                    <constraint firstItem="Vwu-Tl-3Oa" firstAttribute="leading" secondItem="6Hv-H8-Lxv" secondAttribute="leading" constant="20" id="JcH-wg-bkY"/>
+                    <constraint firstAttribute="bottom" secondItem="Vwu-Tl-3Oa" secondAttribute="bottom" constant="10" id="Mqc-kF-OwE"/>
+                    <constraint firstItem="A9g-iS-pAg" firstAttribute="leading" secondItem="6Hv-H8-Lxv" secondAttribute="leading" constant="20" id="haV-jS-ZGE"/>
+                    <constraint firstItem="A9g-iS-pAg" firstAttribute="top" secondItem="6Hv-H8-Lxv" secondAttribute="top" constant="10" id="mn8-rk-1AU"/>
+                    <constraint firstAttribute="trailing" secondItem="A9g-iS-pAg" secondAttribute="trailing" constant="20" id="ztf-gi-kbT"/>
+                </constraints>
+            </tableViewCellContentView>
+            <accessibility key="accessibilityConfiguration" identifier="FlashThoughtCell">
+                <bool key="isElement" value="YES"/>
+            </accessibility>
+            <connections>
+                <outlet property="contentLabel" destination="A9g-iS-pAg" id="hcU-EG-LbI"/>
+                <outlet property="dateLabel" destination="Vwu-Tl-3Oa" id="YSh-V3-xTC"/>
+            </connections>
+            <point key="canvasLocation" x="183.96946564885496" y="16.901408450704228"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <systemColor name="systemGray2Color">
+            <color red="0.68235294117647061" green="0.68235294117647061" blue="0.69803921568627447" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>

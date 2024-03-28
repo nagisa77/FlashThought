@@ -9,11 +9,19 @@
 /* Begin PBXBuildFile section */
 		225A4BF42BB2FF6800A5304A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 225A4BF32BB2FF6800A5304A /* AppDelegate.m */; };
 		225A4BF72BB2FF6800A5304A /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 225A4BF62BB2FF6800A5304A /* SceneDelegate.m */; };
-		225A4BFA2BB2FF6800A5304A /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 225A4BF92BB2FF6800A5304A /* ViewController.m */; };
+		225A4BFA2BB2FF6800A5304A /* FlashThoughtsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 225A4BF92BB2FF6800A5304A /* FlashThoughtsViewController.m */; };
 		225A4BFD2BB2FF6800A5304A /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 225A4BFC2BB2FF6800A5304A /* Base */; };
 		225A4BFF2BB2FF6900A5304A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 225A4BFE2BB2FF6900A5304A /* Assets.xcassets */; };
 		225A4C022BB2FF6900A5304A /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 225A4C012BB2FF6900A5304A /* Base */; };
 		225A4C052BB2FF6900A5304A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 225A4C042BB2FF6900A5304A /* main.m */; };
+		225A4C0C2BB3E16D00A5304A /* RoundedButtonWithShadow.m in Sources */ = {isa = PBXBuildFile; fileRef = 225A4C0B2BB3E16D00A5304A /* RoundedButtonWithShadow.m */; };
+		225A4C122BB4102C00A5304A /* NewFlashThoughtViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 225A4C112BB4102C00A5304A /* NewFlashThoughtViewController.m */; };
+		225A4C152BB411F200A5304A /* NewFlashThoughtsViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 225A4C142BB411F200A5304A /* NewFlashThoughtsViewController.storyboard */; };
+		225A4C172BB443D300A5304A /* FlashThoughtManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 225A4C162BB443D300A5304A /* FlashThoughtManager.m */; };
+		225A4C1B2BB460C200A5304A /* LocalAuthentication.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 225A4C1A2BB460C200A5304A /* LocalAuthentication.framework */; };
+		225A4C1E2BB47EE100A5304A /* FlashThoughtCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 225A4C1D2BB47EE100A5304A /* FlashThoughtCell.m */; };
+		225A4C222BB47F2600A5304A /* FlashThoughtCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 225A4C212BB47F2600A5304A /* FlashThoughtCell.xib */; };
+		225A4C242BB4963500A5304A /* GPTVisitor.m in Sources */ = {isa = PBXBuildFile; fileRef = 225A4C232BB4963500A5304A /* GPTVisitor.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,13 +30,25 @@
 		225A4BF32BB2FF6800A5304A /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		225A4BF52BB2FF6800A5304A /* SceneDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SceneDelegate.h; sourceTree = "<group>"; };
 		225A4BF62BB2FF6800A5304A /* SceneDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SceneDelegate.m; sourceTree = "<group>"; };
-		225A4BF82BB2FF6800A5304A /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		225A4BF92BB2FF6800A5304A /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		225A4BF82BB2FF6800A5304A /* FlashThoughtsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FlashThoughtsViewController.h; sourceTree = "<group>"; };
+		225A4BF92BB2FF6800A5304A /* FlashThoughtsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FlashThoughtsViewController.m; sourceTree = "<group>"; };
 		225A4BFC2BB2FF6800A5304A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		225A4BFE2BB2FF6900A5304A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		225A4C012BB2FF6900A5304A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		225A4C032BB2FF6900A5304A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		225A4C042BB2FF6900A5304A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		225A4C0B2BB3E16D00A5304A /* RoundedButtonWithShadow.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RoundedButtonWithShadow.m; sourceTree = "<group>"; };
+		225A4C112BB4102C00A5304A /* NewFlashThoughtViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NewFlashThoughtViewController.m; sourceTree = "<group>"; };
+		225A4C132BB4109500A5304A /* NewFlashThoughtsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NewFlashThoughtsViewController.h; sourceTree = "<group>"; };
+		225A4C142BB411F200A5304A /* NewFlashThoughtsViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = NewFlashThoughtsViewController.storyboard; sourceTree = "<group>"; };
+		225A4C162BB443D300A5304A /* FlashThoughtManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FlashThoughtManager.m; sourceTree = "<group>"; };
+		225A4C182BB443DC00A5304A /* FlashThoughtManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FlashThoughtManager.h; sourceTree = "<group>"; };
+		225A4C1A2BB460C200A5304A /* LocalAuthentication.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LocalAuthentication.framework; path = System/Library/Frameworks/LocalAuthentication.framework; sourceTree = SDKROOT; };
+		225A4C1C2BB47ED500A5304A /* FlashThoughtCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FlashThoughtCell.h; sourceTree = "<group>"; };
+		225A4C1D2BB47EE100A5304A /* FlashThoughtCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FlashThoughtCell.m; sourceTree = "<group>"; };
+		225A4C212BB47F2600A5304A /* FlashThoughtCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FlashThoughtCell.xib; sourceTree = "<group>"; };
+		225A4C232BB4963500A5304A /* GPTVisitor.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GPTVisitor.m; sourceTree = "<group>"; };
+		225A4C252BB4964300A5304A /* GPTVisitor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GPTVisitor.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -36,6 +56,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				225A4C1B2BB460C200A5304A /* LocalAuthentication.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -47,6 +68,7 @@
 			children = (
 				225A4BF12BB2FF6800A5304A /* FlashThoughts */,
 				225A4BF02BB2FF6800A5304A /* Products */,
+				225A4C192BB460C200A5304A /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -65,15 +87,34 @@
 				225A4BF32BB2FF6800A5304A /* AppDelegate.m */,
 				225A4BF52BB2FF6800A5304A /* SceneDelegate.h */,
 				225A4BF62BB2FF6800A5304A /* SceneDelegate.m */,
-				225A4BF82BB2FF6800A5304A /* ViewController.h */,
-				225A4BF92BB2FF6800A5304A /* ViewController.m */,
+				225A4BF82BB2FF6800A5304A /* FlashThoughtsViewController.h */,
+				225A4BF92BB2FF6800A5304A /* FlashThoughtsViewController.m */,
+				225A4C162BB443D300A5304A /* FlashThoughtManager.m */,
+				225A4C182BB443DC00A5304A /* FlashThoughtManager.h */,
+				225A4C112BB4102C00A5304A /* NewFlashThoughtViewController.m */,
+				225A4C132BB4109500A5304A /* NewFlashThoughtsViewController.h */,
+				225A4C0B2BB3E16D00A5304A /* RoundedButtonWithShadow.m */,
 				225A4BFB2BB2FF6800A5304A /* Main.storyboard */,
+				225A4C142BB411F200A5304A /* NewFlashThoughtsViewController.storyboard */,
 				225A4BFE2BB2FF6900A5304A /* Assets.xcassets */,
 				225A4C002BB2FF6900A5304A /* LaunchScreen.storyboard */,
 				225A4C032BB2FF6900A5304A /* Info.plist */,
 				225A4C042BB2FF6900A5304A /* main.m */,
+				225A4C1C2BB47ED500A5304A /* FlashThoughtCell.h */,
+				225A4C1D2BB47EE100A5304A /* FlashThoughtCell.m */,
+				225A4C212BB47F2600A5304A /* FlashThoughtCell.xib */,
+				225A4C232BB4963500A5304A /* GPTVisitor.m */,
+				225A4C252BB4964300A5304A /* GPTVisitor.h */,
 			);
 			path = FlashThoughts;
+			sourceTree = "<group>";
+		};
+		225A4C192BB460C200A5304A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				225A4C1A2BB460C200A5304A /* LocalAuthentication.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -134,6 +175,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				225A4BFF2BB2FF6900A5304A /* Assets.xcassets in Resources */,
+				225A4C152BB411F200A5304A /* NewFlashThoughtsViewController.storyboard in Resources */,
+				225A4C222BB47F2600A5304A /* FlashThoughtCell.xib in Resources */,
 				225A4C022BB2FF6900A5304A /* Base in Resources */,
 				225A4BFD2BB2FF6800A5304A /* Base in Resources */,
 			);
@@ -146,10 +189,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				225A4BFA2BB2FF6800A5304A /* ViewController.m in Sources */,
+				225A4C122BB4102C00A5304A /* NewFlashThoughtViewController.m in Sources */,
+				225A4BFA2BB2FF6800A5304A /* FlashThoughtsViewController.m in Sources */,
+				225A4C242BB4963500A5304A /* GPTVisitor.m in Sources */,
+				225A4C0C2BB3E16D00A5304A /* RoundedButtonWithShadow.m in Sources */,
 				225A4BF42BB2FF6800A5304A /* AppDelegate.m in Sources */,
 				225A4C052BB2FF6900A5304A /* main.m in Sources */,
 				225A4BF72BB2FF6800A5304A /* SceneDelegate.m in Sources */,
+				225A4C1E2BB47EE100A5304A /* FlashThoughtCell.m in Sources */,
+				225A4C172BB443D300A5304A /* FlashThoughtManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
