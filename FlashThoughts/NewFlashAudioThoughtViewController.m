@@ -102,7 +102,8 @@
   }
 
   // 配置录音器
-  NSURL *recordingURL = [FlashThoughtManager audioRecordingURLFromFileName:self.fileName];
+  NSURL *recordingURL =
+      [FlashThoughtManager audioRecordingURLFromFileName:self.fileName];
   NSDictionary *settings = @{
     AVFormatIDKey : @(kAudioFormatMPEG4AAC),
     AVSampleRateKey : @44100,

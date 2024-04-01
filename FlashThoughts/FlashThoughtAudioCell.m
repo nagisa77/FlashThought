@@ -22,7 +22,7 @@
 - (void)startProgressTimer {
   if (self.progressTimer == nil) {
     self.progressTimer =
-        [NSTimer scheduledTimerWithTimeInterval:0.05
+        [NSTimer scheduledTimerWithTimeInterval:0.1
                                          target:self
                                        selector:@selector(updateProgress)
                                        userInfo:nil
@@ -37,7 +37,10 @@
 
 - (void)updateProgress {
   float progress = self.audioPlayer.currentTime / self.audioPlayer.duration;
-  self.progressView.progress = progress;
+  [UIView animateWithDuration:0.1
+                   animations:^{
+                     [self.progressView setProgress:progress animated:YES];
+                   }];
 
   // 更新时间标签
   int totalSeconds = (int)self.audioPlayer.currentTime;
@@ -83,14 +86,16 @@
   self.progressView.progress = 0;
 }
 
-- (void)audioPlayerDidFinishPlaying:(AVAudioPlayer *)player successfully:(BOOL)flag {
+- (void)audioPlayerDidFinishPlaying:(AVAudioPlayer *)player
+                       successfully:(BOOL)flag {
   if (flag) {
-    [self.playButton setImage:[UIImage systemImageNamed:@"play.fill"] forState:UIControlStateNormal]; // Reset play button to "play" icon.
-    [self stopProgressTimer]; // Stop the timer.
-    [self.timeLabel setText:@"00:00"]; // Reset time label.
-    self.progressView.progress = 0; // Reset progress view.
+    [self.playButton
+        setImage:[UIImage systemImageNamed:@"play.fill"]
+        forState:UIControlStateNormal]; // Reset play button to "play" icon.
+    [self stopProgressTimer];           // Stop the timer.
+    [self.timeLabel setText:@"00:00"];  // Reset time label.
+    self.progressView.progress = 0;     // Reset progress view.
   }
 }
-
 
 @end

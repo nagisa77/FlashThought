@@ -21,6 +21,10 @@
 
 - (void)visitGPTWithMessage:(NSString *)message messageId:(NSUInteger)messageId;
 
+- (void)visitGPTWithMessage:(NSString *)message
+                  messageId:(NSUInteger)messageId
+                       file:(NSURL *)fileURL;
+
 @end
 
 @protocol GPTVisitorDelegate <NSObject>

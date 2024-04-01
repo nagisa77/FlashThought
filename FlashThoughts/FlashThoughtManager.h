@@ -45,7 +45,7 @@ typedef NS_ENUM(NSInteger, FlashThoughtType) {
 
 @property(nonatomic, weak) id<FlashThoughtManagerDelegate> delegate;
 
-+ (NSURL *)audioRecordingURLFromFileName:(NSString *)fileName; 
++ (NSURL *)audioRecordingURLFromFileName:(NSString *)fileName;
 + (instancetype)sharedManager;
 
 - (void)loadStoredThoughts;

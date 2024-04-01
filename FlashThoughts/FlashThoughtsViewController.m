@@ -68,7 +68,7 @@
                   action:@selector(handleLongPress:)];
   longPressGesture.minimumPressDuration = 1;
   [self.addButton addGestureRecognizer:longPressGesture];
-  
+
   [self userAuth];
   [self.loadingView setHidden:YES];
 
@@ -145,7 +145,8 @@
       cell.dateLabel.text = nowDate;
       cell.selectionStyle = UITableViewCellSelectionStyleNone;
       return cell;
-    } else if (thought.type == FlashThoughtTypeAudioFlashThought) {
+    } else if (thought.type == FlashThoughtTypeAudioFlashThought ||
+               thought.type == FlashThoughtTypeAudioToTextFlashThought) {
       FlashThoughtAudioCell *cell =
           [tableView dequeueReusableCellWithIdentifier:@"FlashThoughtAudioCell"
                                           forIndexPath:indexPath];
@@ -157,7 +158,9 @@
       }
 
       cell.dateLabel.text = nowDate;
-      [cell setupAudioPlayerWithURL:[FlashThoughtManager audioRecordingURLFromFileName:thought.audioFileName]];
+      [cell setupAudioPlayerWithURL:
+                [FlashThoughtManager
+                    audioRecordingURLFromFileName:thought.audioFileName]];
       cell.selectionStyle = UITableViewCellSelectionStyleNone;
       return cell;
     } else {
@@ -217,14 +220,19 @@
     [self.summaryButton setEnabled:NO];
     [self.loadingView setHidden:NO];
     [self.loadingView startAnimating];
+    [self.addButton setEnabled:NO];
   } else {
     [self.summaryButton setEnabled:YES];
     [self.loadingView setHidden:YES];
     [self.loadingView stopAnimating];
+    [self.addButton setEnabled:YES];
   }
 }
 
 - (void)handleLongPress:(UILongPressGestureRecognizer *)gestureRecognizer {
+  if (![self.addButton isEnabled]) {
+    return;
+  }
   if (gestureRecognizer.state == UIGestureRecognizerStateBegan) {
     [AVAudioSession.sharedInstance requestRecordPermission:^(BOOL granted) {
       if (granted) {
