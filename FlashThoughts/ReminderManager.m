@@ -55,7 +55,6 @@
       return;
     }
 
-    // 获取或创建指定名称的提醒事项列表
     EKCalendar *reminderList = [self findOrCreateReminderListWithName:listName];
     if (!reminderList) {
       NSError *listError =
@@ -79,6 +78,36 @@
                                                        BOOL *stop) {
       EKReminder *reminder =
           [EKReminder reminderWithEventStore:self.eventStore];
+
+      if (![obj isKindOfClass:[NSString class]] ||
+          ![key isKindOfClass:[NSString class]]) {
+        NSLog(@"format error");
+        isErrorOccurred = YES;
+        *stop = YES;
+        // 定义错误域和错误代码
+        NSString *const CustomErrorDomain = @"com.tim.flashthought";
+        NSInteger const CustomErrorCode = 1001;
+
+        // 创建用户信息字典
+        NSDictionary *userInfo = @{
+          NSLocalizedDescriptionKey : NSLocalizedString(@"Error", nil),
+          NSLocalizedFailureReasonErrorKey :
+              NSLocalizedString(@"GPT Return format error", nil),
+          NSLocalizedRecoverySuggestionErrorKey :
+              NSLocalizedString(@"Please retry", nil)
+        };
+
+        NSError *error = [NSError errorWithDomain:CustomErrorDomain
+                                             code:CustomErrorCode
+                                         userInfo:userInfo];
+
+        dispatch_async(dispatch_get_main_queue(), ^{
+          [self.delegate didFinishAddingRemindersWithSuccess:NO
+                                                       error:error
+                                                   messageID:messageID];
+        });
+      }
+
       reminder.title = key;
       reminder.notes = obj;
       reminder.calendar = reminderList; // 指定列表

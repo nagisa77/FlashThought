@@ -12,6 +12,7 @@
 #import <AVFoundation/AVFoundation.h>
 #import <LocalAuthentication/LocalAuthentication.h>
 #import <UIKit/UIKit.h>
+#import "MBProgressHUD.h"
 
 @interface FlashThoughtsViewController ()
 
@@ -51,6 +52,34 @@
   }
 }
 
+- (void)showCompleteView {
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+
+    // Set the custom view mode to show any view.
+    hud.mode = MBProgressHUDModeCustomView;
+  
+    UIImage *image = [UIImage systemImageNamed:@"heart.fill"];
+    hud.customView = [[UIImageView alloc] initWithImage:image];
+    // Looks a bit nicer if we make it square.
+    hud.square = YES;
+    // Optional label text.
+    hud.label.text = NSLocalizedString(@"Done", @"HUD done title");
+
+    [hud hideAnimated:YES afterDelay:5.f];
+}
+
+- (void)showMessageWithTitle:(NSString *)title content:(NSString *)content {
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+
+    // Set the text mode to show only text.
+    hud.mode = MBProgressHUDModeText;
+    hud.label.text = NSLocalizedString(content, title);
+    // Move to bottm center.
+    hud.offset = CGPointMake(0.f, 250.f);
+
+    [hud hideAnimated:YES afterDelay:5.f];
+}
+
 - (void)viewDidLoad {
   [super viewDidLoad];
 
@@ -69,6 +98,12 @@
   longPressGesture.minimumPressDuration = 1;
   [self.addButton addGestureRecognizer:longPressGesture];
 
+  if (@available(iOS 13.0, *)) {
+    UIContextMenuInteraction *contextMenuInteraction =
+        [[UIContextMenuInteraction alloc] initWithDelegate:self];
+    [self.summaryButton addInteraction:contextMenuInteraction];
+  }
+
   [self userAuth];
   [self.loadingView setHidden:YES];
 
@@ -83,6 +118,69 @@
     [self.tableView registerNib:cellNib
          forCellReuseIdentifier:@"FlashThoughtAudioCell"];
   }
+}
+
+- (void)showAPIKeySettings {
+  // 创建UIAlertController
+  UIAlertController *alertController =
+      [UIAlertController alertControllerWithTitle:@"OpenAI API key"
+                                          message:@"Need the key to "
+                                                  @"summary your "
+                                                  @"flash thoughts"
+                                   preferredStyle:UIAlertControllerStyleAlert];
+
+  [alertController
+      addTextFieldWithConfigurationHandler:^(UITextField *textField) {
+        textField.placeholder = @"api key...";
+        NSString *apiKey = [[GPTVisitor sharedInstance] getAPIKey];
+        if (apiKey != nil) {
+          [textField setText:apiKey];
+        }
+      }];
+
+  // 创建UIAlertAction
+  UIAlertAction *confirmAction = [UIAlertAction
+      actionWithTitle:@"Confirm"
+                style:UIAlertActionStyleDefault
+              handler:^(UIAlertAction *action) {
+                // 获取输入框的内容
+                UITextField *textField = alertController.textFields[0];
+                if (![textField.text isEqual:@""]) {
+                  [[GPTVisitor sharedInstance] updateAPIKey:textField.text];
+                }
+              }];
+
+  UIAlertAction *cancelAction =
+      [UIAlertAction actionWithTitle:@"Cancel"
+                               style:UIAlertActionStyleCancel
+                             handler:nil];
+
+  [alertController addAction:confirmAction];
+  [alertController addAction:cancelAction];
+
+  // 展示UIAlertController
+  [self presentViewController:alertController animated:YES completion:nil];
+}
+
+// UIContextMenuInteractionDelegate 方法
+- (nullable UIContextMenuConfiguration *)
+            contextMenuInteraction:(UIContextMenuInteraction *)interaction
+    configurationForMenuAtLocation:(CGPoint)location API_AVAILABLE(ios(13.0)) {
+  UIContextMenuConfiguration *configuration = [UIContextMenuConfiguration
+      configurationWithIdentifier:nil
+                  previewProvider:nil
+                   actionProvider:^UIMenu *_Nullable(
+                       NSArray<UIMenuElement *> *_Nonnull suggestedActions) {
+                     UIAction *action1 = [UIAction
+                         actionWithTitle:@"API Key Setting"
+                                   image:nil
+                              identifier:nil
+                                 handler:^(UIAction *_Nonnull action) {
+                                   [self showAPIKeySettings];
+                                 }];
+                     return [UIMenu menuWithTitle:@"" children:@[ action1 ]];
+                   }];
+  return configuration;
 }
 
 #pragma mark - UITableViewDataSource
@@ -240,15 +338,12 @@
           UIStoryboard *storyboard = [UIStoryboard
               storyboardWithName:@"NewFlashAudioThoughtViewController"
                           bundle:nil];
-          // 使用之前设置的Storyboard ID来初始化ViewController
           NewFlashThoughtsViewController *newFlashVC =
               [storyboard instantiateViewControllerWithIdentifier:
                               @"NewFlashAudioThoughtViewControllerID"];
 
-          // 准备渐显效果
           newFlashVC.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
 
-          // 呈现视图控制器，使用动画实现渐显效果
           [self presentViewController:newFlashVC animated:YES completion:nil];
         });
       } else {
@@ -271,6 +366,11 @@
 }
 
 - (IBAction)summaryButtonDidClicked:(id)sender {
+  if ([[GPTVisitor sharedInstance] getAPIKey] == nil) {
+    [self showAPIKeySettings];
+    return;
+  }
+
   [self startLoading:YES];
   BOOL realSent = [[FlashThoughtManager sharedManager] sendAllThoughtsToAI];
   if (!realSent) {
@@ -288,6 +388,8 @@
 
 - (void)allThoughtsDidHandle {
   [self startLoading:NO];
+  [self showCompleteView];
+  [self showMessageWithTitle:@"Save complete!" content:@"Saved to Reminders"];
 }
 
 - (void)thoughtManagerDidRemoveThought:(FlashThought *)thought {

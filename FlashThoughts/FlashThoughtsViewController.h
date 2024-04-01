@@ -10,6 +10,7 @@
 
 @interface FlashThoughtsViewController
     : UIViewController <UITableViewDelegate, UITableViewDataSource,
+                        UIContextMenuInteractionDelegate,
                         FlashThoughtManagerDelegate>
 
 @end

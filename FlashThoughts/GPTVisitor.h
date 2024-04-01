@@ -19,6 +19,10 @@
 
 + (instancetype)sharedInstance;
 
+- (NSString *)getAPIKey;
+
+- (void)updateAPIKey:(NSString *)apiKey;
+
 - (void)visitGPTWithMessage:(NSString *)message messageId:(NSUInteger)messageId;
 
 - (void)visitGPTWithMessage:(NSString *)message

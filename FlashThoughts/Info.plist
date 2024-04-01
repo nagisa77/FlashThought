@@ -2,12 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>NSFaceIDUsageDescription</key>
-	<string>This app requests the use of Face ID for authentication to protect your privacy and improve security.</string>
-	<key>NSRemindersUsageDescription</key>
-	<string>We need access to Reminders to help you create reminders from JSON data and keep your tasks organized and scheduled.</string>
-	<key>NSMicrophoneUsageDescription</key>
-	<string>Record need to access your mic</string>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>

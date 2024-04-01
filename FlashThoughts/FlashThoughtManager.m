@@ -146,7 +146,6 @@ NSString *audioPrompt =
     sharedInstance.gptAudioToTextRequests = [[NSMutableDictionary alloc] init];
     [sharedInstance loadStoredThoughts];
   });
-  // todo: more than one register
   [GPTVisitor sharedInstance].delegate = sharedInstance;
   [ReminderManager sharedManager].delegate = sharedInstance;
   return sharedInstance;

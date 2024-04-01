@@ -8,9 +8,6 @@
 #import "GPTVisitor.h"
 #import <Foundation/Foundation.h>
 
-// todo: set to config
-#define API_KEY @""
-
 @implementation GPTVisitor
 
 + (instancetype)sharedInstance {
@@ -22,6 +19,19 @@
   return sharedInstance;
 }
 
+- (NSString *)getAPIKey {
+  NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+  NSString *retrievedOpenaiKey = [defaults stringForKey:@"openaiKey"];
+  return retrievedOpenaiKey;
+}
+
+- (void)updateAPIKey:(NSString *)apiKey {
+  // 获取NSUserDefaults实例
+  NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+  [defaults setObject:apiKey forKey:@"openaiKey"];
+  [defaults synchronize];
+}
+
 - (void)visitGPTWithMessage:(NSString *)message
                   messageId:(NSUInteger)messageId {
   NSString *const openAIURL = @"https://api.openai.com/v1/chat/completions";
@@ -29,7 +39,7 @@
   NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
   [request setURL:[NSURL URLWithString:openAIURL]];
   [request setHTTPMethod:@"POST"];
-  [request setValue:[NSString stringWithFormat:@"Bearer %@", API_KEY]
+  [request setValue:[NSString stringWithFormat:@"Bearer %@", [self getAPIKey]]
       forHTTPHeaderField:@"Authorization"];
   [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
 
@@ -98,7 +108,7 @@
   [request setHTTPMethod:@"POST"];
 
   // 设置认证头和内容类型头
-  [request setValue:[NSString stringWithFormat:@"Bearer %@", API_KEY]
+  [request setValue:[NSString stringWithFormat:@"Bearer %@", [self getAPIKey]]
       forHTTPHeaderField:@"Authorization"];
   NSString *boundary = @"UniqueBoundary12345";
   [request setValue:[NSString
