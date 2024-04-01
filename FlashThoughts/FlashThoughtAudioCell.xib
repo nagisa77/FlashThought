@@ -9,36 +9,41 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="269" id="xK8-hN-Pek" customClass="FlashThoughtAudioCell">
-            <rect key="frame" x="0.0" y="0.0" width="477" height="269"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="151" id="xK8-hN-Pek" customClass="FlashThoughtAudioCell">
+            <rect key="frame" x="0.0" y="0.0" width="477" height="151"/>
             <autoresizingMask key="autoresizingMask"/>
-            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="xK8-hN-Pek" id="bV1-Oe-lF4">
-                <rect key="frame" x="0.0" y="0.0" width="477" height="269"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="xK8-hN-Pek" id="bV1-Oe-lF4">
+                <rect key="frame" x="0.0" y="0.0" width="477" height="151"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wUZ-nD-n8z">
-                        <rect key="frame" x="10" y="10" width="457" height="175"/>
+                        <rect key="frame" x="10" y="10" width="457" height="141"/>
                         <subviews>
                             <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="OmD-YU-kpO">
                                 <rect key="frame" x="10" y="25" width="437" height="4"/>
                                 <color key="tintColor" systemColor="systemGrayColor"/>
                             </progressView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d9C-zu-2Dc" userLabel="time">
-                                <rect key="frame" x="10" y="39" width="437" height="19"/>
+                                <rect key="frame" x="10" y="39" width="437" height="29"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <color key="textColor" systemColor="systemGray2Color"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="play.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="kKw-Ta-npU">
-                                <rect key="frame" x="203.66666666666666" y="80" width="50" height="46"/>
-                                <color key="tintColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a25-AG-lrg">
+                                <rect key="frame" x="203.66666666666666" y="68" width="50" height="46"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="dZ0-vm-sO2"/>
-                                    <constraint firstAttribute="width" constant="50" id="thw-hL-CVj"/>
+                                    <constraint firstAttribute="width" constant="50" id="H3R-ij-aYt"/>
+                                    <constraint firstAttribute="height" constant="46" id="e8R-FO-uwW"/>
                                 </constraints>
-                            </imageView>
+                                <color key="tintColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="play.fill" catalog="system"/>
+                                <connections>
+                                    <action selector="playButtonDidClicked:" destination="xK8-hN-Pek" eventType="touchUpInside" id="gAO-1f-UXg"/>
+                                </connections>
+                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" restorationIdentifier="FlashThoughtAudioCell" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MLF-js-ghE">
-                                <rect key="frame" x="10" y="148" width="437" height="17"/>
+                                <rect key="frame" x="10" y="114" width="437" height="17"/>
                                 <accessibility key="accessibilityConfiguration" identifier="FlashThoughtAudioCell"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <color key="textColor" systemColor="systemGray2Color"/>
@@ -47,19 +52,18 @@
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="OmD-YU-kpO" firstAttribute="leading" secondItem="wUZ-nD-n8z" secondAttribute="leading" constant="10" id="KP5-Sj-x4I"/>
-                            <constraint firstItem="kKw-Ta-npU" firstAttribute="top" secondItem="d9C-zu-2Dc" secondAttribute="bottom" constant="20" id="NTg-wM-ebe"/>
-                            <constraint firstItem="OmD-YU-kpO" firstAttribute="top" secondItem="wUZ-nD-n8z" secondAttribute="top" constant="25" id="OrY-jE-se8"/>
-                            <constraint firstItem="MLF-js-ghE" firstAttribute="leading" secondItem="wUZ-nD-n8z" secondAttribute="leading" constant="10" id="TVu-iW-dJA"/>
-                            <constraint firstAttribute="height" constant="175" id="Xg8-Zg-IEN"/>
-                            <constraint firstAttribute="trailing" secondItem="OmD-YU-kpO" secondAttribute="trailing" constant="10" id="bPf-qn-kAO"/>
-                            <constraint firstItem="MLF-js-ghE" firstAttribute="top" secondItem="kKw-Ta-npU" secondAttribute="bottom" constant="20" id="bXI-oC-KzC"/>
-                            <constraint firstAttribute="trailing" secondItem="MLF-js-ghE" secondAttribute="trailing" constant="10" id="bra-Ym-Hhq"/>
-                            <constraint firstAttribute="trailing" secondItem="d9C-zu-2Dc" secondAttribute="trailing" constant="10" id="hz1-y9-u76"/>
-                            <constraint firstAttribute="bottom" secondItem="MLF-js-ghE" secondAttribute="bottom" constant="10" id="iJt-Ox-7KI"/>
-                            <constraint firstItem="kKw-Ta-npU" firstAttribute="centerX" secondItem="wUZ-nD-n8z" secondAttribute="centerX" id="jvB-Im-tPO"/>
-                            <constraint firstItem="d9C-zu-2Dc" firstAttribute="leading" secondItem="wUZ-nD-n8z" secondAttribute="leading" constant="10" id="oaF-PO-CP1"/>
-                            <constraint firstItem="d9C-zu-2Dc" firstAttribute="top" secondItem="OmD-YU-kpO" secondAttribute="bottom" constant="10" id="xPe-tU-US0"/>
+                            <constraint firstItem="a25-AG-lrg" firstAttribute="centerX" secondItem="wUZ-nD-n8z" secondAttribute="centerX" id="36N-dS-fT9"/>
+                            <constraint firstAttribute="trailing" secondItem="MLF-js-ghE" secondAttribute="trailing" constant="10" id="4gi-m2-c1X"/>
+                            <constraint firstItem="d9C-zu-2Dc" firstAttribute="top" secondItem="OmD-YU-kpO" secondAttribute="bottom" constant="10" id="9Fn-kA-2rV"/>
+                            <constraint firstAttribute="trailing" secondItem="d9C-zu-2Dc" secondAttribute="trailing" constant="10" id="DHd-KO-nfX"/>
+                            <constraint firstItem="MLF-js-ghE" firstAttribute="leading" secondItem="wUZ-nD-n8z" secondAttribute="leading" constant="10" id="Evv-Cc-DVM"/>
+                            <constraint firstItem="MLF-js-ghE" firstAttribute="top" secondItem="a25-AG-lrg" secondAttribute="bottom" id="JtS-EP-Zt6"/>
+                            <constraint firstItem="d9C-zu-2Dc" firstAttribute="leading" secondItem="wUZ-nD-n8z" secondAttribute="leading" constant="10" id="Kbv-Oz-s7b"/>
+                            <constraint firstItem="OmD-YU-kpO" firstAttribute="leading" secondItem="wUZ-nD-n8z" secondAttribute="leading" constant="10" id="OM5-6p-i16"/>
+                            <constraint firstAttribute="trailing" secondItem="OmD-YU-kpO" secondAttribute="trailing" constant="10" id="Vgt-gH-bYf"/>
+                            <constraint firstItem="a25-AG-lrg" firstAttribute="top" secondItem="d9C-zu-2Dc" secondAttribute="bottom" id="YE1-Uh-j5F"/>
+                            <constraint firstItem="OmD-YU-kpO" firstAttribute="top" secondItem="wUZ-nD-n8z" secondAttribute="top" constant="25" id="aRz-Bu-vav"/>
+                            <constraint firstAttribute="bottom" secondItem="MLF-js-ghE" secondAttribute="bottom" constant="10" id="zJt-tb-BYx"/>
                         </constraints>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -78,9 +82,11 @@
             <color key="backgroundColor" systemColor="systemGray5Color"/>
             <connections>
                 <outlet property="dateLabel" destination="MLF-js-ghE" id="xSL-P0-8Wh"/>
-                <outlet property="timeLabel" destination="d9C-zu-2Dc" id="JfV-zv-XTP"/>
+                <outlet property="playButton" destination="a25-AG-lrg" id="f8k-ve-DMx"/>
+                <outlet property="progressView" destination="OmD-YU-kpO" id="GLQ-Fe-4BY"/>
+                <outlet property="timeLabel" destination="d9C-zu-2Dc" id="zKr-7S-Kfy"/>
             </connections>
-            <point key="canvasLocation" x="67.938931297709928" y="97.535211267605632"/>
+            <point key="canvasLocation" x="67.938931297709928" y="55.985915492957751"/>
         </tableViewCell>
     </objects>
     <resources>

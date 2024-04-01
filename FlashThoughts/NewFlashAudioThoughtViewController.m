@@ -6,9 +6,9 @@
 //
 
 #import "NewFlashAudioThoughtViewController.h"
+#import "FlashThoughtManager.h"
 #import <AVFoundation/AVFoundation.h>
 #import <Foundation/Foundation.h>
-#import "FlashThoughtManager.h"
 
 @interface NewFlashAudioThoughtViewController () <AVAudioRecorderDelegate>
 @property IBOutlet UILabel *recordingLabel;
@@ -19,30 +19,31 @@
 @property(assign, nonatomic) NSInteger secondsElapsed;
 @property(assign, nonatomic) NSInteger recordingTextIndex;
 @property(assign, nonatomic) BOOL save;
-@property (strong, nonatomic) AVAudioRecorder *audioRecorder;
+@property(strong, nonatomic) AVAudioRecorder *audioRecorder;
 @end
 
 @implementation NewFlashAudioThoughtViewController
 
 - (void)viewDidLoad {
   [super viewDidLoad];
-  
+
   self.secondsElapsed = 0;
   self.recordingTextIndex = 0;
   self.save = NO;
   self.audioDate = [NSDate date];
   NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
   [dateFormatter setDateFormat:@"yyyyMMddHHmmss"];
-  self.fileName = [NSString stringWithFormat: @"FlashThought-%@.m4a",
-                   [dateFormatter stringFromDate:self.audioDate]];
-  
+  self.fileName =
+      [NSString stringWithFormat:@"FlashThought-%@.m4a",
+                                 [dateFormatter stringFromDate:self.audioDate]];
+
   [self setupAudioRecorder];
   self.timer = [NSTimer scheduledTimerWithTimeInterval:1.0
                                                 target:self
                                               selector:@selector(updateLabels)
                                               userInfo:nil
                                                repeats:YES];
-  
+
   [self.audioRecorder record];
 }
 
@@ -69,17 +70,19 @@
 
 - (void)stopRecord {
   [self.audioRecorder stop];
-  
+
   if (self.timer) {
     [self.timer invalidate];
     self.timer = nil;
   }
-  
+
   if (self.save) {
-    FlashThought *newThought = [[FlashThought alloc] initWithType:FlashThoughtTypeAudioFlashThought date:[NSDate date]];
-    newThought.audioFilePath = [self audioRecordingPath].path;
+    FlashThought *newThought =
+        [[FlashThought alloc] initWithType:FlashThoughtTypeAudioFlashThought
+                                      date:[NSDate date]];
+    newThought.audioFileName = self.fileName;
     newThought.type = FlashThoughtTypeAudioFlashThought;
-    
+
     [[FlashThoughtManager sharedManager] addThought:newThought];
   }
 }
@@ -91,36 +94,30 @@
 
 - (void)setupAudioRecorder {
   NSError *error = nil;
-  [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryRecord error:&error];
+  [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryRecord
+                                         error:&error];
   if (error) {
     NSLog(@"设置录音会话出错: %@", error.localizedDescription);
     return;
   }
-  
+
   // 配置录音器
- NSURL *recordingURL = [self audioRecordingPath];
+  NSURL *recordingURL = [FlashThoughtManager audioRecordingURLFromFileName:self.fileName];
   NSDictionary *settings = @{
-    AVFormatIDKey: @(kAudioFormatMPEG4AAC),
-    AVSampleRateKey: @44100,
-    AVNumberOfChannelsKey: @2,
+    AVFormatIDKey : @(kAudioFormatMPEG4AAC),
+    AVSampleRateKey : @44100,
+    AVNumberOfChannelsKey : @2,
   };
-  
-  self.audioRecorder = [[AVAudioRecorder alloc] initWithURL:recordingURL settings:settings error:&error];
+
+  self.audioRecorder = [[AVAudioRecorder alloc] initWithURL:recordingURL
+                                                   settings:settings
+                                                      error:&error];
   if (error) {
     NSLog(@"创建录音器出错: %@", error.localizedDescription);
     return;
   }
-  
+
   self.audioRecorder.delegate = self;
 }
-
-- (NSURL *)audioRecordingPath {
-  NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-  NSString *documentsDirectory = [paths objectAtIndex:0];
-  NSString *filePath = [documentsDirectory stringByAppendingPathComponent:self.fileName];
-  
-  return [NSURL fileURLWithPath:filePath];
-}
-
 
 @end

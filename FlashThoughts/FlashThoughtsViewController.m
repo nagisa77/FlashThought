@@ -6,8 +6,8 @@
 //
 
 #import "FlashThoughtsViewController.h"
-#import "FlashThoughtCell.h"
 #import "FlashThoughtAudioCell.h"
+#import "FlashThoughtCell.h"
 #import "NewFlashThoughtsViewController.h"
 #import <AVFoundation/AVFoundation.h>
 #import <LocalAuthentication/LocalAuthentication.h>
@@ -20,8 +20,6 @@
 @property IBOutlet UITableView *tableView;
 @property IBOutlet UIView *passwordView;
 @property IBOutlet UIActivityIndicatorView *loadingView;
-
-@property(strong, nonatomic) CAShapeLayer *checkmarkLayer;
 
 @end
 
@@ -70,16 +68,8 @@
                   action:@selector(handleLongPress:)];
   longPressGesture.minimumPressDuration = 1;
   [self.addButton addGestureRecognizer:longPressGesture];
-
+  
   [self userAuth];
-
-  // 初始化打勾的CAShapeLayer
-  self.checkmarkLayer = [CAShapeLayer layer];
-  self.checkmarkLayer.strokeColor = [UIColor greenColor].CGColor;
-  self.checkmarkLayer.lineWidth = 5;
-  self.checkmarkLayer.fillColor = [UIColor clearColor].CGColor;
-  [self.summaryButton.layer addSublayer:self.checkmarkLayer];
-
   [self.loadingView setHidden:YES];
 
   // 注册XIB
@@ -135,19 +125,21 @@
   } else {
     NSArray<FlashThought *> *allThoughts =
         [[FlashThoughtManager sharedManager] allThoughts];
-    FlashThought* thought = allThoughts[indexPath.row];
-    
+    FlashThought *thought = allThoughts[indexPath.row];
+
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
-    NSString* nowDate = [dateFormatter stringFromDate:allThoughts[indexPath.row].date];
+    NSString *nowDate =
+        [dateFormatter stringFromDate:allThoughts[indexPath.row].date];
     if (thought.type == FlashThoughtTypeTextFlashThought) {
       FlashThoughtCell *cell =
           [tableView dequeueReusableCellWithIdentifier:@"FlashThoughtCell"
                                           forIndexPath:indexPath];
 
       if (!cell) {
-        cell = [[FlashThoughtCell alloc] initWithStyle:UITableViewCellStyleDefault
-                                       reuseIdentifier:@"FlashThoughtCell"];
+        cell =
+            [[FlashThoughtCell alloc] initWithStyle:UITableViewCellStyleDefault
+                                    reuseIdentifier:@"FlashThoughtCell"];
       }
       cell.contentLabel.text = allThoughts[indexPath.row].content;
       cell.dateLabel.text = nowDate;
@@ -159,11 +151,13 @@
                                           forIndexPath:indexPath];
 
       if (!cell) {
-        cell = [[FlashThoughtAudioCell alloc] initWithStyle:UITableViewCellStyleDefault
-                                       reuseIdentifier:@"FlashThoughtAudioCell"];
+        cell = [[FlashThoughtAudioCell alloc]
+              initWithStyle:UITableViewCellStyleDefault
+            reuseIdentifier:@"FlashThoughtAudioCell"];
       }
-      
+
       cell.dateLabel.text = nowDate;
+      [cell setupAudioPlayerWithURL:[FlashThoughtManager audioRecordingURLFromFileName:thought.audioFileName]];
       cell.selectionStyle = UITableViewCellSelectionStyleNone;
       return cell;
     } else {
@@ -235,9 +229,13 @@
     [AVAudioSession.sharedInstance requestRecordPermission:^(BOOL granted) {
       if (granted) {
         dispatch_async(dispatch_get_main_queue(), ^{
-          UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"NewFlashAudioThoughtViewController" bundle:nil];
+          UIStoryboard *storyboard = [UIStoryboard
+              storyboardWithName:@"NewFlashAudioThoughtViewController"
+                          bundle:nil];
           // 使用之前设置的Storyboard ID来初始化ViewController
-          NewFlashThoughtsViewController *newFlashVC = [storyboard instantiateViewControllerWithIdentifier:@"NewFlashAudioThoughtViewControllerID"];
+          NewFlashThoughtsViewController *newFlashVC =
+              [storyboard instantiateViewControllerWithIdentifier:
+                              @"NewFlashAudioThoughtViewControllerID"];
 
           // 准备渐显效果
           newFlashVC.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
@@ -246,7 +244,7 @@
           [self presentViewController:newFlashVC animated:YES completion:nil];
         });
       } else {
-        // todo; 
+        // todo;
       }
     }];
   }

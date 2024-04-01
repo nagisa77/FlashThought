@@ -23,7 +23,7 @@ typedef NS_ENUM(NSInteger, FlashThoughtType) {
 @property(nonatomic, assign) FlashThoughtType type;
 @property(nonatomic, strong) NSDate *date;
 @property(nonatomic, strong) NSString *content;
-@property(nonatomic, strong) NSString *audioFilePath;
+@property(nonatomic, strong) NSString *audioFileName;
 
 - (instancetype)initWithType:(FlashThoughtType)type date:(NSDate *)date;
 
@@ -45,6 +45,7 @@ typedef NS_ENUM(NSInteger, FlashThoughtType) {
 
 @property(nonatomic, weak) id<FlashThoughtManagerDelegate> delegate;
 
++ (NSURL *)audioRecordingURLFromFileName:(NSString *)fileName; 
 + (instancetype)sharedManager;
 
 - (void)loadStoredThoughts;

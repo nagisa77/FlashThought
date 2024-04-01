@@ -18,7 +18,7 @@
   self = [super init]; // 首先调用父类的init方法
   if (self) {
     _type = type;
-    _date = date; 
+    _date = date;
   }
   return self;
 }
@@ -26,19 +26,20 @@
 - (void)encodeWithCoder:(NSCoder *)coder {
   [coder encodeObject:self.date forKey:@"date"];
   [coder encodeObject:self.content forKey:@"content"];
-  [coder encodeInteger:self.type forKey:@"type"]; // Corrected to use encodeInteger:forKey:
+  [coder encodeObject:self.audioFileName forKey:@"audioFileName"];
+  [coder encodeInteger:self.type forKey:@"type"];
 }
 
 - (instancetype)initWithCoder:(NSCoder *)coder {
   self = [super init];
   if (self) {
     _date = [coder decodeObjectOfClass:[NSDate class] forKey:@"date"];
-    _type = [coder decodeIntegerForKey:@"type"]; // Corrected to use decodeIntegerForKey
+    _audioFileName = [coder decodeObjectOfClass:[NSString class] forKey:@"audioFileName"];
+    _type = [coder decodeIntegerForKey:@"type"];
     _content = [coder decodeObjectOfClass:[NSString class] forKey:@"content"];
   }
   return self;
 }
-
 
 @end
 
@@ -54,6 +55,16 @@
 @end
 
 @implementation FlashThoughtManager
+
++ (NSURL *)audioRecordingURLFromFileName:(NSString *)fileName {
+  NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,
+                                                       NSUserDomainMask, YES);
+  NSString *documentsDirectory = [paths objectAtIndex:0];
+  NSString *filePath =
+      [documentsDirectory stringByAppendingPathComponent:fileName];
+
+  return [NSURL fileURLWithPath:filePath];
+}
 
 + (instancetype)sharedManager {
   static FlashThoughtManager *sharedInstance = nil;

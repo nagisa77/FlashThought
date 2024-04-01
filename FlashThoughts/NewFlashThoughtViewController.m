@@ -47,7 +47,9 @@
 }
 
 - (IBAction)confirmButtonDidClicked:(id)sender {
-  FlashThought *fs = [[FlashThought alloc] initWithType:FlashThoughtTypeTextFlashThought date:[NSDate date]];
+  FlashThought *fs =
+      [[FlashThought alloc] initWithType:FlashThoughtTypeTextFlashThought
+                                    date:[NSDate date]];
   fs.content = self.textView.text;
   [[FlashThoughtManager sharedManager] addThought:fs];
   [self dismissViewControllerAnimated:YES completion:nil];

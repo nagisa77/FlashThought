@@ -8,15 +8,15 @@
 #ifndef FlashThoughtAudioCell_h
 #define FlashThoughtAudioCell_h
 
+#import <AVFoundation/AVFoundation.h>
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
-#import <AVFoundation/AVFoundation.h>
 
-@interface FlashThoughtAudioCell : UITableViewCell<AVAudioPlayerDelegate>
-
-@property(weak, nonatomic) IBOutlet UILabel *timeLabel;
+@interface FlashThoughtAudioCell : UITableViewCell <AVAudioPlayerDelegate>
 
 @property(weak, nonatomic) IBOutlet UILabel *dateLabel;
+
+- (void)setupAudioPlayerWithURL:(NSURL *)url;
 
 @end
 
