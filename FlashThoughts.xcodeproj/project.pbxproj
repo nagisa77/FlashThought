@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		220E954F2BBA65E3007D1C05 /* FlashThoughtAudioCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 220E954E2BBA65E3007D1C05 /* FlashThoughtAudioCell.xib */; };
+		220E95512BBA65F6007D1C05 /* FlashThoughtAudioCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 220E95502BBA65F6007D1C05 /* FlashThoughtAudioCell.m */; };
 		225A4BF42BB2FF6800A5304A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 225A4BF32BB2FF6800A5304A /* AppDelegate.m */; };
 		225A4BF72BB2FF6800A5304A /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 225A4BF62BB2FF6800A5304A /* SceneDelegate.m */; };
 		225A4BFA2BB2FF6800A5304A /* FlashThoughtsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 225A4BF92BB2FF6800A5304A /* FlashThoughtsViewController.m */; };
@@ -28,6 +30,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		220E954D2BBA65D8007D1C05 /* FlashThoughtAudioCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FlashThoughtAudioCell.h; sourceTree = "<group>"; };
+		220E954E2BBA65E3007D1C05 /* FlashThoughtAudioCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FlashThoughtAudioCell.xib; sourceTree = "<group>"; };
+		220E95502BBA65F6007D1C05 /* FlashThoughtAudioCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FlashThoughtAudioCell.m; sourceTree = "<group>"; };
 		225A4BEF2BB2FF6800A5304A /* FlashThoughts.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlashThoughts.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		225A4BF22BB2FF6800A5304A /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		225A4BF32BB2FF6800A5304A /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -118,6 +123,9 @@
 				229B4FDE2BB5AD8B009DDAA6 /* NewFlashAudioThoughtViewController.storyboard */,
 				229B4FE02BB5ADA8009DDAA6 /* NewFlashAudioThoughtViewController.m */,
 				229B4FE22BB5ADB5009DDAA6 /* NewFlashAudioThoughtViewController.h */,
+				220E954D2BBA65D8007D1C05 /* FlashThoughtAudioCell.h */,
+				220E954E2BBA65E3007D1C05 /* FlashThoughtAudioCell.xib */,
+				220E95502BBA65F6007D1C05 /* FlashThoughtAudioCell.m */,
 			);
 			path = FlashThoughts;
 			sourceTree = "<group>";
@@ -188,6 +196,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				225A4BFF2BB2FF6900A5304A /* Assets.xcassets in Resources */,
+				220E954F2BBA65E3007D1C05 /* FlashThoughtAudioCell.xib in Resources */,
 				225A4C152BB411F200A5304A /* NewFlashThoughtsViewController.storyboard in Resources */,
 				229B4FDF2BB5AD8B009DDAA6 /* NewFlashAudioThoughtViewController.storyboard in Resources */,
 				225A4C222BB47F2600A5304A /* FlashThoughtCell.xib in Resources */,
@@ -204,6 +213,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				225A4C122BB4102C00A5304A /* NewFlashThoughtViewController.m in Sources */,
+				220E95512BBA65F6007D1C05 /* FlashThoughtAudioCell.m in Sources */,
 				225A4BFA2BB2FF6800A5304A /* FlashThoughtsViewController.m in Sources */,
 				225A4C242BB4963500A5304A /* GPTVisitor.m in Sources */,
 				225A4C0C2BB3E16D00A5304A /* RoundedButtonWithShadow.m in Sources */,

@@ -24,7 +24,7 @@
   NSString *const openAIURL = @"https://api.openai.com/v1/chat/completions";
   // todo: set to config
   NSString *const apiKey =
-      @"";
+    @"";
 
   NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
   [request setURL:[NSURL URLWithString:openAIURL]];

@@ -12,10 +12,20 @@
 #import "ReminderManager.h"
 #import <Foundation/Foundation.h>
 
+typedef NS_ENUM(NSInteger, FlashThoughtType) {
+  FlashThoughtTypeTextFlashThought,
+  FlashThoughtTypeAudioFlashThought,
+  FlashThoughtTypeAudioToTextFlashThought,
+};
+
 @interface FlashThought : NSObject <NSSecureCoding>
 
+@property(nonatomic, assign) FlashThoughtType type;
 @property(nonatomic, strong) NSDate *date;
 @property(nonatomic, strong) NSString *content;
+@property(nonatomic, strong) NSString *audioFilePath;
+
+- (instancetype)initWithType:(FlashThoughtType)type date:(NSDate *)date;
 
 @end
 

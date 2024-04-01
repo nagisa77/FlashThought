@@ -7,6 +7,7 @@
 
 #import "FlashThoughtsViewController.h"
 #import "FlashThoughtCell.h"
+#import "FlashThoughtAudioCell.h"
 #import "NewFlashThoughtsViewController.h"
 #import <AVFoundation/AVFoundation.h>
 #import <LocalAuthentication/LocalAuthentication.h>
@@ -82,9 +83,16 @@
   [self.loadingView setHidden:YES];
 
   // 注册XIB
-  UINib *cellNib = [UINib nibWithNibName:@"FlashThoughtCell" bundle:nil];
-  [self.tableView registerNib:cellNib
-       forCellReuseIdentifier:@"FlashThoughtCell"];
+  {
+    UINib *cellNib = [UINib nibWithNibName:@"FlashThoughtCell" bundle:nil];
+    [self.tableView registerNib:cellNib
+         forCellReuseIdentifier:@"FlashThoughtCell"];
+  }
+  {
+    UINib *cellNib = [UINib nibWithNibName:@"FlashThoughtAudioCell" bundle:nil];
+    [self.tableView registerNib:cellNib
+         forCellReuseIdentifier:@"FlashThoughtAudioCell"];
+  }
 }
 
 #pragma mark - UITableViewDataSource
@@ -119,32 +127,48 @@
                                     reuseIdentifier:@"UITableViewCell"];
     }
 
+    cell.backgroundColor = [UIColor systemGray5Color];
     cell.textLabel.text = @"闪念笔记";
     cell.textLabel.font = [UIFont systemFontOfSize:30 weight:UIFontWeightBold];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
   } else {
-    FlashThoughtCell *cell =
-        [tableView dequeueReusableCellWithIdentifier:@"FlashThoughtCell"
-                                        forIndexPath:indexPath];
-
-    if (!cell) {
-      cell = [[FlashThoughtCell alloc] initWithStyle:UITableViewCellStyleDefault
-                                     reuseIdentifier:@"FlashThoughtCell"];
-    }
-
-    //    FlashThoughtCell *cell = [[FlashThoughtCell alloc] init];
-
     NSArray<FlashThought *> *allThoughts =
         [[FlashThoughtManager sharedManager] allThoughts];
-    cell.contentLabel.text = allThoughts[indexPath.row].content;
-
+    FlashThought* thought = allThoughts[indexPath.row];
+    
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
-    cell.dateLabel.text =
-        [dateFormatter stringFromDate:allThoughts[indexPath.row].date];
-    cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    return cell;
+    NSString* nowDate = [dateFormatter stringFromDate:allThoughts[indexPath.row].date];
+    if (thought.type == FlashThoughtTypeTextFlashThought) {
+      FlashThoughtCell *cell =
+          [tableView dequeueReusableCellWithIdentifier:@"FlashThoughtCell"
+                                          forIndexPath:indexPath];
+
+      if (!cell) {
+        cell = [[FlashThoughtCell alloc] initWithStyle:UITableViewCellStyleDefault
+                                       reuseIdentifier:@"FlashThoughtCell"];
+      }
+      cell.contentLabel.text = allThoughts[indexPath.row].content;
+      cell.dateLabel.text = nowDate;
+      cell.selectionStyle = UITableViewCellSelectionStyleNone;
+      return cell;
+    } else if (thought.type == FlashThoughtTypeAudioFlashThought) {
+      FlashThoughtAudioCell *cell =
+          [tableView dequeueReusableCellWithIdentifier:@"FlashThoughtAudioCell"
+                                          forIndexPath:indexPath];
+
+      if (!cell) {
+        cell = [[FlashThoughtAudioCell alloc] initWithStyle:UITableViewCellStyleDefault
+                                       reuseIdentifier:@"FlashThoughtAudioCell"];
+      }
+      
+      cell.dateLabel.text = nowDate;
+      cell.selectionStyle = UITableViewCellSelectionStyleNone;
+      return cell;
+    } else {
+      return nil;
+    }
   }
 }
 
@@ -208,8 +232,6 @@
 
 - (void)handleLongPress:(UILongPressGestureRecognizer *)gestureRecognizer {
   if (gestureRecognizer.state == UIGestureRecognizerStateBegan) {
-
-
     [AVAudioSession.sharedInstance requestRecordPermission:^(BOOL granted) {
       if (granted) {
         dispatch_async(dispatch_get_main_queue(), ^{

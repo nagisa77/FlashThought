@@ -8,11 +8,14 @@
 #import "NewFlashAudioThoughtViewController.h"
 #import <AVFoundation/AVFoundation.h>
 #import <Foundation/Foundation.h>
+#import "FlashThoughtManager.h"
 
 @interface NewFlashAudioThoughtViewController () <AVAudioRecorderDelegate>
 @property IBOutlet UILabel *recordingLabel;
 @property IBOutlet UILabel *timeLabel;
 @property(strong, nonatomic) NSTimer *timer;
+@property(strong, nonatomic) NSDate *audioDate;
+@property(strong, nonatomic) NSString *fileName;
 @property(assign, nonatomic) NSInteger secondsElapsed;
 @property(assign, nonatomic) NSInteger recordingTextIndex;
 @property(assign, nonatomic) BOOL save;
@@ -23,12 +26,17 @@
 
 - (void)viewDidLoad {
   [super viewDidLoad];
-
-  [self setupAudioRecorder];
   
   self.secondsElapsed = 0;
   self.recordingTextIndex = 0;
-  self.save = YES;
+  self.save = NO;
+  self.audioDate = [NSDate date];
+  NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+  [dateFormatter setDateFormat:@"yyyyMMddHHmmss"];
+  self.fileName = [NSString stringWithFormat: @"FlashThought-%@.m4a",
+                   [dateFormatter stringFromDate:self.audioDate]];
+  
+  [self setupAudioRecorder];
   self.timer = [NSTimer scheduledTimerWithTimeInterval:1.0
                                                 target:self
                                               selector:@selector(updateLabels)
@@ -68,12 +76,16 @@
   }
   
   if (self.save) {
+    FlashThought *newThought = [[FlashThought alloc] initWithType:FlashThoughtTypeAudioFlashThought date:[NSDate date]];
+    newThought.audioFilePath = [self audioRecordingPath].path;
+    newThought.type = FlashThoughtTypeAudioFlashThought;
     
+    [[FlashThoughtManager sharedManager] addThought:newThought];
   }
 }
 
-- (IBAction)cancelButtonDidClicked:(id)sender {
-  self.save = NO;
+- (IBAction)okButtonDidClicked:(id)sender {
+  self.save = YES;
   [self dismissViewControllerAnimated:YES completion:nil];
 }
 
@@ -86,7 +98,7 @@
   }
   
   // 配置录音器
-  NSURL *recordingURL = [self audioRecordingPath];
+ NSURL *recordingURL = [self audioRecordingPath];
   NSDictionary *settings = @{
     AVFormatIDKey: @(kAudioFormatMPEG4AAC),
     AVSampleRateKey: @44100,
@@ -105,7 +117,7 @@
 - (NSURL *)audioRecordingPath {
   NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
   NSString *documentsDirectory = [paths objectAtIndex:0];
-  NSString *filePath = [documentsDirectory stringByAppendingPathComponent:@"audioRecording.m4a"];
+  NSString *filePath = [documentsDirectory stringByAppendingPathComponent:self.fileName];
   
   return [NSURL fileURLWithPath:filePath];
 }

@@ -14,18 +14,31 @@
   return YES;
 }
 
+- (instancetype)initWithType:(FlashThoughtType)type date:(NSDate *)date {
+  self = [super init]; // 首先调用父类的init方法
+  if (self) {
+    _type = type;
+    _date = date; 
+  }
+  return self;
+}
+
 - (void)encodeWithCoder:(NSCoder *)coder {
   [coder encodeObject:self.date forKey:@"date"];
   [coder encodeObject:self.content forKey:@"content"];
+  [coder encodeInteger:self.type forKey:@"type"]; // Corrected to use encodeInteger:forKey:
 }
 
 - (instancetype)initWithCoder:(NSCoder *)coder {
-  if ((self = [super init])) {
+  self = [super init];
+  if (self) {
     _date = [coder decodeObjectOfClass:[NSDate class] forKey:@"date"];
+    _type = [coder decodeIntegerForKey:@"type"]; // Corrected to use decodeIntegerForKey
     _content = [coder decodeObjectOfClass:[NSString class] forKey:@"content"];
   }
   return self;
 }
+
 
 @end
 
