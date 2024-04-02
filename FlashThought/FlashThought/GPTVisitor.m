@@ -5,7 +5,7 @@
 //  Created by tim on 2024/3/28.
 //
 
-#import "GPTVisitor.h"
+#import <FlashThought/GPTVisitor.h>
 #import <Foundation/Foundation.h>
 
 @implementation GPTVisitor

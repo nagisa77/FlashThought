@@ -5,7 +5,7 @@
 //  Created by tim on 2024/3/27.
 //
 
-#import "FlashThoughtManager.h"
+#import <FlashThought/FlashThoughtManager.h>
 #import "NewFlashThoughtsViewController.h"
 
 #define DEFAULT_TEXT @"Write ur flash thought..."

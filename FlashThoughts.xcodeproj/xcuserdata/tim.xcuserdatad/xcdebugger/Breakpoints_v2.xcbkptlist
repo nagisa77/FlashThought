@@ -48,8 +48,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "72"
             endingLineNumber = "72"
-            landmarkName = "-stopRecord"
-            landmarkType = "7">
+            landmarkName = "NewFlashAudioThoughtViewController"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -178,36 +178,6 @@
             endingLineNumber = "335"
             landmarkName = "-visitor:didVisitMessage:messageId:withResponse:"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "737867D7-F6B2-455F-AAD6-BF39AD85F4AE - 6ded038b4b10c941"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "-[FlashThoughtManager sendAllThoughtsToAI]"
-                  moduleName = "FlashThoughts"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tim/Desktop/FlashThoughts/FlashThoughts/FlashThoughtManager.m"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "335"
-                  endingLineNumber = "335">
-               </Location>
-               <Location
-                  uuid = "737867D7-F6B2-455F-AAD6-BF39AD85F4AE - 6ded038b4b10c941"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "-[FlashThoughtManager sendAllThoughtsToAI]"
-                  moduleName = "FlashThoughts"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tim/Desktop/FlashThoughts/FlashThoughts/FlashThoughtManager.m"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "335"
-                  endingLineNumber = "335">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy

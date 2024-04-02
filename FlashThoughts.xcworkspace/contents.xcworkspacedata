@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:FlashThought/FlashThought.xcodeproj">
+   </FileRef>
+   <FileRef
       location = "group:FlashThoughts.xcodeproj">
    </FileRef>
    <FileRef

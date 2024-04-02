@@ -7,7 +7,7 @@
 
 #import "NewFlashAudioThoughtViewController.h"
 #import "AudioPlayerManager.h"
-#import "FlashThoughtManager.h"
+#import <FlashThought/FlashThoughtManager.h>
 #import <AVFoundation/AVFoundation.h>
 #import <Foundation/Foundation.h>
 

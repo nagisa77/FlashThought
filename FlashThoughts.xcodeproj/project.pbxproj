@@ -10,6 +10,13 @@
 		220E954F2BBA65E3007D1C05 /* FlashThoughtAudioCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 220E954E2BBA65E3007D1C05 /* FlashThoughtAudioCell.xib */; };
 		220E95512BBA65F6007D1C05 /* FlashThoughtAudioCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 220E95502BBA65F6007D1C05 /* FlashThoughtAudioCell.m */; };
 		2231325B2BBBB4B3009B0CF1 /* AudioPlayerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2231325A2BBBB4B3009B0CF1 /* AudioPlayerManager.m */; };
+		223132792BBBD1F8009B0CF1 /* ShareViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 223132782BBBD1F8009B0CF1 /* ShareViewController.m */; };
+		2231327C2BBBD1F8009B0CF1 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 2231327B2BBBD1F8009B0CF1 /* Base */; };
+		223132802BBBD1F8009B0CF1 /* FlashThought Share Extension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 223132752BBBD1F8009B0CF1 /* FlashThought Share Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		223132F32BBBD9F6009B0CF1 /* FlashThought.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 223132F22BBBD9F6009B0CF1 /* FlashThought.framework */; };
+		223132F42BBBD9F6009B0CF1 /* FlashThought.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 223132F22BBBD9F6009B0CF1 /* FlashThought.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		223132F92BBBDA03009B0CF1 /* FlashThought.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 223132F82BBBDA03009B0CF1 /* FlashThought.framework */; };
+		223132FA2BBBDA03009B0CF1 /* FlashThought.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 223132F82BBBDA03009B0CF1 /* FlashThought.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		225A4BF42BB2FF6800A5304A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 225A4BF32BB2FF6800A5304A /* AppDelegate.m */; };
 		225A4BF72BB2FF6800A5304A /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 225A4BF62BB2FF6800A5304A /* SceneDelegate.m */; };
 		225A4BFA2BB2FF6800A5304A /* FlashThoughtsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 225A4BF92BB2FF6800A5304A /* FlashThoughtsViewController.m */; };
@@ -20,16 +27,59 @@
 		225A4C0C2BB3E16D00A5304A /* RoundedButtonWithShadow.m in Sources */ = {isa = PBXBuildFile; fileRef = 225A4C0B2BB3E16D00A5304A /* RoundedButtonWithShadow.m */; };
 		225A4C122BB4102C00A5304A /* NewFlashThoughtViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 225A4C112BB4102C00A5304A /* NewFlashThoughtViewController.m */; };
 		225A4C152BB411F200A5304A /* NewFlashThoughtsViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 225A4C142BB411F200A5304A /* NewFlashThoughtsViewController.storyboard */; };
-		225A4C172BB443D300A5304A /* FlashThoughtManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 225A4C162BB443D300A5304A /* FlashThoughtManager.m */; };
 		225A4C1B2BB460C200A5304A /* LocalAuthentication.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 225A4C1A2BB460C200A5304A /* LocalAuthentication.framework */; };
 		225A4C1E2BB47EE100A5304A /* FlashThoughtCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 225A4C1D2BB47EE100A5304A /* FlashThoughtCell.m */; };
 		225A4C222BB47F2600A5304A /* FlashThoughtCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 225A4C212BB47F2600A5304A /* FlashThoughtCell.xib */; };
-		225A4C242BB4963500A5304A /* GPTVisitor.m in Sources */ = {isa = PBXBuildFile; fileRef = 225A4C232BB4963500A5304A /* GPTVisitor.m */; };
-		225A4C282BB511BE00A5304A /* ReminderManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 225A4C272BB511BE00A5304A /* ReminderManager.m */; };
 		229B4FDF2BB5AD8B009DDAA6 /* NewFlashAudioThoughtViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 229B4FDE2BB5AD8B009DDAA6 /* NewFlashAudioThoughtViewController.storyboard */; };
 		229B4FE12BB5ADA8009DDAA6 /* NewFlashAudioThoughtViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 229B4FE02BB5ADA8009DDAA6 /* NewFlashAudioThoughtViewController.m */; };
 		6E4A3FFFC35D79BF233F1FC5 /* Pods_FlashThoughts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88E335BA3A073F93B100C62D /* Pods_FlashThoughts.framework */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		2231327E2BBBD1F8009B0CF1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 225A4BE72BB2FF6800A5304A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 223132742BBBD1F8009B0CF1;
+			remoteInfo = "FlashThought Share Extension";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		223132842BBBD1F8009B0CF1 /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				223132802BBBD1F8009B0CF1 /* FlashThought Share Extension.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		223132F52BBBD9F6009B0CF1 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				223132F42BBBD9F6009B0CF1 /* FlashThought.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		223132FB2BBBDA03009B0CF1 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				223132FA2BBBDA03009B0CF1 /* FlashThought.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		220E954D2BBA65D8007D1C05 /* FlashThoughtAudioCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FlashThoughtAudioCell.h; sourceTree = "<group>"; };
@@ -37,6 +87,14 @@
 		220E95502BBA65F6007D1C05 /* FlashThoughtAudioCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FlashThoughtAudioCell.m; sourceTree = "<group>"; };
 		2231325A2BBBB4B3009B0CF1 /* AudioPlayerManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AudioPlayerManager.m; sourceTree = "<group>"; };
 		2231325C2BBBB4C4009B0CF1 /* AudioPlayerManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AudioPlayerManager.h; sourceTree = "<group>"; };
+		223132752BBBD1F8009B0CF1 /* FlashThought Share Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "FlashThought Share Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		223132772BBBD1F8009B0CF1 /* ShareViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ShareViewController.h; sourceTree = "<group>"; };
+		223132782BBBD1F8009B0CF1 /* ShareViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ShareViewController.m; sourceTree = "<group>"; };
+		2231327B2BBBD1F8009B0CF1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
+		2231327D2BBBD1F8009B0CF1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		223132F22BBBD9F6009B0CF1 /* FlashThought.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FlashThought.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		223132F62BBBD9FE009B0CF1 /* FlashThoughtTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; path = FlashThoughtTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		223132F82BBBDA03009B0CF1 /* FlashThought.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FlashThought.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2257A1FC2BBAEBA1005CB174 /* MBProgressHUD.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = MBProgressHUD.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		225A4BEF2BB2FF6800A5304A /* FlashThoughts.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlashThoughts.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		225A4BF22BB2FF6800A5304A /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -54,16 +112,10 @@
 		225A4C112BB4102C00A5304A /* NewFlashThoughtViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NewFlashThoughtViewController.m; sourceTree = "<group>"; };
 		225A4C132BB4109500A5304A /* NewFlashThoughtsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NewFlashThoughtsViewController.h; sourceTree = "<group>"; };
 		225A4C142BB411F200A5304A /* NewFlashThoughtsViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = NewFlashThoughtsViewController.storyboard; sourceTree = "<group>"; };
-		225A4C162BB443D300A5304A /* FlashThoughtManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FlashThoughtManager.m; sourceTree = "<group>"; };
-		225A4C182BB443DC00A5304A /* FlashThoughtManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FlashThoughtManager.h; sourceTree = "<group>"; };
 		225A4C1A2BB460C200A5304A /* LocalAuthentication.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LocalAuthentication.framework; path = System/Library/Frameworks/LocalAuthentication.framework; sourceTree = SDKROOT; };
 		225A4C1C2BB47ED500A5304A /* FlashThoughtCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FlashThoughtCell.h; sourceTree = "<group>"; };
 		225A4C1D2BB47EE100A5304A /* FlashThoughtCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FlashThoughtCell.m; sourceTree = "<group>"; };
 		225A4C212BB47F2600A5304A /* FlashThoughtCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FlashThoughtCell.xib; sourceTree = "<group>"; };
-		225A4C232BB4963500A5304A /* GPTVisitor.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GPTVisitor.m; sourceTree = "<group>"; };
-		225A4C252BB4964300A5304A /* GPTVisitor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GPTVisitor.h; sourceTree = "<group>"; };
-		225A4C262BB511AD00A5304A /* ReminderManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ReminderManager.h; sourceTree = "<group>"; };
-		225A4C272BB511BE00A5304A /* ReminderManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ReminderManager.m; sourceTree = "<group>"; };
 		229B4FDE2BB5AD8B009DDAA6 /* NewFlashAudioThoughtViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = NewFlashAudioThoughtViewController.storyboard; sourceTree = "<group>"; };
 		229B4FE02BB5ADA8009DDAA6 /* NewFlashAudioThoughtViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NewFlashAudioThoughtViewController.m; sourceTree = "<group>"; };
 		229B4FE22BB5ADB5009DDAA6 /* NewFlashAudioThoughtViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NewFlashAudioThoughtViewController.h; sourceTree = "<group>"; };
@@ -73,22 +125,43 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		223132722BBBD1F8009B0CF1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				223132F32BBBD9F6009B0CF1 /* FlashThought.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		225A4BEC2BB2FF6800A5304A /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				225A4C1B2BB460C200A5304A /* LocalAuthentication.framework in Frameworks */,
 				6E4A3FFFC35D79BF233F1FC5 /* Pods_FlashThoughts.framework in Frameworks */,
+				223132F92BBBDA03009B0CF1 /* FlashThought.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		223132762BBBD1F8009B0CF1 /* FlashThought Share Extension */ = {
+			isa = PBXGroup;
+			children = (
+				223132772BBBD1F8009B0CF1 /* ShareViewController.h */,
+				223132782BBBD1F8009B0CF1 /* ShareViewController.m */,
+				2231327A2BBBD1F8009B0CF1 /* MainInterface.storyboard */,
+				2231327D2BBBD1F8009B0CF1 /* Info.plist */,
+			);
+			path = "FlashThought Share Extension";
+			sourceTree = "<group>";
+		};
 		225A4BE62BB2FF6800A5304A = {
 			isa = PBXGroup;
 			children = (
 				225A4BF12BB2FF6800A5304A /* FlashThoughts */,
+				223132762BBBD1F8009B0CF1 /* FlashThought Share Extension */,
 				225A4BF02BB2FF6800A5304A /* Products */,
 				225A4C192BB460C200A5304A /* Frameworks */,
 				7CFB54FB5370296736E235F9 /* Pods */,
@@ -99,6 +172,7 @@
 			isa = PBXGroup;
 			children = (
 				225A4BEF2BB2FF6800A5304A /* FlashThoughts.app */,
+				223132752BBBD1F8009B0CF1 /* FlashThought Share Extension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -112,8 +186,6 @@
 				225A4BF62BB2FF6800A5304A /* SceneDelegate.m */,
 				225A4BF82BB2FF6800A5304A /* FlashThoughtsViewController.h */,
 				225A4BF92BB2FF6800A5304A /* FlashThoughtsViewController.m */,
-				225A4C162BB443D300A5304A /* FlashThoughtManager.m */,
-				225A4C182BB443DC00A5304A /* FlashThoughtManager.h */,
 				225A4C112BB4102C00A5304A /* NewFlashThoughtViewController.m */,
 				225A4C132BB4109500A5304A /* NewFlashThoughtsViewController.h */,
 				225A4C0B2BB3E16D00A5304A /* RoundedButtonWithShadow.m */,
@@ -126,10 +198,6 @@
 				225A4C1C2BB47ED500A5304A /* FlashThoughtCell.h */,
 				225A4C1D2BB47EE100A5304A /* FlashThoughtCell.m */,
 				225A4C212BB47F2600A5304A /* FlashThoughtCell.xib */,
-				225A4C232BB4963500A5304A /* GPTVisitor.m */,
-				225A4C252BB4964300A5304A /* GPTVisitor.h */,
-				225A4C262BB511AD00A5304A /* ReminderManager.h */,
-				225A4C272BB511BE00A5304A /* ReminderManager.m */,
 				229B4FDE2BB5AD8B009DDAA6 /* NewFlashAudioThoughtViewController.storyboard */,
 				229B4FE02BB5ADA8009DDAA6 /* NewFlashAudioThoughtViewController.m */,
 				229B4FE22BB5ADB5009DDAA6 /* NewFlashAudioThoughtViewController.h */,
@@ -145,6 +213,9 @@
 		225A4C192BB460C200A5304A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				223132F82BBBDA03009B0CF1 /* FlashThought.framework */,
+				223132F62BBBD9FE009B0CF1 /* FlashThoughtTests.xctest */,
+				223132F22BBBD9F6009B0CF1 /* FlashThought.framework */,
 				2257A1FC2BBAEBA1005CB174 /* MBProgressHUD.framework */,
 				225A4C1A2BB460C200A5304A /* LocalAuthentication.framework */,
 				88E335BA3A073F93B100C62D /* Pods_FlashThoughts.framework */,
@@ -164,6 +235,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		223132742BBBD1F8009B0CF1 /* FlashThought Share Extension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 223132812BBBD1F8009B0CF1 /* Build configuration list for PBXNativeTarget "FlashThought Share Extension" */;
+			buildPhases = (
+				223132712BBBD1F8009B0CF1 /* Sources */,
+				223132722BBBD1F8009B0CF1 /* Frameworks */,
+				223132732BBBD1F8009B0CF1 /* Resources */,
+				223132F52BBBD9F6009B0CF1 /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "FlashThought Share Extension";
+			productName = "FlashThought Share Extension";
+			productReference = 223132752BBBD1F8009B0CF1 /* FlashThought Share Extension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		225A4BEE2BB2FF6800A5304A /* FlashThoughts */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 225A4C082BB2FF6900A5304A /* Build configuration list for PBXNativeTarget "FlashThoughts" */;
@@ -173,10 +262,13 @@
 				225A4BEC2BB2FF6800A5304A /* Frameworks */,
 				225A4BED2BB2FF6800A5304A /* Resources */,
 				389C0E30BC0CB7EBDE192C7A /* [CP] Embed Pods Frameworks */,
+				223132842BBBD1F8009B0CF1 /* Embed Foundation Extensions */,
+				223132FB2BBBDA03009B0CF1 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				2231327F2BBBD1F8009B0CF1 /* PBXTargetDependency */,
 			);
 			name = FlashThoughts;
 			productName = FlashThoughts;
@@ -192,6 +284,9 @@
 				BuildIndependentTargetsInParallel = 1;
 				LastUpgradeCheck = 1530;
 				TargetAttributes = {
+					223132742BBBD1F8009B0CF1 = {
+						CreatedOnToolsVersion = 15.3;
+					};
 					225A4BEE2BB2FF6800A5304A = {
 						CreatedOnToolsVersion = 15.3;
 					};
@@ -211,11 +306,20 @@
 			projectRoot = "";
 			targets = (
 				225A4BEE2BB2FF6800A5304A /* FlashThoughts */,
+				223132742BBBD1F8009B0CF1 /* FlashThought Share Extension */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		223132732BBBD1F8009B0CF1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2231327C2BBBD1F8009B0CF1 /* Base in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		225A4BED2BB2FF6800A5304A /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -275,6 +379,14 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		223132712BBBD1F8009B0CF1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				223132792BBBD1F8009B0CF1 /* ShareViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		225A4BEB2BB2FF6800A5304A /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -283,21 +395,34 @@
 				225A4C122BB4102C00A5304A /* NewFlashThoughtViewController.m in Sources */,
 				220E95512BBA65F6007D1C05 /* FlashThoughtAudioCell.m in Sources */,
 				225A4BFA2BB2FF6800A5304A /* FlashThoughtsViewController.m in Sources */,
-				225A4C242BB4963500A5304A /* GPTVisitor.m in Sources */,
 				225A4C0C2BB3E16D00A5304A /* RoundedButtonWithShadow.m in Sources */,
 				225A4BF42BB2FF6800A5304A /* AppDelegate.m in Sources */,
 				229B4FE12BB5ADA8009DDAA6 /* NewFlashAudioThoughtViewController.m in Sources */,
-				225A4C282BB511BE00A5304A /* ReminderManager.m in Sources */,
 				225A4C052BB2FF6900A5304A /* main.m in Sources */,
 				225A4BF72BB2FF6800A5304A /* SceneDelegate.m in Sources */,
 				225A4C1E2BB47EE100A5304A /* FlashThoughtCell.m in Sources */,
-				225A4C172BB443D300A5304A /* FlashThoughtManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		2231327F2BBBD1F8009B0CF1 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 223132742BBBD1F8009B0CF1 /* FlashThought Share Extension */;
+			targetProxy = 2231327E2BBBD1F8009B0CF1 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin PBXVariantGroup section */
+		2231327A2BBBD1F8009B0CF1 /* MainInterface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2231327B2BBBD1F8009B0CF1 /* Base */,
+			);
+			name = MainInterface.storyboard;
+			sourceTree = "<group>";
+		};
 		225A4BFB2BB2FF6800A5304A /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -317,6 +442,54 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		223132822BBBD1F8009B0CF1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = F3UT7A6X54;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "FlashThought Share Extension/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "FlashThought Share Extension";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "tim.FlashThoughts.FlashThought-Share-Extension";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		223132832BBBD1F8009B0CF1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = F3UT7A6X54;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "FlashThought Share Extension/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "FlashThought Share Extension";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "tim.FlashThoughts.FlashThought-Share-Extension";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		225A4C062BB2FF6900A5304A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -502,6 +675,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		223132812BBBD1F8009B0CF1 /* Build configuration list for PBXNativeTarget "FlashThought Share Extension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				223132822BBBD1F8009B0CF1 /* Debug */,
+				223132832BBBD1F8009B0CF1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		225A4BEA2BB2FF6800A5304A /* Build configuration list for PBXProject "FlashThoughts" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

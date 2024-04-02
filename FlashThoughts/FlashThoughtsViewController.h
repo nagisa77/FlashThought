@@ -5,7 +5,7 @@
 //  Created by tim on 2024/3/26.
 //
 
-#import "FlashThoughtManager.h"
+#import <FlashThought/FlashThoughtManager.h>
 #import <UIKit/UIKit.h>
 
 @interface FlashThoughtsViewController
