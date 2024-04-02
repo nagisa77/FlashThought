@@ -84,7 +84,11 @@
         completionHandler:^(NSData *data, NSURLResponse *response,
                             NSError *error) {
           if (error) {
-            NSLog(@"Error: %@", error);
+            dispatch_async(dispatch_get_main_queue(), ^{
+              [self.delegate visitor:self
+                  didFailToVisitMessageWithMessageId:messageId
+                                               error:error];
+            });
           } else {
             NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
             NSLog(@"Response status code: %ld",
@@ -112,7 +116,7 @@
               dispatch_async(dispatch_get_main_queue(), ^{
                 [self.delegate visitor:self
                     didFailToVisitMessageWithMessageId:messageId
-                                                 error:error];
+                                                 error:parseError];
               });
             }
           }

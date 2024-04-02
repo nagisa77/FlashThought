@@ -37,6 +37,7 @@ typedef NS_ENUM(NSInteger, FlashThoughtType) {
 - (void)thoughtsDidSentToAI:(NSArray<FlashThought *> *)thoughts;
 - (void)thoughtsDidSaveToReminders:(NSArray<FlashThought *> *)thoughts;
 - (void)allThoughtsDidHandle;
+- (void)shouldStopHandlingThoughtsByError:(NSError *)error; 
 
 @end
 
@@ -44,6 +45,8 @@ typedef NS_ENUM(NSInteger, FlashThoughtType) {
     : NSObject <GPTVisitorDelegate, ReminderManagerDelegate>
 
 @property(nonatomic, weak) id<FlashThoughtManagerDelegate> delegate;
+
+@property(nonatomic, assign) BOOL isHandlingAllThoughts;
 
 + (NSURL *)audioRecordingURLFromFileName:(NSString *)fileName;
 + (instancetype)sharedManager;
@@ -54,6 +57,7 @@ typedef NS_ENUM(NSInteger, FlashThoughtType) {
 - (NSInteger)removeThought:(FlashThought *)thought;
 - (void)updateThought:(FlashThought *)thought withContent:(NSString *)content;
 - (BOOL)sendAllThoughtsToAI;
+- (void)cancelSendAllThoughtsToAI;
 
 @end
 

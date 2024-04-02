@@ -21,6 +21,7 @@
 @property IBOutlet UITableView *tableView;
 @property IBOutlet UIView *passwordView;
 @property IBOutlet UIActivityIndicatorView *loadingView;
+@property (strong, nonatomic) MBProgressHUD *loadingHud;
 
 @end
 
@@ -52,7 +53,7 @@
   }
 }
 
-- (void)showMessageWithTitle:(NSString *)title content:(NSString *)content {
+- (void)showMessageWithTitle:(NSString *)title content:(NSString *)content completion:(void (^)(void))completionBlock {
   MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
 
   // Set the text mode to show only text.
@@ -60,8 +61,10 @@
   hud.label.text = NSLocalizedString(content, title);
   // Move to bottm center.
   hud.offset = CGPointMake(0.f, 250.f);
-
-  [hud hideAnimated:YES afterDelay:5.f];
+  hud.animationType = MBProgressHUDAnimationZoom;
+  [hud setCompletionBlock:completionBlock];
+  
+  [hud hideAnimated:YES afterDelay:3.f];
 }
 
 - (void)viewDidLoad {
@@ -304,7 +307,7 @@
 
 - (UITableViewCellEditingStyle)tableView:(UITableView *)tableView
            editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath {
-  if (indexPath.section == 1) {
+  if (indexPath.section == 1 && ![[FlashThoughtManager sharedManager] isHandlingAllThoughts]) {
     return UITableViewCellEditingStyleDelete;
   }
   return UITableViewCellEditingStyleNone;
@@ -345,10 +348,16 @@
     [self.summaryButton setEnabled:NO];
     [self.loadingView setHidden:NO];
     [self.loadingView startAnimating];
+    
+    self.loadingHud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    self.loadingHud.backgroundView.style = MBProgressHUDBackgroundStyleSolidColor;
+    self.loadingHud.backgroundView.color = [UIColor colorWithWhite:0.f alpha:0.1f];
+    
     [self.addButton setEnabled:NO];
   } else {
     [self.summaryButton setEnabled:YES];
     [self.loadingView setHidden:YES];
+    [self.loadingHud hideAnimated:YES];
     [self.loadingView stopAnimating];
     [self.addButton setEnabled:YES];
   }
@@ -384,7 +393,6 @@
   UIStoryboard *storyboard =
       [UIStoryboard storyboardWithName:@"NewFlashThoughtsViewController"
                                 bundle:nil];
-  // 使用之前设置的Storyboard ID来初始化ViewController
   NewFlashThoughtsViewController *newFlashVC =
       [storyboard instantiateViewControllerWithIdentifier:
                       @"NewFlashThoughtsViewControllerID"];
@@ -401,10 +409,7 @@
   [self startLoading:YES];
   BOOL realSent = [[FlashThoughtManager sharedManager] sendAllThoughtsToAI];
   if (!realSent) {
-    [self showAlertWithTitle:@"Tips"
-                     message:@"You do not have any thought :)"
-              confirmHandler:^(UIAlertAction *action){
-              }];
+    [self showMessageWithTitle:@"Tips" content:@"You do not have any thought :)" completion:nil];
     [self startLoading:NO];
   }
 }
@@ -415,7 +420,7 @@
 
 - (void)allThoughtsDidHandle {
   [self startLoading:NO];
-  [self showMessageWithTitle:@"save complete" content:@"Saved to Reminders :)"];
+  [self showMessageWithTitle:@"save complete" content:@"Saved to Reminders :)" completion:nil];
 }
 
 - (void)thoughtManagerDidRemoveThought:(FlashThought *)thought {
@@ -426,6 +431,16 @@
 
 - (void)thoughtManagerDidUpdateThought:(FlashThought *)thought {
   [self.tableView reloadData];
+}
+
+- (void)shouldStopHandlingThoughtsByError:(NSError *)error {
+  if (error.code == NSURLErrorUnsupportedURL) {
+    [self startLoading:NO];
+    [[FlashThoughtManager sharedManager] cancelSendAllThoughtsToAI]; 
+    [self showMessageWithTitle:@"unspport url" content:@"Unspport proxy URL :(" completion:^{
+      [self showProxyHostSetting];
+    }];
+  }
 }
 
 - (void)thoughtsDidSaveToReminders:(NSArray<FlashThought *> *)thoughts {

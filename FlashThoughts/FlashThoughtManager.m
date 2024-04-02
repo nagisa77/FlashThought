@@ -109,8 +109,6 @@ NSString *audioPrompt =
 @property(assign) NSInteger countOfAudioThoughts;
 @property(assign) NSInteger thoughtsHandled;
 
-@property(assign) BOOL isHandlingAllThoughts;
-
 @end
 
 @implementation FlashThoughtManager
@@ -260,12 +258,19 @@ NSString *audioPrompt =
 }
 
 - (void)checkAllThoughtDone {
-  assert(self.isHandlingAllThoughts);
+  if (!self.isHandlingAllThoughts) {
+    NSLog(@"task been cancel");
+    return;
+  }
 
   if (self.thoughtsHandled == self.countOfAllThoughts) {
     self.isHandlingAllThoughts = NO;
     [self.delegate allThoughtsDidHandle];
   }
+}
+
+- (void)cancelSendAllThoughtsToAI {
+  self.isHandlingAllThoughts = NO;
 }
 
 - (BOOL)sendAllThoughtsToAI {
@@ -391,7 +396,9 @@ NSString *audioPrompt =
 - (void)visitor:(GPTVisitor *)visitor
     didFailToVisitMessageWithMessageId:(NSUInteger)messageId
                                  error:(NSError *)error {
-  // assert(visitor == self);
+  if (error.code == NSURLErrorUnsupportedURL) {
+    [self.delegate shouldStopHandlingThoughtsByError:error];
+  }
   NSNumber *key = @(messageId);
   if ([self.gptTextToRemindersRequests objectForKey:key] != nil) {
     self.thoughtsHandled +=
