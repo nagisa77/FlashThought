@@ -50,7 +50,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" systemColor="systemGray5Color"/>
                         <constraints>
                             <constraint firstItem="a25-AG-lrg" firstAttribute="centerX" secondItem="wUZ-nD-n8z" secondAttribute="centerX" id="36N-dS-fT9"/>
                             <constraint firstAttribute="trailing" secondItem="MLF-js-ghE" secondAttribute="trailing" constant="10" id="4gi-m2-c1X"/>
@@ -72,6 +72,7 @@
                         </userDefinedRuntimeAttributes>
                     </view>
                 </subviews>
+                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <constraints>
                     <constraint firstItem="wUZ-nD-n8z" firstAttribute="leading" secondItem="bV1-Oe-lF4" secondAttribute="leading" constant="10" id="Cik-9o-BpR"/>
                     <constraint firstAttribute="bottom" secondItem="wUZ-nD-n8z" secondAttribute="bottom" id="LGH-6p-tdd"/>
@@ -91,9 +92,6 @@
     </objects>
     <resources>
         <image name="play.fill" catalog="system" width="117" height="128"/>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
         <systemColor name="systemGray2Color">
             <color red="0.68235294117647061" green="0.68235294117647061" blue="0.69803921568627447" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>

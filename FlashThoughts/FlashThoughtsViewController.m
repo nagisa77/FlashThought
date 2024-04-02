@@ -18,6 +18,7 @@
 
 @property IBOutlet UIButton *addButton;
 @property IBOutlet UIButton *summaryButton;
+@property IBOutlet UILabel *topLeftLabel;
 @property IBOutlet UITableView *tableView;
 @property IBOutlet UIView *passwordView;
 @property IBOutlet UIActivityIndicatorView *loadingView;
@@ -77,6 +78,8 @@
   self.tableView.sectionHeaderHeight = 0.0;
   self.tableView.sectionFooterHeight = 0.0;
   self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+  
+  self.topLeftLabel.alpha = 0.0;
 
   UILongPressGestureRecognizer *longPressGesture =
       [[UILongPressGestureRecognizer alloc]
@@ -104,6 +107,16 @@
     UINib *cellNib = [UINib nibWithNibName:@"FlashThoughtAudioCell" bundle:nil];
     [self.tableView registerNib:cellNib
          forCellReuseIdentifier:@"FlashThoughtAudioCell"];
+  }
+}
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+  if (scrollView.contentOffset.y <= 60) {
+    self.topLeftLabel.alpha = 0.0;
+  } else if (scrollView.contentOffset.y > 60 && scrollView.contentOffset.y <= 100) {
+    self.topLeftLabel.alpha = (scrollView.contentOffset.y - 60) / 40;
+  } else if (scrollView.contentOffset.y > 100) {
+    self.topLeftLabel.alpha = 1.0;
   }
 }
 
@@ -245,7 +258,6 @@
                                     reuseIdentifier:@"UITableViewCell"];
     }
 
-    cell.backgroundColor = [UIColor systemGray5Color];
     cell.textLabel.text = @"闪念笔记";
     cell.textLabel.font = [UIFont systemFontOfSize:30 weight:UIFontWeightBold];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;

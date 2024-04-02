@@ -24,6 +24,8 @@
   FlashThought* flashThought = [[FlashThought alloc] initWithType:FlashThoughtTypeTextFlashThought date:[NSDate date]];
   flashThought.content = textToShare;
   [[FlashThoughtManager sharedManager] addThought:flashThought];
+  
+  [self.extensionContext completeRequestReturningItems:@[] completionHandler:nil];
 }
 
 - (NSArray *)configurationItems {

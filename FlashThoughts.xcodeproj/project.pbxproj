@@ -93,9 +93,9 @@
 		2231327B2BBBD1F8009B0CF1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
 		2231327D2BBBD1F8009B0CF1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		223132F22BBBD9F6009B0CF1 /* FlashThought.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FlashThought.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		223132F62BBBD9FE009B0CF1 /* FlashThoughtTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; path = FlashThoughtTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		223132F82BBBDA03009B0CF1 /* FlashThought.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FlashThought.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		2257A1FC2BBAEBA1005CB174 /* MBProgressHUD.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = MBProgressHUD.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		223132FC2BBBF4CB009B0CF1 /* FlashThoughts.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = FlashThoughts.entitlements; sourceTree = "<group>"; };
+		223132FD2BBBF770009B0CF1 /* FlashThought Share Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "FlashThought Share Extension.entitlements"; sourceTree = "<group>"; };
 		225A4BEF2BB2FF6800A5304A /* FlashThoughts.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlashThoughts.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		225A4BF22BB2FF6800A5304A /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		225A4BF32BB2FF6800A5304A /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -149,6 +149,7 @@
 		223132762BBBD1F8009B0CF1 /* FlashThought Share Extension */ = {
 			isa = PBXGroup;
 			children = (
+				223132FD2BBBF770009B0CF1 /* FlashThought Share Extension.entitlements */,
 				223132772BBBD1F8009B0CF1 /* ShareViewController.h */,
 				223132782BBBD1F8009B0CF1 /* ShareViewController.m */,
 				2231327A2BBBD1F8009B0CF1 /* MainInterface.storyboard */,
@@ -180,6 +181,7 @@
 		225A4BF12BB2FF6800A5304A /* FlashThoughts */ = {
 			isa = PBXGroup;
 			children = (
+				223132FC2BBBF4CB009B0CF1 /* FlashThoughts.entitlements */,
 				225A4BF22BB2FF6800A5304A /* AppDelegate.h */,
 				225A4BF32BB2FF6800A5304A /* AppDelegate.m */,
 				225A4BF52BB2FF6800A5304A /* SceneDelegate.h */,
@@ -214,9 +216,7 @@
 			isa = PBXGroup;
 			children = (
 				223132F82BBBDA03009B0CF1 /* FlashThought.framework */,
-				223132F62BBBD9FE009B0CF1 /* FlashThoughtTests.xctest */,
 				223132F22BBBD9F6009B0CF1 /* FlashThought.framework */,
-				2257A1FC2BBAEBA1005CB174 /* MBProgressHUD.framework */,
 				225A4C1A2BB460C200A5304A /* LocalAuthentication.framework */,
 				88E335BA3A073F93B100C62D /* Pods_FlashThoughts.framework */,
 			);
@@ -445,6 +445,7 @@
 		223132822BBBD1F8009B0CF1 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = "FlashThought Share Extension/FlashThought Share Extension.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = F3UT7A6X54;
@@ -469,6 +470,7 @@
 		223132832BBBD1F8009B0CF1 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = "FlashThought Share Extension/FlashThought Share Extension.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = F3UT7A6X54;
@@ -612,6 +614,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = FlashThoughts/FlashThoughts.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = F3UT7A6X54;
@@ -645,6 +648,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = FlashThoughts/FlashThoughts.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = F3UT7A6X54;

@@ -177,8 +177,8 @@ NSString *audioPrompt =
 }
 
 - (void)loadStoredThoughts {
-  NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-  NSData *storedData = [defaults objectForKey:@"FlashThoughts"];
+  NSUserDefaults *sharedDefaults = [[NSUserDefaults alloc] initWithSuiteName:APP_GROUP_NAME];
+  NSData *storedData = [sharedDefaults objectForKey:@"FlashThoughts"];
   if (storedData) {
     NSError *error = nil;
     NSSet *classes =
@@ -249,7 +249,8 @@ NSString *audioPrompt =
                             requiringSecureCoding:YES
                                             error:&error];
   if (dataToStore && !error) {
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSUserDefaults *defaults = [[NSUserDefaults alloc] initWithSuiteName:APP_GROUP_NAME];
+
     [defaults setObject:dataToStore forKey:@"FlashThoughts"];
     [defaults synchronize];
   } else {

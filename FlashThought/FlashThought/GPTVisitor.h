@@ -11,6 +11,8 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
+#define APP_GROUP_NAME @"group.tim.flashThoughts"
+
 @protocol GPTVisitorDelegate;
 
 @interface GPTVisitor : NSObject

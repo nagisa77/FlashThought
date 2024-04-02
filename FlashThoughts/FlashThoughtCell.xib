@@ -32,7 +32,7 @@
                                 <color key="highlightedColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" systemColor="systemGray5Color"/>
                         <constraints>
                             <constraint firstItem="Vwu-Tl-3Oa" firstAttribute="top" secondItem="A9g-iS-pAg" secondAttribute="bottom" constant="10" id="7dq-SR-bDa"/>
                             <constraint firstAttribute="trailing" secondItem="A9g-iS-pAg" secondAttribute="trailing" constant="10" id="JBt-hu-osD"/>
@@ -62,7 +62,7 @@
                         </userDefinedRuntimeAttributes>
                     </view>
                 </subviews>
-                <color key="backgroundColor" systemColor="systemGray5Color"/>
+                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <constraints>
                     <constraint firstAttribute="bottom" secondItem="dDg-u6-ykS" secondAttribute="bottom" id="8Hv-Bd-8TW"/>
                     <constraint firstItem="dDg-u6-ykS" firstAttribute="top" secondItem="6Hv-H8-Lxv" secondAttribute="top" constant="10" id="Jvr-39-d9z"/>
@@ -81,9 +81,6 @@
         </tableViewCell>
     </objects>
     <resources>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
         <systemColor name="systemGray2Color">
             <color red="0.68235294117647061" green="0.68235294117647061" blue="0.69803921568627447" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>

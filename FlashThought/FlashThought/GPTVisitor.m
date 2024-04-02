@@ -20,20 +20,20 @@
 }
 
 - (NSString *)getAPIKey {
-  NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+  NSUserDefaults *defaults = [[NSUserDefaults alloc] initWithSuiteName:APP_GROUP_NAME];
   NSString *retrievedOpenaiKey = [defaults stringForKey:@"openaiKey"];
   return retrievedOpenaiKey;
 }
 
 - (void)updateAPIKey:(NSString *)apiKey {
   // 获取NSUserDefaults实例
-  NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+  NSUserDefaults *defaults = [[NSUserDefaults alloc] initWithSuiteName:APP_GROUP_NAME];
   [defaults setObject:apiKey forKey:@"openaiKey"];
   [defaults synchronize];
 }
 
 - (NSString *)getProxyHost {
-  NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+  NSUserDefaults *defaults = [[NSUserDefaults alloc] initWithSuiteName:APP_GROUP_NAME];
   NSString *retrievedProxyHost = [defaults stringForKey:@"proxy"];
 
   if (retrievedProxyHost == nil) {
@@ -43,7 +43,7 @@
 }
 
 - (void)updateProxyHost:(NSString *)proxy {
-  NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+  NSUserDefaults *defaults = [[NSUserDefaults alloc] initWithSuiteName:APP_GROUP_NAME];
   [defaults setObject:proxy forKey:@"proxy"];
   [defaults synchronize];
 }
