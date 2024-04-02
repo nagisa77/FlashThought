@@ -21,6 +21,10 @@
 
 - (NSString *)getAPIKey;
 
+- (NSString *)getProxyHost;
+
+- (void)updateProxyHost:(NSString *)proxy;
+
 - (void)updateAPIKey:(NSString *)apiKey;
 
 - (void)visitGPTWithMessage:(NSString *)message messageId:(NSUInteger)messageId;

@@ -8,11 +8,13 @@
 #ifndef FlashThoughtAudioCell_h
 #define FlashThoughtAudioCell_h
 
+#import "AudioPlayerManager.h"
 #import <AVFoundation/AVFoundation.h>
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
-@interface FlashThoughtAudioCell : UITableViewCell <AVAudioPlayerDelegate>
+@interface FlashThoughtAudioCell
+    : UITableViewCell <AVAudioPlayerDelegate, AudioPlayerManagerDelegate>
 
 @property(weak, nonatomic) IBOutlet UILabel *dateLabel;
 

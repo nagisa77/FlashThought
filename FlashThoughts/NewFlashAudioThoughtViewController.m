@@ -6,6 +6,7 @@
 //
 
 #import "NewFlashAudioThoughtViewController.h"
+#import "AudioPlayerManager.h"
 #import "FlashThoughtManager.h"
 #import <AVFoundation/AVFoundation.h>
 #import <Foundation/Foundation.h>
@@ -37,6 +38,7 @@
       [NSString stringWithFormat:@"FlashThought-%@.m4a",
                                  [dateFormatter stringFromDate:self.audioDate]];
 
+  [[AudioPlayerManager sharedManager] pauseAllPlayers];
   [self setupAudioRecorder];
   self.timer = [NSTimer scheduledTimerWithTimeInterval:1.0
                                                 target:self

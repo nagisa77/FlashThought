@@ -32,10 +32,27 @@
   [defaults synchronize];
 }
 
+- (NSString *)getProxyHost {
+  NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+  NSString *retrievedProxyHost = [defaults stringForKey:@"proxy"];
+
+  if (retrievedProxyHost == nil) {
+    return @"https://api.openai.com/";
+  }
+  return retrievedProxyHost;
+}
+
+- (void)updateProxyHost:(NSString *)proxy {
+  NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+  [defaults setObject:proxy forKey:@"proxy"];
+  [defaults synchronize];
+}
+
 - (void)visitGPTWithMessage:(NSString *)message
                   messageId:(NSUInteger)messageId {
-  NSString *const openAIURL = @"https://api.openai.com/v1/chat/completions";
-
+  NSString *const openAIURL =
+      [NSString stringWithFormat:@"%@/v1/chat/completions",
+                                 [[GPTVisitor sharedInstance] getProxyHost]];
   NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
   [request setURL:[NSURL URLWithString:openAIURL]];
   [request setHTTPMethod:@"POST"];
@@ -85,14 +102,18 @@
               NSDictionary *msg = firstChoice[@"message"];
               NSString *content = msg[@"content"];
 
-              [self.delegate visitor:self
-                     didVisitMessage:message
-                           messageId:messageId
-                        withResponse:content];
+              dispatch_async(dispatch_get_main_queue(), ^{
+                [self.delegate visitor:self
+                       didVisitMessage:message
+                             messageId:messageId
+                          withResponse:content];
+              });
             } else {
-              [self.delegate visitor:self
-                  didFailToVisitMessageWithMessageId:messageId
-                                               error:error];
+              dispatch_async(dispatch_get_main_queue(), ^{
+                [self.delegate visitor:self
+                    didFailToVisitMessageWithMessageId:messageId
+                                                 error:error];
+              });
             }
           }
         }];
@@ -102,7 +123,10 @@
 - (void)visitGPTWithMessage:(NSString *)message
                   messageId:(NSUInteger)messageId
                        file:(NSURL *)fileURL {
-  NSString *const openAIURL = @"https://api.openai.com/v1/audio/transcriptions";
+  NSString *const openAIURL =
+      [NSString stringWithFormat:@"%@/v1/audio/transcriptions",
+                                 [[GPTVisitor sharedInstance] getProxyHost]];
+
   NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
   [request setURL:[NSURL URLWithString:openAIURL]];
   [request setHTTPMethod:@"POST"];

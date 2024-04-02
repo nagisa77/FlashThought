@@ -19,6 +19,15 @@
 
 @implementation FlashThoughtAudioCell
 
+- (void)awakeFromNib {
+  [super awakeFromNib];
+  [[AudioPlayerManager sharedManager] subscribe:self];
+}
+
+- (void)dealloc {
+  [[AudioPlayerManager sharedManager] unsubscribe:self];
+}
+
 - (void)startProgressTimer {
   if (self.progressTimer == nil) {
     self.progressTimer =
@@ -66,36 +75,57 @@
   self.progressView.progress = 0; // Reset progress view.
 }
 
+- (void)pause {
+  [self.playButton setImage:[UIImage systemImageNamed:@"play.fill"]
+                   forState:UIControlStateNormal];
+  [self.audioPlayer pause];
+  [self stopProgressTimer];
+}
+
+- (void)play {
+  [[AudioPlayerManager sharedManager] pauseAllPlayers];
+  [self.playButton setImage:[UIImage systemImageNamed:@"pause.fill"]
+                   forState:UIControlStateNormal];
+  [self.audioPlayer play];
+  [self startProgressTimer];
+}
+
 - (IBAction)playButtonDidClicked:(id)sender {
   if (self.audioPlayer.isPlaying) {
-    [self.playButton setImage:[UIImage systemImageNamed:@"play.fill"]
-                     forState:UIControlStateNormal];
-    [self.audioPlayer pause];
-    [self stopProgressTimer];
+    [self pause];
   } else {
-    [self.playButton setImage:[UIImage systemImageNamed:@"pause.fill"]
-                     forState:UIControlStateNormal];
-    [self.audioPlayer play];
-    [self startProgressTimer]; // Start timer when playing.
+    [self play];
   }
+}
+
+- (void)reset {
+  [self.playButton
+      setImage:[UIImage systemImageNamed:@"play.fill"]
+      forState:UIControlStateNormal]; // Reset play button to "play" icon.
+  [self stopProgressTimer];           // Stop the timer.
+  [self.timeLabel setText:@"00:00"];  // Reset time label.
+  [self.audioPlayer stop];            // Stop the player
+  self.progressView.progress = 0;     // Reset progress view.
 }
 
 - (void)prepareForReuse {
   [super prepareForReuse];
-  [self stopProgressTimer];
-  self.progressView.progress = 0;
+  [self reset];
 }
 
 - (void)audioPlayerDidFinishPlaying:(AVAudioPlayer *)player
                        successfully:(BOOL)flag {
   if (flag) {
-    [self.playButton
-        setImage:[UIImage systemImageNamed:@"play.fill"]
-        forState:UIControlStateNormal]; // Reset play button to "play" icon.
-    [self stopProgressTimer];           // Stop the timer.
-    [self.timeLabel setText:@"00:00"];  // Reset time label.
-    self.progressView.progress = 0;     // Reset progress view.
+    [self reset];
   }
+}
+
+- (void)audioPlayerShouldPause {
+  [self pause];
+}
+
+- (void)audioPlayerShouldStop {
+  [self reset];
 }
 
 @end

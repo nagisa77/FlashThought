@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		220E954F2BBA65E3007D1C05 /* FlashThoughtAudioCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 220E954E2BBA65E3007D1C05 /* FlashThoughtAudioCell.xib */; };
 		220E95512BBA65F6007D1C05 /* FlashThoughtAudioCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 220E95502BBA65F6007D1C05 /* FlashThoughtAudioCell.m */; };
+		2231325B2BBBB4B3009B0CF1 /* AudioPlayerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2231325A2BBBB4B3009B0CF1 /* AudioPlayerManager.m */; };
 		225A4BF42BB2FF6800A5304A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 225A4BF32BB2FF6800A5304A /* AppDelegate.m */; };
 		225A4BF72BB2FF6800A5304A /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 225A4BF62BB2FF6800A5304A /* SceneDelegate.m */; };
 		225A4BFA2BB2FF6800A5304A /* FlashThoughtsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 225A4BF92BB2FF6800A5304A /* FlashThoughtsViewController.m */; };
@@ -34,6 +35,8 @@
 		220E954D2BBA65D8007D1C05 /* FlashThoughtAudioCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FlashThoughtAudioCell.h; sourceTree = "<group>"; };
 		220E954E2BBA65E3007D1C05 /* FlashThoughtAudioCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FlashThoughtAudioCell.xib; sourceTree = "<group>"; };
 		220E95502BBA65F6007D1C05 /* FlashThoughtAudioCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FlashThoughtAudioCell.m; sourceTree = "<group>"; };
+		2231325A2BBBB4B3009B0CF1 /* AudioPlayerManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AudioPlayerManager.m; sourceTree = "<group>"; };
+		2231325C2BBBB4C4009B0CF1 /* AudioPlayerManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AudioPlayerManager.h; sourceTree = "<group>"; };
 		2257A1FC2BBAEBA1005CB174 /* MBProgressHUD.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = MBProgressHUD.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		225A4BEF2BB2FF6800A5304A /* FlashThoughts.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlashThoughts.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		225A4BF22BB2FF6800A5304A /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -133,6 +136,8 @@
 				220E954D2BBA65D8007D1C05 /* FlashThoughtAudioCell.h */,
 				220E954E2BBA65E3007D1C05 /* FlashThoughtAudioCell.xib */,
 				220E95502BBA65F6007D1C05 /* FlashThoughtAudioCell.m */,
+				2231325A2BBBB4B3009B0CF1 /* AudioPlayerManager.m */,
+				2231325C2BBBB4C4009B0CF1 /* AudioPlayerManager.h */,
 			);
 			path = FlashThoughts;
 			sourceTree = "<group>";
@@ -274,6 +279,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2231325B2BBBB4B3009B0CF1 /* AudioPlayerManager.m in Sources */,
 				225A4C122BB4102C00A5304A /* NewFlashThoughtViewController.m in Sources */,
 				220E95512BBA65F6007D1C05 /* FlashThoughtAudioCell.m in Sources */,
 				225A4BFA2BB2FF6800A5304A /* FlashThoughtsViewController.m in Sources */,

@@ -14,8 +14,8 @@
             filePath = "FlashThoughts/FlashThoughtManager.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "138"
-            endingLineNumber = "138"
+            startingLineNumber = "131"
+            endingLineNumber = "131"
             landmarkName = "+sharedManager"
             landmarkType = "7">
          </BreakpointContent>
@@ -46,10 +46,10 @@
             filePath = "FlashThoughts/NewFlashAudioThoughtViewController.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "70"
-            endingLineNumber = "70"
-            landmarkName = "NewFlashAudioThoughtViewController"
-            landmarkType = "3">
+            startingLineNumber = "72"
+            endingLineNumber = "72"
+            landmarkName = "-stopRecord"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -62,8 +62,8 @@
             filePath = "FlashThoughts/NewFlashAudioThoughtViewController.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "101"
-            endingLineNumber = "101"
+            startingLineNumber = "103"
+            endingLineNumber = "103"
             landmarkName = "-setupAudioRecorder"
             landmarkType = "7">
          </BreakpointContent>
@@ -78,8 +78,8 @@
             filePath = "FlashThoughts/NewFlashAudioThoughtViewController.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "83"
-            endingLineNumber = "83"
+            startingLineNumber = "85"
+            endingLineNumber = "85"
             landmarkName = "-stopRecord"
             landmarkType = "7">
          </BreakpointContent>
@@ -88,14 +88,14 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "7C5C5F1D-686F-4C45-8439-132A6425A81E"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FlashThoughts/FlashThoughtsViewController.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "226"
-            endingLineNumber = "226"
+            startingLineNumber = "253"
+            endingLineNumber = "253"
             landmarkName = "-tableView:cellForRowAtIndexPath:"
             landmarkType = "7">
          </BreakpointContent>
@@ -110,8 +110,8 @@
             filePath = "FlashThoughts/GPTVisitor.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "169"
-            endingLineNumber = "169"
+            startingLineNumber = "192"
+            endingLineNumber = "192"
             landmarkName = "-visitGPTWithMessage:messageId:file:"
             landmarkType = "7">
          </BreakpointContent>
@@ -120,14 +120,14 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "7D5399E3-9137-4054-81AB-F85B1FB0A6E0"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FlashThoughts/FlashThoughtManager.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "365"
-            endingLineNumber = "365"
+            startingLineNumber = "395"
+            endingLineNumber = "395"
             landmarkName = "-visitor:didFailToVisitMessageWithMessageId:error:"
             landmarkType = "7">
          </BreakpointContent>
@@ -158,8 +158,8 @@
             filePath = "FlashThoughts/FlashThoughtManager.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "375"
-            endingLineNumber = "375"
+            startingLineNumber = "404"
+            endingLineNumber = "404"
             landmarkName = "-didFinishAddingRemindersWithSuccess:error:messageID:"
             landmarkType = "7">
          </BreakpointContent>
@@ -174,41 +174,55 @@
             filePath = "FlashThoughts/FlashThoughtManager.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "313"
-            endingLineNumber = "313"
+            startingLineNumber = "335"
+            endingLineNumber = "335"
             landmarkName = "-visitor:didVisitMessage:messageId:withResponse:"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "737867D7-F6B2-455F-AAD6-BF39AD85F4AE - 6ded038b4b10c941"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[FlashThoughtManager sendAllThoughtsToAI]"
+                  moduleName = "FlashThoughts"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/tim/Desktop/FlashThoughts/FlashThoughts/FlashThoughtManager.m"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "335"
+                  endingLineNumber = "335">
+               </Location>
+               <Location
+                  uuid = "737867D7-F6B2-455F-AAD6-BF39AD85F4AE - 6ded038b4b10c941"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[FlashThoughtManager sendAllThoughtsToAI]"
+                  moduleName = "FlashThoughts"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/tim/Desktop/FlashThoughts/FlashThoughts/FlashThoughtManager.m"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "335"
+                  endingLineNumber = "335">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "E0EF6014-B093-4AF6-946E-78D89CA7C09C"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FlashThoughts/FlashThoughtManager.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "234"
-            endingLineNumber = "234"
+            startingLineNumber = "255"
+            endingLineNumber = "255"
             landmarkName = "-checkAllThoughtDone"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "08227079-1EF0-4C84-8404-9B0735AB636C"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "FlashThoughts/FlashThoughtManager.m"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "393"
-            endingLineNumber = "393"
-            landmarkName = "-didFinishAddingRemindersWithSuccess:error:messageID:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

@@ -20,20 +20,13 @@ NSString *textAfterString =
     @"\
 ''''''''''''''''''''''''\n\
 "
-    @"現在請你幫我執行以下任務: \
-1.  "
-    @"收集我輸入的全部想法和筆記，根據它們寫一份完整的筆"
-    @"記。這個新版本的筆記要有更合理的格式和邏輯結構，有"
-    @"更好的寫作風格，但是不改變之前筆記和想法的原意。請"
-    @"使用第一人稱寫作。 請確保不要遺漏任何細節。\
+    @"1. 注意不要遗留任何关键信息，重点是URL、时间等 "
+    @" \
 "
-    @"2.對筆記做一份詳細的摘要。請不要遺漏任何重點。\
-"
-    @" "
-    @"3.我给的想法 "
+    @"2.我给的想法 "
     @"基本是我将要做的事情，而不是已经完成的事情 \
 "
-    @"4."
+    @"3."
     @"請根據我筆記中提到的任務或者計劃創建一個可執行的待"
     @"辦事項清單。对于网站链接等重要信息需要放到详情描述"
     @"中。請使用第一人稱寫作，並且按照下面的JOSN格式創建"
@@ -55,8 +48,8 @@ NSString *textAfterString =
     @"Musk傳記之後，我應該仔細思考我對投資特斯拉的策略，"
     @"決定是否加大力度購買更多的股票\"\n\
 }. \n\
-5. "
-    @"仅仅只输出给出答案（待辦事項清單）内容，不要有任何"
+3. "
+    @"仅仅只输出给出答案（待辦事項清單JSON）内容，不要有任何"
     @"多余内容，这个非常非常重要！！！ \n";
 
 NSString *audioPrompt =
@@ -151,6 +144,40 @@ NSString *audioPrompt =
   return sharedInstance;
 }
 
+- (void)addExampleThoughts {
+  {
+    FlashThought *thought =
+        [[FlashThought alloc] initWithType:FlashThoughtTypeTextFlashThought
+                                      date:[NSDate date]];
+    thought.content = @"处理问题: 微信反馈:观看的屏幕分享，画面很模糊...";
+    [self addThought:thought];
+  }
+
+  {
+    FlashThought *thought =
+        [[FlashThought alloc] initWithType:FlashThoughtTypeTextFlashThought
+                                      date:[NSDate date]];
+    thought.content = @"Plan For Today";
+    [self addThought:thought];
+  }
+
+  {
+    FlashThought *thought =
+        [[FlashThought alloc] initWithType:FlashThoughtTypeTextFlashThought
+                                      date:[NSDate date]];
+    thought.content = @"檢查亞馬遜帳號";
+    [self addThought:thought];
+  }
+
+  {
+    FlashThought *thought =
+        [[FlashThought alloc] initWithType:FlashThoughtTypeTextFlashThought
+                                      date:[NSDate date]];
+    thought.content = @"给布丁梳毛. 并且要換洗被單";
+    [self addThought:thought];
+  }
+}
+
 - (void)loadStoredThoughts {
   NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
   NSData *storedData = [defaults objectForKey:@"FlashThoughts"];
@@ -168,6 +195,8 @@ NSString *audioPrompt =
       NSLog(@"Failed to load thoughts: %@", error.localizedDescription);
     }
   }
+
+  //  [self addExampleThoughts];
 }
 
 - (NSArray<FlashThought *> *)allThoughts {
@@ -248,6 +277,7 @@ NSString *audioPrompt =
   }
 
   self.countOfAllThoughts = thoughts.count;
+  NSLog(@"countOfAllThoughts = %d", (int)thoughts.count);
   self.countOfAudioThoughts = 0;
   self.thoughtsHandled = 0;
   self.isHandlingAllThoughts = YES;
@@ -285,7 +315,8 @@ NSString *audioPrompt =
     NSString *prompt = [NSString
         stringWithFormat:@"%@%@%@", textPreString, midString, textAfterString];
 
-    [self.gptTextToRemindersRequests setObject:thoughts forKey:@(prompt.hash)];
+    [self.gptTextToRemindersRequests setObject:textThoughts
+                                        forKey:@(prompt.hash)];
     [[GPTVisitor sharedInstance] visitGPTWithMessage:prompt
                                            messageId:prompt.hash];
     [self.delegate thoughtsDidSentToAI:textThoughts];
@@ -296,7 +327,7 @@ NSString *audioPrompt =
         [NSString stringWithFormat:@"%@%@%@", textPreString, audioMidString,
                                    textAfterString];
 
-    [self.gptAudioTextToRemindersRequests setObject:thoughts
+    [self.gptAudioTextToRemindersRequests setObject:audioTextThoughts
                                              forKey:@(prompt.hash)];
     [[GPTVisitor sharedInstance] visitGPTWithMessage:prompt
                                            messageId:prompt.hash];
@@ -346,7 +377,7 @@ NSString *audioPrompt =
             [NSString stringWithFormat:@"%@%@%@", textPreString, audioMidString,
                                        textAfterString];
 
-        [self.gptAudioTextToRemindersRequests setObject:thoughts
+        [self.gptAudioTextToRemindersRequests setObject:audioTextThoughts
                                                  forKey:@(prompt.hash)];
         [[GPTVisitor sharedInstance] visitGPTWithMessage:prompt
                                                messageId:prompt.hash];
@@ -360,9 +391,18 @@ NSString *audioPrompt =
 - (void)visitor:(GPTVisitor *)visitor
     didFailToVisitMessageWithMessageId:(NSUInteger)messageId
                                  error:(NSError *)error {
-  assert(visitor == self);
+  // assert(visitor == self);
   NSNumber *key = @(messageId);
-  self.thoughtsHandled++;
+  if ([self.gptTextToRemindersRequests objectForKey:key] != nil) {
+    self.thoughtsHandled +=
+        [self.gptTextToRemindersRequests objectForKey:key].count;
+  } else if ([self.gptAudioTextToRemindersRequests objectForKey:key] != nil) {
+    self.thoughtsHandled +=
+        [self.gptAudioTextToRemindersRequests objectForKey:key].count;
+  } else if ([self.gptAudioToTextRequests objectForKey:key] != nil) {
+    // get audio text
+    self.thoughtsHandled++;
+  }
   [self.gptTextToRemindersRequests removeObjectForKey:key];
   [self.gptAudioToTextRequests removeObjectForKey:key];
   [self.gptAudioTextToRemindersRequests removeObjectForKey:key];
@@ -379,12 +419,14 @@ NSString *audioPrompt =
           [self.gptTextToRemindersRequests objectForKey:key];
       [self.delegate thoughtsDidSaveToReminders:thoughts];
       self.thoughtsHandled += thoughts.count;
+      NSLog(@"thoughtsHandled1 += %d", (int)thoughts.count);
     }
     if ([self.gptAudioTextToRemindersRequests objectForKey:key] != nil) {
       NSArray<FlashThought *> *thoughts =
           [self.gptAudioTextToRemindersRequests objectForKey:key];
       [self.delegate thoughtsDidSaveToReminders:thoughts];
       self.thoughtsHandled += thoughts.count;
+      NSLog(@"thoughtsHandled2 += %d", (int)thoughts.count);
     }
   }
   [self.gptTextToRemindersRequests removeObjectForKey:key];
