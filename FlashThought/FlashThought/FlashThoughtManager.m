@@ -213,6 +213,12 @@ NSString *audioPrompt =
   NSInteger index = [self.thoughts indexOfObject:thought];
 
   if (index != NSNotFound) {
+    NSURL *fileURL = [FlashThoughtManager audioRecordingURLFromFileName:thought.audioFileName];
+    NSError *error = nil;
+
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    assert([fileManager removeItemAtURL:fileURL error:&error]);
+    
     [self.thoughts removeObjectAtIndex:index];
     [self saveThoughts];
     [self.delegate thoughtManagerDidRemoveThought:thought];
