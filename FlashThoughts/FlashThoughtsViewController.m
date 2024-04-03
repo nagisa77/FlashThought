@@ -57,6 +57,10 @@
 - (void)showMessageWithTitle:(NSString *)title
                      content:(NSString *)content
                   completion:(void (^)(void))completionBlock {
+  UIImpactFeedbackGenerator *mediumGenerator = [[UIImpactFeedbackGenerator alloc] initWithStyle:UIImpactFeedbackStyleMedium];
+  [mediumGenerator prepare];
+  [mediumGenerator impactOccurred];
+  
   MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
 
   // Set the text mode to show only text.
@@ -151,6 +155,8 @@
 
 // todo: 重构这里
 - (void)showAPIKeySettings {
+  UIImpactFeedbackGenerator *lightGenerator = [[UIImpactFeedbackGenerator alloc] initWithStyle:UIImpactFeedbackStyleLight];
+  [lightGenerator impactOccurred];
   UIAlertController *alertController =
       [UIAlertController alertControllerWithTitle:@"OpenAI API key"
                                           message:@"Need the key to "
@@ -174,6 +180,7 @@
                 // 获取输入框的内容
                 UITextField *textField = alertController.textFields[0];
                 if (![textField.text isEqual:@""]) {
+                  [lightGenerator impactOccurred];
                   [[GPTVisitor sharedInstance] updateAPIKey:textField.text];
                 }
               }];
@@ -190,6 +197,8 @@
 }
 
 - (void)showProxyHostSetting {
+  UIImpactFeedbackGenerator *lightGenerator = [[UIImpactFeedbackGenerator alloc] initWithStyle:UIImpactFeedbackStyleLight];
+  [lightGenerator impactOccurred];
   // 创建UIAlertController
   UIAlertController *alertController =
       [UIAlertController alertControllerWithTitle:@"Proxy Host"
@@ -211,6 +220,7 @@
               handler:^(UIAlertAction *action) {
                 UITextField *textField = alertController.textFields[0];
                 if (![textField.text isEqual:@""]) {
+                  [lightGenerator impactOccurred];
                   [[GPTVisitor sharedInstance] updateProxyHost:textField.text];
                 }
               }];
@@ -411,6 +421,7 @@
   if (![self.addButton isEnabled]) {
     return;
   }
+  
   if (gestureRecognizer.state == UIGestureRecognizerStateBegan) {
     [AVAudioSession.sharedInstance requestRecordPermission:^(BOOL granted) {
       if (granted) {
@@ -418,6 +429,7 @@
           UIStoryboard *storyboard = [UIStoryboard
               storyboardWithName:@"NewFlashAudioThoughtViewController"
                           bundle:nil];
+
           NewFlashThoughtsViewController *newFlashVC =
               [storyboard instantiateViewControllerWithIdentifier:
                               @"NewFlashAudioThoughtViewControllerID"];
@@ -434,6 +446,10 @@
 }
 
 - (IBAction)addButtonDidClicked:(id)sender {
+  UIImpactFeedbackGenerator *mediumGenerator = [[UIImpactFeedbackGenerator alloc] initWithStyle:UIImpactFeedbackStyleMedium];
+  [mediumGenerator prepare];
+  [mediumGenerator impactOccurred];
+  
   UIStoryboard *storyboard =
       [UIStoryboard storyboardWithName:@"NewFlashThoughtsViewController"
                                 bundle:nil];

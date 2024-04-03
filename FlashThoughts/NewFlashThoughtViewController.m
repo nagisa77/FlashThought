@@ -54,6 +54,11 @@
     fs.content = self.textView.text;
     [[FlashThoughtManager sharedManager] addThought:fs];
   }
+  
+  UIImpactFeedbackGenerator *mediumGenerator = [[UIImpactFeedbackGenerator alloc] initWithStyle:UIImpactFeedbackStyleMedium];
+  [mediumGenerator prepare];
+  [mediumGenerator impactOccurred];
+  
   [self dismissViewControllerAnimated:YES completion:nil];
 }
 

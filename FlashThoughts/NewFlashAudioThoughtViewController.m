@@ -68,6 +68,12 @@
 - (void)viewDidDisappear:(BOOL)animated {
   [super viewDidDisappear:animated];
   [self stopRecord];
+  
+  dispatch_async(dispatch_get_main_queue(), ^{
+    UIImpactFeedbackGenerator *mediumGenerator = [[UIImpactFeedbackGenerator alloc] initWithStyle:UIImpactFeedbackStyleMedium];
+    [mediumGenerator prepare];
+    [mediumGenerator impactOccurred];
+  });
 }
 
 - (void)stopRecord {
