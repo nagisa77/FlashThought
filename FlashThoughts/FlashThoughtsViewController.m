@@ -18,6 +18,7 @@
 
 @property IBOutlet UIButton *addButton;
 @property IBOutlet UIButton *summaryButton;
+@property IBOutlet UIImageView *avaterView;
 @property IBOutlet UILabel *topLeftLabel;
 @property IBOutlet UITableView *tableView;
 @property IBOutlet UIView *passwordView;
@@ -31,12 +32,13 @@
 - (void)userAuth {
   // 创建一个新的LAContext实例
   LAContext *context = [[LAContext alloc] init];
-  
+
   // 定义一个错误对象
   NSError *error = nil;
 
   // 检查设备是否支持设备所有者身份验证（包括生物识别和密码）
-  if ([context canEvaluatePolicy:LAPolicyDeviceOwnerAuthentication error:&error]) {
+  if ([context canEvaluatePolicy:LAPolicyDeviceOwnerAuthentication
+                           error:&error]) {
     // 请求身份验证
     [context evaluatePolicy:LAPolicyDeviceOwnerAuthentication
             localizedReason:@"请验证以继续"
@@ -57,10 +59,12 @@
 - (void)showMessageWithTitle:(NSString *)title
                      content:(NSString *)content
                   completion:(void (^)(void))completionBlock {
-  UIImpactFeedbackGenerator *mediumGenerator = [[UIImpactFeedbackGenerator alloc] initWithStyle:UIImpactFeedbackStyleMedium];
+  UIImpactFeedbackGenerator *mediumGenerator =
+      [[UIImpactFeedbackGenerator alloc]
+          initWithStyle:UIImpactFeedbackStyleMedium];
   [mediumGenerator prepare];
   [mediumGenerator impactOccurred];
-  
+
   MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
 
   // Set the text mode to show only text.
@@ -74,16 +78,33 @@
   [hud hideAnimated:YES afterDelay:3.f];
 }
 
+- (void)loadAvatarFromURL:(NSURL *)url {
+    NSURLSessionTask *task = [[NSURLSession sharedSession] dataTaskWithURL:url completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+        if (data) {
+            UIImage *image = [UIImage imageWithData:data];
+            if (image) {
+                dispatch_async(dispatch_get_main_queue(), ^{
+                  self.avaterView.image = image;
+                });
+            }
+        }
+    }];
+    [task resume];
+}
+
 - (void)viewDidLoad {
   [super viewDidLoad];
 
   [[FlashThoughtManager sharedManager] setDelegate:self];
+  [[LoginService sharedService] addDelegate:self];
 
   self.tableView.delegate = self;
   self.tableView.dataSource = self;
   self.tableView.sectionHeaderHeight = 0.0;
   self.tableView.sectionFooterHeight = 0.0;
   self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+  
+  [self checkAvatar];
 
   self.topLeftLabel.alpha = 0.0;
 
@@ -120,7 +141,7 @@
          selector:@selector(appWillEnterForeground:)
              name:UIApplicationWillEnterForegroundNotification
            object:nil];
-  
+
   [[NSNotificationCenter defaultCenter]
       addObserver:self
          selector:@selector(appDidEnterBackground:)
@@ -128,8 +149,17 @@
            object:nil];
 }
 
+- (void)checkAvatar {
+  if ([[LoginService sharedService] isLoggedIn]) {
+    [self.avaterView setHidden:NO];
+    [self loadAvatarFromURL:[[LoginService sharedService] userAvatarURL]];
+  } else {
+    [self.avaterView setHidden:YES];
+  }
+}
+
 - (void)appWillEnterForeground:(NSNotification *)notification {
-  [[FlashThoughtManager sharedManager] loadStoredThoughts]; 
+  [[FlashThoughtManager sharedManager] loadStoredThoughts];
   [self.tableView reloadData];
   [self userAuth];
 }
@@ -139,6 +169,9 @@
 }
 
 - (void)dealloc {
+  [[FlashThoughtManager sharedManager] setDelegate:nil];
+  [[LoginService sharedService] removeDelegate:self];
+  self.tableView.delegate = nil;
   [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
@@ -155,7 +188,8 @@
 
 // todo: 重构这里
 - (void)showAPIKeySettings {
-  UIImpactFeedbackGenerator *lightGenerator = [[UIImpactFeedbackGenerator alloc] initWithStyle:UIImpactFeedbackStyleLight];
+  UIImpactFeedbackGenerator *lightGenerator = [[UIImpactFeedbackGenerator alloc]
+      initWithStyle:UIImpactFeedbackStyleLight];
   [lightGenerator impactOccurred];
   UIAlertController *alertController =
       [UIAlertController alertControllerWithTitle:@"OpenAI API key"
@@ -196,8 +230,38 @@
   [self presentViewController:alertController animated:YES completion:nil];
 }
 
+- (void)signout {
+  [[LoginService sharedService] logout];
+}
+
+- (void)signInWithGoogle {
+  [[LoginService sharedService] loginWithViewController:self];
+}
+
+- (void)onSignInSuccess {
+  [self showMessageWithTitle:@"signin successed"
+                     content:@"Sign In Success :)"
+                  completion:nil];
+  [self checkAvatar];
+}
+
+- (void)onSignInFailed {
+  [self showMessageWithTitle:@"signin failed"
+                     content:@"Sign In Failed :("
+                  completion:nil];
+  [self checkAvatar];
+}
+
+- (void)onSignOutSuccess {
+  [self showMessageWithTitle:@"signout success"
+                     content:@"Sign Out Success :)"
+                  completion:nil];
+  [self checkAvatar];
+}
+
 - (void)showProxyHostSetting {
-  UIImpactFeedbackGenerator *lightGenerator = [[UIImpactFeedbackGenerator alloc] initWithStyle:UIImpactFeedbackStyleLight];
+  UIImpactFeedbackGenerator *lightGenerator = [[UIImpactFeedbackGenerator alloc]
+      initWithStyle:UIImpactFeedbackStyleLight];
   [lightGenerator impactOccurred];
   // 创建UIAlertController
   UIAlertController *alertController =
@@ -259,8 +323,33 @@
                                  handler:^(UIAction *_Nonnull action) {
                                    [self showProxyHostSetting];
                                  }];
-                     return [UIMenu menuWithTitle:@""
-                                         children:@[ action1, action2 ]];
+                      
+                     UIAction *action3 = nil;
+                         if ([[LoginService sharedService] isLoggedIn]) {
+                           action3 = [UIAction
+                               actionWithTitle:@"SignOut"
+                                         image:nil
+                                    identifier:nil
+                                       handler:^(UIAction *_Nonnull action) {
+                                         dispatch_async(dispatch_get_main_queue(), ^{
+                                           [self signout];
+                                         });
+                                       }];
+                         } else {
+                           action3 = [UIAction
+                               actionWithTitle:@"Sync Between Cloud"
+                                         image:nil
+                                    identifier:nil
+                                       handler:^(UIAction *_Nonnull action) {
+                                         dispatch_async(dispatch_get_main_queue(), ^{
+                                           [self signInWithGoogle];
+                                         });
+                                       }];
+                         }
+
+                     return
+                         [UIMenu menuWithTitle:@""
+                                      children:@[ action1, action2, action3 ]];
                    }];
   return configuration;
 }
@@ -421,7 +510,7 @@
   if (![self.addButton isEnabled]) {
     return;
   }
-  
+
   if (gestureRecognizer.state == UIGestureRecognizerStateBegan) {
     [AVAudioSession.sharedInstance requestRecordPermission:^(BOOL granted) {
       if (granted) {
@@ -446,10 +535,12 @@
 }
 
 - (IBAction)addButtonDidClicked:(id)sender {
-  UIImpactFeedbackGenerator *mediumGenerator = [[UIImpactFeedbackGenerator alloc] initWithStyle:UIImpactFeedbackStyleMedium];
+  UIImpactFeedbackGenerator *mediumGenerator =
+      [[UIImpactFeedbackGenerator alloc]
+          initWithStyle:UIImpactFeedbackStyleMedium];
   [mediumGenerator prepare];
   [mediumGenerator impactOccurred];
-  
+
   UIStoryboard *storyboard =
       [UIStoryboard storyboardWithName:@"NewFlashThoughtsViewController"
                                 bundle:nil];

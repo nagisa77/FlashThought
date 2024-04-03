@@ -64,7 +64,6 @@
 			isa = PBXGroup;
 			children = (
 				223132CE2BBBD9A3009B0CF1 /* FlashThought */,
-				223132DA2BBBD9A3009B0CF1 /* FlashThoughtTests */,
 				223132CD2BBBD9A3009B0CF1 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -81,12 +80,13 @@
 		223132CE2BBBD9A3009B0CF1 /* FlashThought */ = {
 			isa = PBXGroup;
 			children = (
-				223132F02BBBD9C2009B0CF1 /* ReminderManager.h */,
 				223132E92BBBD9B8009B0CF1 /* FlashThoughtManager.h */,
 				223132EA2BBBD9B8009B0CF1 /* FlashThoughtManager.m */,
 				223132E62BBBD9B8009B0CF1 /* GPTVisitor.h */,
 				223132E72BBBD9B8009B0CF1 /* GPTVisitor.m */,
+				223132F02BBBD9C2009B0CF1 /* ReminderManager.h */,
 				223132E82BBBD9B8009B0CF1 /* ReminderManager.m */,
+				223132DA2BBBD9A3009B0CF1 /* FlashThoughtTests */,
 				223132D02BBBD9A3009B0CF1 /* FlashThought.docc */,
 			);
 			path = FlashThought;

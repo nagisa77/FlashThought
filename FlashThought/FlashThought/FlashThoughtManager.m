@@ -214,9 +214,10 @@ NSString *audioPrompt =
 
   if (index != NSNotFound) {
     if (thought.type != FlashThoughtTypeTextFlashThought) {
-      NSURL *fileURL = [FlashThoughtManager audioRecordingURLFromFileName:thought.audioFileName];
+      NSURL *fileURL = [FlashThoughtManager
+          audioRecordingURLFromFileName:thought.audioFileName];
       NSError *error = nil;
-      
+
       NSFileManager *fileManager = [NSFileManager defaultManager];
       assert([fileManager removeItemAtURL:fileURL error:&error]);
     }

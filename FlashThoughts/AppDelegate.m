@@ -7,6 +7,8 @@
 
 #import "AppDelegate.h"
 #import <FlashThought/FlashThoughtManager.h>
+#import "LoginService.h"
+@import Firebase;
 
 @interface AppDelegate ()
 
@@ -16,6 +18,8 @@
 
 - (BOOL)application:(UIApplication *)application
     didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+  [[LoginService sharedService] initFIRConfig];
+  [[LoginService sharedService] tryRelogin];
   return YES;
 }
 

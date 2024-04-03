@@ -5,12 +5,14 @@
 //  Created by tim on 2024/3/26.
 //
 
+#import "LoginService.h"
 #import <FlashThought/FlashThoughtManager.h>
 #import <UIKit/UIKit.h>
 
 @interface FlashThoughtsViewController
     : UIViewController <UITableViewDelegate, UITableViewDataSource,
                         UIContextMenuInteractionDelegate,
-                        FlashThoughtManagerDelegate, UIScrollViewDelegate>
+                        FlashThoughtManagerDelegate, UIScrollViewDelegate,
+                        LoginServiceDelegate>
 
 @end

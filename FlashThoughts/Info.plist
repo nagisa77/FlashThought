@@ -12,6 +12,7 @@
 			<key>CFBundleURLSchemes</key>
 			<array>
 				<string>flashThoughts</string>
+        <string>com.googleusercontent.apps.973946872425-fbfuapnoq2hv5sqjl6dtpmi0g0aldte8</string>
 			</array>
 		</dict>
 	</array>

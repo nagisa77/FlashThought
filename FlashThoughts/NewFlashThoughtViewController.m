@@ -47,18 +47,20 @@
 }
 
 - (IBAction)confirmButtonDidClicked:(id)sender {
-  if (![self.textView.text isEqual: @""]) {
+  if (![self.textView.text isEqual:@""]) {
     FlashThought *fs =
-    [[FlashThought alloc] initWithType:FlashThoughtTypeTextFlashThought
-                                  date:[NSDate date]];
+        [[FlashThought alloc] initWithType:FlashThoughtTypeTextFlashThought
+                                      date:[NSDate date]];
     fs.content = self.textView.text;
     [[FlashThoughtManager sharedManager] addThought:fs];
   }
-  
-  UIImpactFeedbackGenerator *mediumGenerator = [[UIImpactFeedbackGenerator alloc] initWithStyle:UIImpactFeedbackStyleMedium];
+
+  UIImpactFeedbackGenerator *mediumGenerator =
+      [[UIImpactFeedbackGenerator alloc]
+          initWithStyle:UIImpactFeedbackStyleMedium];
   [mediumGenerator prepare];
   [mediumGenerator impactOccurred];
-  
+
   [self dismissViewControllerAnimated:YES completion:nil];
 }
 
