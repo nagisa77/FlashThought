@@ -5,8 +5,8 @@
 //  Created by tim on 2024/3/27.
 //
 
-#import <FlashThought/FlashThoughtManager.h>
 #import "NewFlashThoughtsViewController.h"
+#import <FlashThought/FlashThoughtManager.h>
 
 #define DEFAULT_TEXT @"Write ur flash thought..."
 
@@ -47,11 +47,13 @@
 }
 
 - (IBAction)confirmButtonDidClicked:(id)sender {
-  FlashThought *fs =
-      [[FlashThought alloc] initWithType:FlashThoughtTypeTextFlashThought
-                                    date:[NSDate date]];
-  fs.content = self.textView.text;
-  [[FlashThoughtManager sharedManager] addThought:fs];
+  if (![self.textView.text isEqual: @""]) {
+    FlashThought *fs =
+    [[FlashThought alloc] initWithType:FlashThoughtTypeTextFlashThought
+                                  date:[NSDate date]];
+    fs.content = self.textView.text;
+    [[FlashThoughtManager sharedManager] addThought:fs];
+  }
   [self dismissViewControllerAnimated:YES completion:nil];
 }
 

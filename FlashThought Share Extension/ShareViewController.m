@@ -21,6 +21,8 @@
 
 - (void)didSelectPost {
   NSString *textToShare = self.contentText;
+  [[FlashThoughtManager sharedManager] loadStoredThoughts];
+
   FlashThought* flashThought = [[FlashThought alloc] initWithType:FlashThoughtTypeTextFlashThought date:[NSDate date]];
   flashThought.content = textToShare;
   [[FlashThoughtManager sharedManager] addThought:flashThought];

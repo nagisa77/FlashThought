@@ -22,7 +22,7 @@
 @property IBOutlet UITableView *tableView;
 @property IBOutlet UIView *passwordView;
 @property IBOutlet UIActivityIndicatorView *loadingView;
-@property (strong, nonatomic) MBProgressHUD *loadingHud;
+@property(strong, nonatomic) MBProgressHUD *loadingHud;
 
 @end
 
@@ -31,21 +31,21 @@
 - (void)userAuth {
   // 创建一个新的LAContext实例
   LAContext *context = [[LAContext alloc] init];
-
+  
   // 定义一个错误对象
   NSError *error = nil;
 
-  // 检查设备是否支持生物认证
-  if ([context canEvaluatePolicy:LAPolicyDeviceOwnerAuthenticationWithBiometrics
-                           error:&error]) {
-    // 设备支持生物认证，请求验证
-    [context evaluatePolicy:LAPolicyDeviceOwnerAuthenticationWithBiometrics
+  // 检查设备是否支持设备所有者身份验证（包括生物识别和密码）
+  if ([context canEvaluatePolicy:LAPolicyDeviceOwnerAuthentication error:&error]) {
+    // 请求身份验证
+    [context evaluatePolicy:LAPolicyDeviceOwnerAuthentication
             localizedReason:@"请验证以继续"
-                      reply:^(BOOL success, NSError *_Nullable error) {
-                        // 主线程中处理回调
+                      reply:^(BOOL success, NSError *error) {
                         dispatch_async(dispatch_get_main_queue(), ^{
                           if (success) {
                             [self.passwordView setHidden:YES];
+                          } else {
+                            // 认证失败，可以选择处理错误或者什么都不做
                           }
                         });
                       }];
@@ -54,7 +54,9 @@
   }
 }
 
-- (void)showMessageWithTitle:(NSString *)title content:(NSString *)content completion:(void (^)(void))completionBlock {
+- (void)showMessageWithTitle:(NSString *)title
+                     content:(NSString *)content
+                  completion:(void (^)(void))completionBlock {
   MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
 
   // Set the text mode to show only text.
@@ -64,7 +66,7 @@
   hud.offset = CGPointMake(0.f, 250.f);
   hud.animationType = MBProgressHUDAnimationZoom;
   [hud setCompletionBlock:completionBlock];
-  
+
   [hud hideAnimated:YES afterDelay:3.f];
 }
 
@@ -78,7 +80,7 @@
   self.tableView.sectionHeaderHeight = 0.0;
   self.tableView.sectionFooterHeight = 0.0;
   self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-  
+
   self.topLeftLabel.alpha = 0.0;
 
   UILongPressGestureRecognizer *longPressGesture =
@@ -108,12 +110,39 @@
     [self.tableView registerNib:cellNib
          forCellReuseIdentifier:@"FlashThoughtAudioCell"];
   }
+
+  [[NSNotificationCenter defaultCenter]
+      addObserver:self
+         selector:@selector(appWillEnterForeground:)
+             name:UIApplicationWillEnterForegroundNotification
+           object:nil];
+  
+  [[NSNotificationCenter defaultCenter]
+      addObserver:self
+         selector:@selector(appDidEnterBackground:)
+             name:UIApplicationDidEnterBackgroundNotification
+           object:nil];
+}
+
+- (void)appWillEnterForeground:(NSNotification *)notification {
+  [[FlashThoughtManager sharedManager] loadStoredThoughts]; 
+  [self.tableView reloadData];
+  [self userAuth];
+}
+
+- (void)appDidEnterBackground:(NSNotification *)notification {
+  [self.passwordView setHidden:NO];
+}
+
+- (void)dealloc {
+  [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
   if (scrollView.contentOffset.y <= 60) {
     self.topLeftLabel.alpha = 0.0;
-  } else if (scrollView.contentOffset.y > 60 && scrollView.contentOffset.y <= 100) {
+  } else if (scrollView.contentOffset.y > 60 &&
+             scrollView.contentOffset.y <= 100) {
     self.topLeftLabel.alpha = (scrollView.contentOffset.y - 60) / 40;
   } else if (scrollView.contentOffset.y > 100) {
     self.topLeftLabel.alpha = 1.0;
@@ -319,7 +348,8 @@
 
 - (UITableViewCellEditingStyle)tableView:(UITableView *)tableView
            editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath {
-  if (indexPath.section == 1 && ![[FlashThoughtManager sharedManager] isHandlingAllThoughts]) {
+  if (indexPath.section == 1 &&
+      ![[FlashThoughtManager sharedManager] isHandlingAllThoughts]) {
     return UITableViewCellEditingStyleDelete;
   }
   return UITableViewCellEditingStyleNone;
@@ -360,11 +390,13 @@
     [self.summaryButton setEnabled:NO];
     [self.loadingView setHidden:NO];
     [self.loadingView startAnimating];
-    
+
     self.loadingHud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    self.loadingHud.backgroundView.style = MBProgressHUDBackgroundStyleSolidColor;
-    self.loadingHud.backgroundView.color = [UIColor colorWithWhite:0.f alpha:0.1f];
-    
+    self.loadingHud.backgroundView.style =
+        MBProgressHUDBackgroundStyleSolidColor;
+    self.loadingHud.backgroundView.color = [UIColor colorWithWhite:0.f
+                                                             alpha:0.1f];
+
     [self.addButton setEnabled:NO];
   } else {
     [self.summaryButton setEnabled:YES];
@@ -421,7 +453,9 @@
   [self startLoading:YES];
   BOOL realSent = [[FlashThoughtManager sharedManager] sendAllThoughtsToAI];
   if (!realSent) {
-    [self showMessageWithTitle:@"Tips" content:@"You do not have any thought :)" completion:nil];
+    [self showMessageWithTitle:@"Tips"
+                       content:@"You do not have any thought :)"
+                    completion:nil];
     [self startLoading:NO];
   }
 }
@@ -432,7 +466,9 @@
 
 - (void)allThoughtsDidHandle {
   [self startLoading:NO];
-  [self showMessageWithTitle:@"save complete" content:@"Saved to Reminders :)" completion:nil];
+  [self showMessageWithTitle:@"save complete"
+                     content:@"Saved to Reminders :)"
+                  completion:nil];
 }
 
 - (void)thoughtManagerDidRemoveThought:(FlashThought *)thought {
@@ -448,10 +484,12 @@
 - (void)shouldStopHandlingThoughtsByError:(NSError *)error {
   if (error.code == NSURLErrorUnsupportedURL) {
     [self startLoading:NO];
-    [[FlashThoughtManager sharedManager] cancelSendAllThoughtsToAI]; 
-    [self showMessageWithTitle:@"unspport url" content:@"Unspport proxy URL :(" completion:^{
-      [self showProxyHostSetting];
-    }];
+    [[FlashThoughtManager sharedManager] cancelSendAllThoughtsToAI];
+    [self showMessageWithTitle:@"unspport url"
+                       content:@"Unspport proxy URL :("
+                    completion:^{
+                      [self showProxyHostSetting];
+                    }];
   }
 }
 

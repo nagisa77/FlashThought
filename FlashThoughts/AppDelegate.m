@@ -6,6 +6,7 @@
 //
 
 #import "AppDelegate.h"
+#import <FlashThought/FlashThoughtManager.h>
 
 @interface AppDelegate ()
 
@@ -13,28 +14,8 @@
 
 @implementation AppDelegate
 
-- (BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<UIApplicationOpenURLOptionsKey,id> *)options {
-    // 解析URL获取文本内容
-    NSURLComponents *urlComponents = [NSURLComponents componentsWithString:[url absoluteString]];
-    NSString *text = nil;
-    
-    for (NSURLQueryItem *item in urlComponents.queryItems) {
-        if ([item.name isEqualToString:@"text"]) {
-            text = item.value;
-        }
-    }
-    
-    if (text) {
-        // 在这里处理传入的文本内容，比如显示或保存
-        NSLog(@"接收到的文本: %@", text);
-    }
-    
-    return YES;
-}
-
 - (BOOL)application:(UIApplication *)application
     didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-  // Override point for customization after application launch.
   return YES;
 }
 

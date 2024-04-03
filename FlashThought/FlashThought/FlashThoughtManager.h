@@ -8,8 +8,8 @@
 #ifndef FlashThoughtManager_h
 #define FlashThoughtManager_h
 
-#import <FlashThought/ReminderManager.h>
 #import <FlashThought/GPTVisitor.h>
+#import <FlashThought/ReminderManager.h>
 #import <Foundation/Foundation.h>
 
 typedef NS_ENUM(NSInteger, FlashThoughtType) {
@@ -37,7 +37,7 @@ typedef NS_ENUM(NSInteger, FlashThoughtType) {
 - (void)thoughtsDidSentToAI:(NSArray<FlashThought *> *)thoughts;
 - (void)thoughtsDidSaveToReminders:(NSArray<FlashThought *> *)thoughts;
 - (void)allThoughtsDidHandle;
-- (void)shouldStopHandlingThoughtsByError:(NSError *)error; 
+- (void)shouldStopHandlingThoughtsByError:(NSError *)error;
 
 @end
 
