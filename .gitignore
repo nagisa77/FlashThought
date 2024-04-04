@@ -4,7 +4,9 @@
 *.mode2v3
 *.perspectivev3
 *.xcuserstate
-project.xcworkspace
+*.xcworkspace
+FlashThoughtPlatform/*.xcworkspace
+FlashThoughtsIOS/*.xcworkspace
 xcuserdata/
 DerivedData/
 *.moved-aside
