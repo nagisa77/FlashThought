@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		223132D12BBBD9A3009B0CF1 /* FlashThought.docc in Sources */ = {isa = PBXBuildFile; fileRef = 223132D02BBBD9A3009B0CF1 /* FlashThought.docc */; };
-		223132D72BBBD9A3009B0CF1 /* FlashThought.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 223132CC2BBBD9A3009B0CF1 /* FlashThought.framework */; };
+		223132D72BBBD9A3009B0CF1 /* FlashThoughtPlatform.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 223132CC2BBBD9A3009B0CF1 /* FlashThoughtPlatform.framework */; };
 		223132DC2BBBD9A3009B0CF1 /* FlashThoughtTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 223132DB2BBBD9A3009B0CF1 /* FlashThoughtTests.m */; };
 		223132EB2BBBD9B8009B0CF1 /* GPTVisitor.h in Headers */ = {isa = PBXBuildFile; fileRef = 223132E62BBBD9B8009B0CF1 /* GPTVisitor.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		223132EC2BBBD9B8009B0CF1 /* GPTVisitor.m in Sources */ = {isa = PBXBuildFile; fileRef = 223132E72BBBD9B8009B0CF1 /* GPTVisitor.m */; };
@@ -20,7 +20,7 @@
 		22A6CEFB2BBEACD20086AF2B /* LoginService.h in Headers */ = {isa = PBXBuildFile; fileRef = 22A6CEF92BBEACD20086AF2B /* LoginService.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		22C47ACE2BBEB406004C4EF6 /* DatabaseManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 22C47ACD2BBEB406004C4EF6 /* DatabaseManager.h */; };
 		22C47AD02BBEB414004C4EF6 /* DatabaseManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 22C47ACF2BBEB414004C4EF6 /* DatabaseManager.m */; };
-		D4E074060A2E95DEAB86BE10 /* libPods-FlashThought.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EFAEAD92732C836E9C9EC64B /* libPods-FlashThought.a */; };
+		A0A50775F9343448BF4CC401 /* libPods-FlashThoughtPlatform.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AF8A0E60E2ACCF4F042A757B /* libPods-FlashThoughtPlatform.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,9 +34,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		223132CC2BBBD9A3009B0CF1 /* FlashThought.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FlashThought.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		223132CC2BBBD9A3009B0CF1 /* FlashThoughtPlatform.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FlashThoughtPlatform.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		223132D02BBBD9A3009B0CF1 /* FlashThought.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = FlashThought.docc; sourceTree = "<group>"; };
-		223132D62BBBD9A3009B0CF1 /* FlashThoughtTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FlashThoughtTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		223132D62BBBD9A3009B0CF1 /* FlashThoughtPlatformTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FlashThoughtPlatformTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		223132DB2BBBD9A3009B0CF1 /* FlashThoughtTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FlashThoughtTests.m; sourceTree = "<group>"; };
 		223132E62BBBD9B8009B0CF1 /* GPTVisitor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPTVisitor.h; sourceTree = "<group>"; };
 		223132E72BBBD9B8009B0CF1 /* GPTVisitor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GPTVisitor.m; sourceTree = "<group>"; };
@@ -49,8 +49,10 @@
 		22C47ACD2BBEB406004C4EF6 /* DatabaseManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DatabaseManager.h; sourceTree = "<group>"; };
 		22C47ACF2BBEB414004C4EF6 /* DatabaseManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DatabaseManager.m; sourceTree = "<group>"; };
 		2513CBE8C883683934D5966D /* Pods-FlashThought.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FlashThought.debug.xcconfig"; path = "Target Support Files/Pods-FlashThought/Pods-FlashThought.debug.xcconfig"; sourceTree = "<group>"; };
+		378F84AA7FD9F087587692A2 /* Pods-FlashThoughtPlatform.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FlashThoughtPlatform.debug.xcconfig"; path = "Target Support Files/Pods-FlashThoughtPlatform/Pods-FlashThoughtPlatform.debug.xcconfig"; sourceTree = "<group>"; };
+		AF8A0E60E2ACCF4F042A757B /* libPods-FlashThoughtPlatform.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-FlashThoughtPlatform.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D2B3A859820FE61B5E40EC5E /* Pods-FlashThought.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FlashThought.release.xcconfig"; path = "Target Support Files/Pods-FlashThought/Pods-FlashThought.release.xcconfig"; sourceTree = "<group>"; };
-		EFAEAD92732C836E9C9EC64B /* libPods-FlashThought.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-FlashThought.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D7627224E013C87E0B23496F /* Pods-FlashThoughtPlatform.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FlashThoughtPlatform.release.xcconfig"; path = "Target Support Files/Pods-FlashThoughtPlatform/Pods-FlashThoughtPlatform.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,7 +60,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D4E074060A2E95DEAB86BE10 /* libPods-FlashThought.a in Frameworks */,
+				A0A50775F9343448BF4CC401 /* libPods-FlashThoughtPlatform.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -66,7 +68,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				223132D72BBBD9A3009B0CF1 /* FlashThought.framework in Frameworks */,
+				223132D72BBBD9A3009B0CF1 /* FlashThoughtPlatform.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -76,7 +78,7 @@
 		223132C22BBBD9A3009B0CF1 = {
 			isa = PBXGroup;
 			children = (
-				223132CE2BBBD9A3009B0CF1 /* FlashThought */,
+				223132CE2BBBD9A3009B0CF1 /* FlashThoughtPlatform */,
 				223132CD2BBBD9A3009B0CF1 /* Products */,
 				A3496CA979000E2C7067B037 /* Pods */,
 				32B57D9FD5169A39F2B6B19F /* Frameworks */,
@@ -86,13 +88,13 @@
 		223132CD2BBBD9A3009B0CF1 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				223132CC2BBBD9A3009B0CF1 /* FlashThought.framework */,
-				223132D62BBBD9A3009B0CF1 /* FlashThoughtTests.xctest */,
+				223132CC2BBBD9A3009B0CF1 /* FlashThoughtPlatform.framework */,
+				223132D62BBBD9A3009B0CF1 /* FlashThoughtPlatformTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		223132CE2BBBD9A3009B0CF1 /* FlashThought */ = {
+		223132CE2BBBD9A3009B0CF1 /* FlashThoughtPlatform */ = {
 			isa = PBXGroup;
 			children = (
 				22A6CEF92BBEACD20086AF2B /* LoginService.h */,
@@ -108,7 +110,7 @@
 				223132DA2BBBD9A3009B0CF1 /* FlashThoughtTests */,
 				223132D02BBBD9A3009B0CF1 /* FlashThought.docc */,
 			);
-			path = FlashThought;
+			path = FlashThoughtPlatform;
 			sourceTree = "<group>";
 		};
 		223132DA2BBBD9A3009B0CF1 /* FlashThoughtTests */ = {
@@ -122,7 +124,7 @@
 		32B57D9FD5169A39F2B6B19F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				EFAEAD92732C836E9C9EC64B /* libPods-FlashThought.a */,
+				AF8A0E60E2ACCF4F042A757B /* libPods-FlashThoughtPlatform.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -132,6 +134,8 @@
 			children = (
 				2513CBE8C883683934D5966D /* Pods-FlashThought.debug.xcconfig */,
 				D2B3A859820FE61B5E40EC5E /* Pods-FlashThought.release.xcconfig */,
+				378F84AA7FD9F087587692A2 /* Pods-FlashThoughtPlatform.debug.xcconfig */,
+				D7627224E013C87E0B23496F /* Pods-FlashThoughtPlatform.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -154,9 +158,9 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		223132CB2BBBD9A3009B0CF1 /* FlashThought */ = {
+		223132CB2BBBD9A3009B0CF1 /* FlashThoughtPlatform */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 223132E02BBBD9A3009B0CF1 /* Build configuration list for PBXNativeTarget "FlashThought" */;
+			buildConfigurationList = 223132E02BBBD9A3009B0CF1 /* Build configuration list for PBXNativeTarget "FlashThoughtPlatform" */;
 			buildPhases = (
 				6CA24D6D02323B6D0EDDBB47 /* [CP] Check Pods Manifest.lock */,
 				223132C72BBBD9A3009B0CF1 /* Headers */,
@@ -169,14 +173,14 @@
 			);
 			dependencies = (
 			);
-			name = FlashThought;
+			name = FlashThoughtPlatform;
 			productName = FlashThought;
-			productReference = 223132CC2BBBD9A3009B0CF1 /* FlashThought.framework */;
+			productReference = 223132CC2BBBD9A3009B0CF1 /* FlashThoughtPlatform.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		223132D52BBBD9A3009B0CF1 /* FlashThoughtTests */ = {
+		223132D52BBBD9A3009B0CF1 /* FlashThoughtPlatformTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 223132E32BBBD9A3009B0CF1 /* Build configuration list for PBXNativeTarget "FlashThoughtTests" */;
+			buildConfigurationList = 223132E32BBBD9A3009B0CF1 /* Build configuration list for PBXNativeTarget "FlashThoughtPlatformTests" */;
 			buildPhases = (
 				223132D22BBBD9A3009B0CF1 /* Sources */,
 				223132D32BBBD9A3009B0CF1 /* Frameworks */,
@@ -187,9 +191,9 @@
 			dependencies = (
 				223132D92BBBD9A3009B0CF1 /* PBXTargetDependency */,
 			);
-			name = FlashThoughtTests;
+			name = FlashThoughtPlatformTests;
 			productName = FlashThoughtTests;
-			productReference = 223132D62BBBD9A3009B0CF1 /* FlashThoughtTests.xctest */;
+			productReference = 223132D62BBBD9A3009B0CF1 /* FlashThoughtPlatformTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -209,7 +213,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 223132C62BBBD9A3009B0CF1 /* Build configuration list for PBXProject "FlashThought" */;
+			buildConfigurationList = 223132C62BBBD9A3009B0CF1 /* Build configuration list for PBXProject "FlashThoughtPlatform" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -222,8 +226,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				223132CB2BBBD9A3009B0CF1 /* FlashThought */,
-				223132D52BBBD9A3009B0CF1 /* FlashThoughtTests */,
+				223132CB2BBBD9A3009B0CF1 /* FlashThoughtPlatform */,
+				223132D52BBBD9A3009B0CF1 /* FlashThoughtPlatformTests */,
 			);
 		};
 /* End PBXProject section */
@@ -261,7 +265,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-FlashThought-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-FlashThoughtPlatform-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -274,15 +278,15 @@
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-FlashThought/Pods-FlashThought-resources-${CONFIGURATION}-input-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-FlashThoughtPlatform/Pods-FlashThoughtPlatform-resources-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-FlashThought/Pods-FlashThought-resources-${CONFIGURATION}-output-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-FlashThoughtPlatform/Pods-FlashThoughtPlatform-resources-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-FlashThought/Pods-FlashThought-resources.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-FlashThoughtPlatform/Pods-FlashThoughtPlatform-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -314,7 +318,7 @@
 /* Begin PBXTargetDependency section */
 		223132D92BBBD9A3009B0CF1 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 223132CB2BBBD9A3009B0CF1 /* FlashThought */;
+			target = 223132CB2BBBD9A3009B0CF1 /* FlashThoughtPlatform */;
 			targetProxy = 223132D82BBBD9A3009B0CF1 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -444,7 +448,7 @@
 		};
 		223132E12BBBD9A3009B0CF1 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 2513CBE8C883683934D5966D /* Pods-FlashThought.debug.xcconfig */;
+			baseConfigurationReference = 378F84AA7FD9F087587692A2 /* Pods-FlashThoughtPlatform.debug.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -476,7 +480,7 @@
 		};
 		223132E22BBBD9A3009B0CF1 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D2B3A859820FE61B5E40EC5E /* Pods-FlashThought.release.xcconfig */;
+			baseConfigurationReference = D7627224E013C87E0B23496F /* Pods-FlashThoughtPlatform.release.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -539,7 +543,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		223132C62BBBD9A3009B0CF1 /* Build configuration list for PBXProject "FlashThought" */ = {
+		223132C62BBBD9A3009B0CF1 /* Build configuration list for PBXProject "FlashThoughtPlatform" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				223132DE2BBBD9A3009B0CF1 /* Debug */,
@@ -548,7 +552,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		223132E02BBBD9A3009B0CF1 /* Build configuration list for PBXNativeTarget "FlashThought" */ = {
+		223132E02BBBD9A3009B0CF1 /* Build configuration list for PBXNativeTarget "FlashThoughtPlatform" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				223132E12BBBD9A3009B0CF1 /* Debug */,
@@ -557,7 +561,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		223132E32BBBD9A3009B0CF1 /* Build configuration list for PBXNativeTarget "FlashThoughtTests" */ = {
+		223132E32BBBD9A3009B0CF1 /* Build configuration list for PBXNativeTarget "FlashThoughtPlatformTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				223132E42BBBD9A3009B0CF1 /* Debug */,

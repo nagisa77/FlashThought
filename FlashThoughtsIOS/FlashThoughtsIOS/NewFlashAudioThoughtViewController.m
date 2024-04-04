@@ -8,7 +8,7 @@
 #import "NewFlashAudioThoughtViewController.h"
 #import "AudioPlayerManager.h"
 #import <AVFoundation/AVFoundation.h>
-#import <FlashThought/FlashThoughtManager.h>
+#import <FlashThoughtPlatform/FlashThoughtManager.h>
 #import <Foundation/Foundation.h>
 
 @interface NewFlashAudioThoughtViewController () <AVAudioRecorderDelegate>

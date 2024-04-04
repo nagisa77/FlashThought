@@ -8,9 +8,9 @@
 #ifndef FlashThoughtManager_h
 #define FlashThoughtManager_h
 
-#import <FlashThought/GPTVisitor.h>
-#import <FlashThought/ReminderManager.h>
-#import <FlashThought/LoginService.h>
+#import <FlashThoughtPlatform/GPTVisitor.h>
+#import <FlashThoughtPlatform/ReminderManager.h>
+#import <FlashThoughtPlatform/LoginService.h>
 #import <Foundation/Foundation.h>
 
 typedef NS_ENUM(NSInteger, FlashThoughtType) {

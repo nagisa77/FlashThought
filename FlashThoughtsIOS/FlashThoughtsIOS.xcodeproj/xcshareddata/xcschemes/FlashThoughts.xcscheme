@@ -15,10 +15,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "223132CB2BBBD9A3009B0CF1"
-               BuildableName = "FlashThought.framework"
-               BlueprintName = "FlashThought"
-               ReferencedContainer = "container:FlashThought.xcodeproj">
+               BlueprintIdentifier = "225A4BEE2BB2FF6800A5304A"
+               BuildableName = "FlashThoughtsIOS.app"
+               BlueprintName = "FlashThoughtsIOS"
+               ReferencedContainer = "container:FlashThoughtsIOS.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -29,19 +29,6 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES"
       shouldAutocreateTestPlan = "YES">
-      <Testables>
-         <TestableReference
-            skipped = "NO"
-            parallelizable = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "223132D52BBBD9A3009B0CF1"
-               BuildableName = "FlashThoughtTests.xctest"
-               BlueprintName = "FlashThoughtTests"
-               ReferencedContainer = "container:FlashThought.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
-      </Testables>
    </TestAction>
    <LaunchAction
       buildConfiguration = "Debug"
@@ -53,6 +40,16 @@
       debugDocumentVersioning = "YES"
       debugServiceExtension = "internal"
       allowLocationSimulation = "YES">
+      <BuildableProductRunnable
+         runnableDebuggingMode = "0">
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "225A4BEE2BB2FF6800A5304A"
+            BuildableName = "FlashThoughtsIOS.app"
+            BlueprintName = "FlashThoughtsIOS"
+            ReferencedContainer = "container:FlashThoughtsIOS.xcodeproj">
+         </BuildableReference>
+      </BuildableProductRunnable>
    </LaunchAction>
    <ProfileAction
       buildConfiguration = "Release"
@@ -60,15 +57,16 @@
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
       debugDocumentVersioning = "YES">
-      <MacroExpansion>
+      <BuildableProductRunnable
+         runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "223132CB2BBBD9A3009B0CF1"
-            BuildableName = "FlashThought.framework"
-            BlueprintName = "FlashThought"
-            ReferencedContainer = "container:FlashThought.xcodeproj">
+            BlueprintIdentifier = "225A4BEE2BB2FF6800A5304A"
+            BuildableName = "FlashThoughtsIOS.app"
+            BlueprintName = "FlashThoughtsIOS"
+            ReferencedContainer = "container:FlashThoughtsIOS.xcodeproj">
          </BuildableReference>
-      </MacroExpansion>
+      </BuildableProductRunnable>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">

@@ -7,7 +7,7 @@
 
 #import "DatabaseManager.h"
 #import <Firebase/Firebase.h>
-#import <FlashThought/GPTVisitor.h>
+#import <FlashThoughtPlatform/GPTVisitor.h>
 #import <Foundation/Foundation.h>
 
 @implementation GPTVisitor

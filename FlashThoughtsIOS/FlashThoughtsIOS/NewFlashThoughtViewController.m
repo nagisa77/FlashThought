@@ -6,7 +6,7 @@
 //
 
 #import "NewFlashThoughtsViewController.h"
-#import <FlashThought/FlashThoughtManager.h>
+#import <FlashThoughtPlatform/FlashThoughtManager.h>
 
 #define DEFAULT_TEXT @"Write ur flash thought..."
 

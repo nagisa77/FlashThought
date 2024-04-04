@@ -6,7 +6,7 @@
 //
 
 #import "LoginService.h"
-#import <FlashThought/FlashThoughtManager.h>
+#import <FlashThoughtPlatform/FlashThoughtManager.h>
 #import <UIKit/UIKit.h>
 
 @interface FlashThoughtsViewController
