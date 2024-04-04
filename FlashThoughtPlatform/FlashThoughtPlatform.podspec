@@ -9,6 +9,7 @@ Pod::Spec.new do |spec|
     spec.license      = { :type => "MIT", :file => "LICENSE" }
     spec.author       = { "Your Name" => "your_email@example.com" }
     spec.platform     = :ios, "13.0"
+    spec.platform     = :osx, "10.15"
     spec.source       = { :git => "http://example.com/FlashThought.git", :tag => "#{spec.version}" }
     spec.source_files  = "FlashThoughtPlatform/**/*.{h,m}"
     spec.exclude_files = "Classes/Exclude"

@@ -38,6 +38,7 @@
   [FIRApp configure];
 }
 
+#if TARGET_OS_IPHONE
 - (void)loginWithViewController:(UIViewController *)viewController {
   // Google Signin
   GIDConfiguration *configuration = [[GIDConfiguration alloc]
@@ -64,6 +65,7 @@
                                 [self firAuthWithGoogleUser:signInResult.user];
                               }];
 }
+#endif
 
 - (BOOL)isLoggedIn {
   return GIDSignIn.sharedInstance.currentUser != nil;

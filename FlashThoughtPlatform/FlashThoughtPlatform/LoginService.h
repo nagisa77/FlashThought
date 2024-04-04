@@ -9,7 +9,9 @@
 #define LoginService_h
 
 #import <Foundation/Foundation.h>
+#if TARGET_OS_IPHONE
 #import <UIKit/UIKit.h>
+#endif
 
 @protocol LoginServiceDelegate <NSObject>
 
@@ -26,7 +28,9 @@
 
 + (instancetype)sharedService;
 - (void)initFIRConfig;
+#if TARGET_OS_IPHONE
 - (void)loginWithViewController:(UIViewController *)viewController;
+#endif
 - (BOOL)isLoggedIn;
 - (void)tryRelogin;
 - (NSURL *)userAvatarURL;
