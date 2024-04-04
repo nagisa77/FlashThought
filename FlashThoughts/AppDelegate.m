@@ -6,8 +6,8 @@
 //
 
 #import "AppDelegate.h"
-#import <FlashThought/LoginService.h>
 #import <FlashThought/FlashThoughtManager.h>
+#import <FlashThought/LoginService.h>
 @import Firebase;
 
 @interface AppDelegate ()

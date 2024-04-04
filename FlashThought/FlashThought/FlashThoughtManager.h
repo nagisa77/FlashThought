@@ -10,6 +10,7 @@
 
 #import <FlashThought/GPTVisitor.h>
 #import <FlashThought/ReminderManager.h>
+#import <FlashThought/LoginService.h>
 #import <Foundation/Foundation.h>
 
 typedef NS_ENUM(NSInteger, FlashThoughtType) {
@@ -37,12 +38,13 @@ typedef NS_ENUM(NSInteger, FlashThoughtType) {
 - (void)thoughtsDidSentToAI:(NSArray<FlashThought *> *)thoughts;
 - (void)thoughtsDidSaveToReminders:(NSArray<FlashThought *> *)thoughts;
 - (void)allThoughtsDidHandle;
+- (void)shouldReloadData;
 - (void)shouldStopHandlingThoughtsByError:(NSError *)error;
 
 @end
 
 @interface FlashThoughtManager
-    : NSObject <GPTVisitorDelegate, ReminderManagerDelegate>
+    : NSObject <GPTVisitorDelegate, ReminderManagerDelegate, LoginServiceDelegate>
 
 @property(nonatomic, weak) id<FlashThoughtManagerDelegate> delegate;
 

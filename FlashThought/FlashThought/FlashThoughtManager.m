@@ -6,6 +6,7 @@
 //
 
 #import "FlashThoughtManager.h"
+#import "DatabaseManager.h"
 #import <Foundation/Foundation.h>
 
 NSString *textPreString =
@@ -136,9 +137,14 @@ NSString *audioPrompt =
         [[NSMutableDictionary alloc] init];
     sharedInstance.gptAudioToTextRequests = [[NSMutableDictionary alloc] init];
     [sharedInstance loadStoredThoughts];
+    [GPTVisitor sharedInstance].delegate = sharedInstance;
+    [ReminderManager sharedManager].delegate = sharedInstance;
+    [[LoginService sharedService] addDelegate:sharedInstance];
+    [[DatabaseManager sharedManager] observeUserDataWithCompletion:^(NSData *data) {
+          [sharedInstance dealWithAllDataReload:data];
+    }];
   });
-  [GPTVisitor sharedInstance].delegate = sharedInstance;
-  [ReminderManager sharedManager].delegate = sharedInstance;
+
   return sharedInstance;
 }
 
@@ -176,12 +182,9 @@ NSString *audioPrompt =
   }
 }
 
-- (void)loadStoredThoughts {
-  [self.thoughts removeAllObjects];
-  NSUserDefaults *sharedDefaults =
-      [[NSUserDefaults alloc] initWithSuiteName:APP_GROUP_NAME];
-  NSData *storedData = [sharedDefaults objectForKey:@"FlashThoughts"];
+- (void)dealWithAllDataReload:(NSData *)storedData {
   if (storedData) {
+    [self.thoughts removeAllObjects];
     NSError *error = nil;
     NSSet *classes =
         [NSSet setWithObjects:[NSArray class], [FlashThought class], nil];
@@ -194,9 +197,15 @@ NSString *audioPrompt =
     } else {
       NSLog(@"Failed to load thoughts: %@", error.localizedDescription);
     }
+    
+    [self.delegate shouldReloadData];
   }
+}
 
-  //  [self addExampleThoughts];
+- (void)loadStoredThoughts {
+  [[DatabaseManager sharedManager] loadAllDataWithCompletion:^(NSData *storedData) {
+    [self dealWithAllDataReload:storedData];
+  }];
 }
 
 - (NSArray<FlashThought *> *)allThoughts {
@@ -259,10 +268,7 @@ NSString *audioPrompt =
                             requiringSecureCoding:YES
                                             error:&error];
   if (dataToStore && !error) {
-    NSUserDefaults *defaults =
-        [[NSUserDefaults alloc] initWithSuiteName:APP_GROUP_NAME];
-    [defaults setObject:dataToStore forKey:@"FlashThoughts"];
-    [defaults synchronize];
+    [[DatabaseManager sharedManager] saveData:dataToStore];
   } else {
     NSLog(@"Failed to save thoughts: %@", error.localizedDescription);
   }
@@ -451,6 +457,18 @@ NSString *audioPrompt =
   [self.gptAudioTextToRemindersRequests removeObjectForKey:key];
 
   [self checkAllThoughtDone];
+}
+
+- (void)onSignInSuccess {
+  [self loadStoredThoughts];
+}
+
+- (void)onSignInFailed {
+  [self loadStoredThoughts];
+}
+
+- (void)onSignOutSuccess {
+  [self loadStoredThoughts];
 }
 
 @end

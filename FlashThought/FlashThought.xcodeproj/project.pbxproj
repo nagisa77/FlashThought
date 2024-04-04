@@ -18,7 +18,9 @@
 		223132F12BBBD9C2009B0CF1 /* ReminderManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 223132F02BBBD9C2009B0CF1 /* ReminderManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		22A6CEFA2BBEACD20086AF2B /* LoginService.m in Sources */ = {isa = PBXBuildFile; fileRef = 22A6CEF82BBEACD20086AF2B /* LoginService.m */; };
 		22A6CEFB2BBEACD20086AF2B /* LoginService.h in Headers */ = {isa = PBXBuildFile; fileRef = 22A6CEF92BBEACD20086AF2B /* LoginService.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		FC16318C0278AABD8267F8AD /* libPods-FlashThought.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 155D7711F87AE9F1AA27BD08 /* libPods-FlashThought.a */; };
+		22C47ACE2BBEB406004C4EF6 /* DatabaseManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 22C47ACD2BBEB406004C4EF6 /* DatabaseManager.h */; };
+		22C47AD02BBEB414004C4EF6 /* DatabaseManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 22C47ACF2BBEB414004C4EF6 /* DatabaseManager.m */; };
+		D4E074060A2E95DEAB86BE10 /* libPods-FlashThought.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EFAEAD92732C836E9C9EC64B /* libPods-FlashThought.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -32,7 +34,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		155D7711F87AE9F1AA27BD08 /* libPods-FlashThought.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-FlashThought.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		223132CC2BBBD9A3009B0CF1 /* FlashThought.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FlashThought.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		223132D02BBBD9A3009B0CF1 /* FlashThought.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = FlashThought.docc; sourceTree = "<group>"; };
 		223132D62BBBD9A3009B0CF1 /* FlashThoughtTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FlashThoughtTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -45,8 +46,11 @@
 		223132F02BBBD9C2009B0CF1 /* ReminderManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReminderManager.h; sourceTree = "<group>"; };
 		22A6CEF82BBEACD20086AF2B /* LoginService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginService.m; sourceTree = "<group>"; };
 		22A6CEF92BBEACD20086AF2B /* LoginService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginService.h; sourceTree = "<group>"; };
-		A685C5792DE68BB42DCC53A2 /* Pods-FlashThought.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FlashThought.release.xcconfig"; path = "Target Support Files/Pods-FlashThought/Pods-FlashThought.release.xcconfig"; sourceTree = "<group>"; };
-		B96BEA6AE4859AE8DA57CF1F /* Pods-FlashThought.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FlashThought.debug.xcconfig"; path = "Target Support Files/Pods-FlashThought/Pods-FlashThought.debug.xcconfig"; sourceTree = "<group>"; };
+		22C47ACD2BBEB406004C4EF6 /* DatabaseManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DatabaseManager.h; sourceTree = "<group>"; };
+		22C47ACF2BBEB414004C4EF6 /* DatabaseManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DatabaseManager.m; sourceTree = "<group>"; };
+		2513CBE8C883683934D5966D /* Pods-FlashThought.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FlashThought.debug.xcconfig"; path = "Target Support Files/Pods-FlashThought/Pods-FlashThought.debug.xcconfig"; sourceTree = "<group>"; };
+		D2B3A859820FE61B5E40EC5E /* Pods-FlashThought.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FlashThought.release.xcconfig"; path = "Target Support Files/Pods-FlashThought/Pods-FlashThought.release.xcconfig"; sourceTree = "<group>"; };
+		EFAEAD92732C836E9C9EC64B /* libPods-FlashThought.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-FlashThought.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,7 +58,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FC16318C0278AABD8267F8AD /* libPods-FlashThought.a in Frameworks */,
+				D4E074060A2E95DEAB86BE10 /* libPods-FlashThought.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -75,7 +79,7 @@
 				223132CE2BBBD9A3009B0CF1 /* FlashThought */,
 				223132CD2BBBD9A3009B0CF1 /* Products */,
 				A3496CA979000E2C7067B037 /* Pods */,
-				755FA85DD143AF20B6F1D701 /* Frameworks */,
+				32B57D9FD5169A39F2B6B19F /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -99,6 +103,8 @@
 				223132E72BBBD9B8009B0CF1 /* GPTVisitor.m */,
 				223132F02BBBD9C2009B0CF1 /* ReminderManager.h */,
 				223132E82BBBD9B8009B0CF1 /* ReminderManager.m */,
+				22C47ACD2BBEB406004C4EF6 /* DatabaseManager.h */,
+				22C47ACF2BBEB414004C4EF6 /* DatabaseManager.m */,
 				223132DA2BBBD9A3009B0CF1 /* FlashThoughtTests */,
 				223132D02BBBD9A3009B0CF1 /* FlashThought.docc */,
 			);
@@ -113,10 +119,10 @@
 			path = FlashThoughtTests;
 			sourceTree = "<group>";
 		};
-		755FA85DD143AF20B6F1D701 /* Frameworks */ = {
+		32B57D9FD5169A39F2B6B19F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				155D7711F87AE9F1AA27BD08 /* libPods-FlashThought.a */,
+				EFAEAD92732C836E9C9EC64B /* libPods-FlashThought.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -124,8 +130,8 @@
 		A3496CA979000E2C7067B037 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				B96BEA6AE4859AE8DA57CF1F /* Pods-FlashThought.debug.xcconfig */,
-				A685C5792DE68BB42DCC53A2 /* Pods-FlashThought.release.xcconfig */,
+				2513CBE8C883683934D5966D /* Pods-FlashThought.debug.xcconfig */,
+				D2B3A859820FE61B5E40EC5E /* Pods-FlashThought.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -141,6 +147,7 @@
 				223132EB2BBBD9B8009B0CF1 /* GPTVisitor.h in Headers */,
 				22A6CEFB2BBEACD20086AF2B /* LoginService.h in Headers */,
 				223132EE2BBBD9B8009B0CF1 /* FlashThoughtManager.h in Headers */,
+				22C47ACE2BBEB406004C4EF6 /* DatabaseManager.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -151,12 +158,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 223132E02BBBD9A3009B0CF1 /* Build configuration list for PBXNativeTarget "FlashThought" */;
 			buildPhases = (
-				08C9E8AA6A1F0C6CCC57907B /* [CP] Check Pods Manifest.lock */,
+				6CA24D6D02323B6D0EDDBB47 /* [CP] Check Pods Manifest.lock */,
 				223132C72BBBD9A3009B0CF1 /* Headers */,
 				223132C82BBBD9A3009B0CF1 /* Sources */,
 				223132C92BBBD9A3009B0CF1 /* Frameworks */,
 				223132CA2BBBD9A3009B0CF1 /* Resources */,
-				E2265202820AEE9A79A5FE3A /* [CP] Copy Pods Resources */,
+				86113E305310D1B684A6AF02 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -239,7 +246,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		08C9E8AA6A1F0C6CCC57907B /* [CP] Check Pods Manifest.lock */ = {
+		6CA24D6D02323B6D0EDDBB47 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -261,7 +268,7 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		E2265202820AEE9A79A5FE3A /* [CP] Copy Pods Resources */ = {
+		86113E305310D1B684A6AF02 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -289,6 +296,7 @@
 				223132ED2BBBD9B8009B0CF1 /* ReminderManager.m in Sources */,
 				22A6CEFA2BBEACD20086AF2B /* LoginService.m in Sources */,
 				223132EC2BBBD9B8009B0CF1 /* GPTVisitor.m in Sources */,
+				22C47AD02BBEB414004C4EF6 /* DatabaseManager.m in Sources */,
 				223132D12BBBD9A3009B0CF1 /* FlashThought.docc in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -436,7 +444,7 @@
 		};
 		223132E12BBBD9A3009B0CF1 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B96BEA6AE4859AE8DA57CF1F /* Pods-FlashThought.debug.xcconfig */;
+			baseConfigurationReference = 2513CBE8C883683934D5966D /* Pods-FlashThought.debug.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -468,7 +476,7 @@
 		};
 		223132E22BBBD9A3009B0CF1 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A685C5792DE68BB42DCC53A2 /* Pods-FlashThought.release.xcconfig */;
+			baseConfigurationReference = D2B3A859820FE61B5E40EC5E /* Pods-FlashThought.release.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;

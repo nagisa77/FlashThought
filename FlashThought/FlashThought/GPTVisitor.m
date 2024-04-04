@@ -5,9 +5,10 @@
 //  Created by tim on 2024/3/28.
 //
 
+#import "DatabaseManager.h"
+#import <Firebase/Firebase.h>
 #import <FlashThought/GPTVisitor.h>
 #import <Foundation/Foundation.h>
-#import <Firebase/Firebase.h>
 
 @implementation GPTVisitor
 

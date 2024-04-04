@@ -79,18 +79,18 @@
 }
 
 - (UIImage *)resizeAndRoundImage:(UIImage *)image toSize:(CGSize)newSize {
-    // 开始一个图形上下文
-    UIGraphicsBeginImageContextWithOptions(newSize, NO, 0.0);
-    // 创建圆形裁剪区域
-    CGRect rect = CGRectMake(0, 0, newSize.width, newSize.height);
-    [[UIBezierPath bezierPathWithOvalInRect:rect] addClip];
-    // 绘制图像
-    [image drawInRect:rect];
-    // 从上下文中获取修改后的图像
-    UIImage *roundedImage = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
-    
-    return roundedImage;
+  // 开始一个图形上下文
+  UIGraphicsBeginImageContextWithOptions(newSize, NO, 0.0);
+  // 创建圆形裁剪区域
+  CGRect rect = CGRectMake(0, 0, newSize.width, newSize.height);
+  [[UIBezierPath bezierPathWithOvalInRect:rect] addClip];
+  // 绘制图像
+  [image drawInRect:rect];
+  // 从上下文中获取修改后的图像
+  UIImage *roundedImage = UIGraphicsGetImageFromCurrentImageContext();
+  UIGraphicsEndImageContext();
+
+  return roundedImage;
 }
 
 - (void)loadAvatarFromURL:(NSURL *)url {
@@ -104,10 +104,12 @@
                           NSError *_Nullable error) {
         if (data) {
           UIImage *image = [UIImage imageWithData:data];
-          UIImage *resizedImage = [self resizeAndRoundImage:image toSize:boundSize];
+          UIImage *resizedImage = [self resizeAndRoundImage:image
+                                                     toSize:boundSize];
           if (resizedImage) {
             dispatch_async(dispatch_get_main_queue(), ^{
-              [self.avaterButton setImage:resizedImage forState:UIControlStateNormal];
+              [self.avaterButton setImage:resizedImage
+                                 forState:UIControlStateNormal];
             });
           }
         }
@@ -144,12 +146,12 @@
           [[UIContextMenuInteraction alloc] initWithDelegate:self];
       [self.summaryButton addInteraction:contextMenuInteraction];
     }
-// 头像先不支持长按
-//    {
-//      UIContextMenuInteraction *contextMenuInteraction =
-//          [[UIContextMenuInteraction alloc] initWithDelegate:self];
-//      [self.avaterButton addInteraction:contextMenuInteraction];
-//    }
+    // 头像先不支持长按
+    //    {
+    //      UIContextMenuInteraction *contextMenuInteraction =
+    //          [[UIContextMenuInteraction alloc] initWithDelegate:self];
+    //      [self.avaterButton addInteraction:contextMenuInteraction];
+    //    }
   }
 
   [self userAuth];
@@ -602,6 +604,10 @@
 }
 
 - (void)thoughtManagerDidAddThought:(FlashThought *)thought {
+  [self.tableView reloadData];
+}
+
+- (void)shouldReloadData {
   [self.tableView reloadData];
 }
 

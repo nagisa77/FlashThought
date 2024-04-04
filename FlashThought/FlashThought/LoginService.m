@@ -136,6 +136,7 @@
 
 - (void)logout {
   [GIDSignIn.sharedInstance signOut];
+  [[FIRAuth auth] signOut:nil];
 
   // 如果需要，也可以断开连接，这将撤销token并清除应用的权限
   // [GIDSignIn.sharedInstance disconnectWithCallback:^(NSError * _Nullable
