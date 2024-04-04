@@ -184,7 +184,11 @@
 
 - (void)checkAvatar {
   if ([[LoginService sharedService] isLoggedIn]) {
+    self.avaterButton.alpha = 0.0;
     [self.avaterButton setHidden:NO];
+    [UIView animateWithDuration:0.5 animations:^{
+        self.avaterButton.alpha = 1.0;
+    }];
     [self loadAvatarFromURL:[[LoginService sharedService] userAvatarURL]];
   } else {
     [self.avaterButton setHidden:YES];
@@ -208,7 +212,7 @@
   [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+- (void)updateLeftTopTitle:(UIScrollView *)scrollView {
   if (scrollView.contentOffset.y <= 60) {
     self.topLeftLabel.alpha = 0.0;
   } else if (scrollView.contentOffset.y > 60 &&
@@ -217,6 +221,10 @@
   } else if (scrollView.contentOffset.y > 100) {
     self.topLeftLabel.alpha = 1.0;
   }
+}
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+  [self updateLeftTopTitle:scrollView];
 }
 
 // todo: 重构这里
@@ -501,6 +509,8 @@
 
     [tableView deleteRowsAtIndexPaths:@[ indexPath ]
                      withRowAnimation:UITableViewRowAnimationFade];
+    
+    [self updateLeftTopTitle:self.tableView];
   }
 }
 
