@@ -18,7 +18,7 @@
 
 @property IBOutlet UIButton *addButton;
 @property IBOutlet UIButton *summaryButton;
-@property IBOutlet UIImageView *avaterView;
+@property IBOutlet UIButton *avaterButton;
 @property IBOutlet UILabel *topLeftLabel;
 @property IBOutlet UITableView *tableView;
 @property IBOutlet UIView *passwordView;
@@ -78,18 +78,41 @@
   [hud hideAnimated:YES afterDelay:3.f];
 }
 
+- (UIImage *)resizeAndRoundImage:(UIImage *)image toSize:(CGSize)newSize {
+    // 开始一个图形上下文
+    UIGraphicsBeginImageContextWithOptions(newSize, NO, 0.0);
+    // 创建圆形裁剪区域
+    CGRect rect = CGRectMake(0, 0, newSize.width, newSize.height);
+    [[UIBezierPath bezierPathWithOvalInRect:rect] addClip];
+    // 绘制图像
+    [image drawInRect:rect];
+    // 从上下文中获取修改后的图像
+    UIImage *roundedImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    return roundedImage;
+}
+
 - (void)loadAvatarFromURL:(NSURL *)url {
-    NSURLSessionTask *task = [[NSURLSession sharedSession] dataTaskWithURL:url completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+  CGSize boundSize = self.avaterButton.bounds.size;
+  boundSize.width -= 4;
+  boundSize.height -= 4;
+  NSURLSessionTask *task = [[NSURLSession sharedSession]
+        dataTaskWithURL:url
+      completionHandler:^(NSData *_Nullable data,
+                          NSURLResponse *_Nullable response,
+                          NSError *_Nullable error) {
         if (data) {
-            UIImage *image = [UIImage imageWithData:data];
-            if (image) {
-                dispatch_async(dispatch_get_main_queue(), ^{
-                  self.avaterView.image = image;
-                });
-            }
+          UIImage *image = [UIImage imageWithData:data];
+          UIImage *resizedImage = [self resizeAndRoundImage:image toSize:boundSize];
+          if (resizedImage) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+              [self.avaterButton setImage:resizedImage forState:UIControlStateNormal];
+            });
+          }
         }
-    }];
-    [task resume];
+      }];
+  [task resume];
 }
 
 - (void)viewDidLoad {
@@ -103,7 +126,7 @@
   self.tableView.sectionHeaderHeight = 0.0;
   self.tableView.sectionFooterHeight = 0.0;
   self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-  
+
   [self checkAvatar];
 
   self.topLeftLabel.alpha = 0.0;
@@ -116,9 +139,17 @@
   [self.addButton addGestureRecognizer:longPressGesture];
 
   if (@available(iOS 13.0, *)) {
-    UIContextMenuInteraction *contextMenuInteraction =
-        [[UIContextMenuInteraction alloc] initWithDelegate:self];
-    [self.summaryButton addInteraction:contextMenuInteraction];
+    {
+      UIContextMenuInteraction *contextMenuInteraction =
+          [[UIContextMenuInteraction alloc] initWithDelegate:self];
+      [self.summaryButton addInteraction:contextMenuInteraction];
+    }
+// 头像先不支持长按
+//    {
+//      UIContextMenuInteraction *contextMenuInteraction =
+//          [[UIContextMenuInteraction alloc] initWithDelegate:self];
+//      [self.avaterButton addInteraction:contextMenuInteraction];
+//    }
   }
 
   [self userAuth];
@@ -151,10 +182,10 @@
 
 - (void)checkAvatar {
   if ([[LoginService sharedService] isLoggedIn]) {
-    [self.avaterView setHidden:NO];
+    [self.avaterButton setHidden:NO];
     [self loadAvatarFromURL:[[LoginService sharedService] userAvatarURL]];
   } else {
-    [self.avaterView setHidden:YES];
+    [self.avaterButton setHidden:YES];
   }
 }
 
@@ -300,58 +331,61 @@
   [self presentViewController:alertController animated:YES completion:nil];
 }
 
+- (UIMenu *)summaryButtonActionsMenu {
+  UIAction *action1 = [UIAction actionWithTitle:@"API Key Setting"
+                                          image:nil
+                                     identifier:nil
+                                        handler:^(UIAction *_Nonnull action) {
+                                          [self showAPIKeySettings];
+                                        }];
+  UIAction *action2 = [UIAction actionWithTitle:@"Proxy Host Setting"
+                                          image:nil
+                                     identifier:nil
+                                        handler:^(UIAction *_Nonnull action) {
+                                          [self showProxyHostSetting];
+                                        }];
+
+  UIAction *action3 = nil;
+  if ([[LoginService sharedService] isLoggedIn]) {
+    action3 = [UIAction actionWithTitle:@"SignOut"
+                                  image:nil
+                             identifier:nil
+                                handler:^(UIAction *_Nonnull action) {
+                                  dispatch_async(dispatch_get_main_queue(), ^{
+                                    [self signout];
+                                  });
+                                }];
+  } else {
+    action3 = [UIAction actionWithTitle:@"Sync Between Cloud"
+                                  image:nil
+                             identifier:nil
+                                handler:^(UIAction *_Nonnull action) {
+                                  dispatch_async(dispatch_get_main_queue(), ^{
+                                    [self signInWithGoogle];
+                                  });
+                                }];
+  }
+
+  return [UIMenu menuWithTitle:@"Settings"
+                      children:@[ action1, action2, action3 ]];
+}
+
 // UIContextMenuInteractionDelegate 方法
 - (nullable UIContextMenuConfiguration *)
             contextMenuInteraction:(UIContextMenuInteraction *)interaction
     configurationForMenuAtLocation:(CGPoint)location API_AVAILABLE(ios(13.0)) {
-  UIContextMenuConfiguration *configuration = [UIContextMenuConfiguration
-      configurationWithIdentifier:nil
-                  previewProvider:nil
-                   actionProvider:^UIMenu *_Nullable(
-                       NSArray<UIMenuElement *> *_Nonnull suggestedActions) {
-                     UIAction *action1 = [UIAction
-                         actionWithTitle:@"API Key Setting"
-                                   image:nil
-                              identifier:nil
-                                 handler:^(UIAction *_Nonnull action) {
-                                   [self showAPIKeySettings];
-                                 }];
-                     UIAction *action2 = [UIAction
-                         actionWithTitle:@"Proxy Host Setting"
-                                   image:nil
-                              identifier:nil
-                                 handler:^(UIAction *_Nonnull action) {
-                                   [self showProxyHostSetting];
-                                 }];
-                      
-                     UIAction *action3 = nil;
-                         if ([[LoginService sharedService] isLoggedIn]) {
-                           action3 = [UIAction
-                               actionWithTitle:@"SignOut"
-                                         image:nil
-                                    identifier:nil
-                                       handler:^(UIAction *_Nonnull action) {
-                                         dispatch_async(dispatch_get_main_queue(), ^{
-                                           [self signout];
-                                         });
-                                       }];
-                         } else {
-                           action3 = [UIAction
-                               actionWithTitle:@"Sync Between Cloud"
-                                         image:nil
-                                    identifier:nil
-                                       handler:^(UIAction *_Nonnull action) {
-                                         dispatch_async(dispatch_get_main_queue(), ^{
-                                           [self signInWithGoogle];
-                                         });
-                                       }];
-                         }
-
-                     return
-                         [UIMenu menuWithTitle:@""
-                                      children:@[ action1, action2, action3 ]];
-                   }];
-  return configuration;
+  if ([self.summaryButton.interactions containsObject:interaction]) {
+    UIContextMenuConfiguration *configuration = [UIContextMenuConfiguration
+        configurationWithIdentifier:nil
+                    previewProvider:nil
+                     actionProvider:^UIMenu *_Nullable(
+                         NSArray<UIMenuElement *> *_Nonnull suggestedActions) {
+                       return [self summaryButtonActionsMenu];
+                     }];
+    return configuration;
+  } else {
+    return nil;
+  }
 }
 
 #pragma mark - UITableViewDataSource

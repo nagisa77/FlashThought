@@ -16,6 +16,9 @@
 		223132EE2BBBD9B8009B0CF1 /* FlashThoughtManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 223132E92BBBD9B8009B0CF1 /* FlashThoughtManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		223132EF2BBBD9B8009B0CF1 /* FlashThoughtManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 223132EA2BBBD9B8009B0CF1 /* FlashThoughtManager.m */; };
 		223132F12BBBD9C2009B0CF1 /* ReminderManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 223132F02BBBD9C2009B0CF1 /* ReminderManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		22A6CEFA2BBEACD20086AF2B /* LoginService.m in Sources */ = {isa = PBXBuildFile; fileRef = 22A6CEF82BBEACD20086AF2B /* LoginService.m */; };
+		22A6CEFB2BBEACD20086AF2B /* LoginService.h in Headers */ = {isa = PBXBuildFile; fileRef = 22A6CEF92BBEACD20086AF2B /* LoginService.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FC16318C0278AABD8267F8AD /* libPods-FlashThought.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 155D7711F87AE9F1AA27BD08 /* libPods-FlashThought.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -29,6 +32,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		155D7711F87AE9F1AA27BD08 /* libPods-FlashThought.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-FlashThought.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		223132CC2BBBD9A3009B0CF1 /* FlashThought.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FlashThought.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		223132D02BBBD9A3009B0CF1 /* FlashThought.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = FlashThought.docc; sourceTree = "<group>"; };
 		223132D62BBBD9A3009B0CF1 /* FlashThoughtTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FlashThoughtTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -39,6 +43,10 @@
 		223132E92BBBD9B8009B0CF1 /* FlashThoughtManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlashThoughtManager.h; sourceTree = "<group>"; };
 		223132EA2BBBD9B8009B0CF1 /* FlashThoughtManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlashThoughtManager.m; sourceTree = "<group>"; };
 		223132F02BBBD9C2009B0CF1 /* ReminderManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReminderManager.h; sourceTree = "<group>"; };
+		22A6CEF82BBEACD20086AF2B /* LoginService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginService.m; sourceTree = "<group>"; };
+		22A6CEF92BBEACD20086AF2B /* LoginService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginService.h; sourceTree = "<group>"; };
+		A685C5792DE68BB42DCC53A2 /* Pods-FlashThought.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FlashThought.release.xcconfig"; path = "Target Support Files/Pods-FlashThought/Pods-FlashThought.release.xcconfig"; sourceTree = "<group>"; };
+		B96BEA6AE4859AE8DA57CF1F /* Pods-FlashThought.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FlashThought.debug.xcconfig"; path = "Target Support Files/Pods-FlashThought/Pods-FlashThought.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -46,6 +54,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FC16318C0278AABD8267F8AD /* libPods-FlashThought.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -65,6 +74,8 @@
 			children = (
 				223132CE2BBBD9A3009B0CF1 /* FlashThought */,
 				223132CD2BBBD9A3009B0CF1 /* Products */,
+				A3496CA979000E2C7067B037 /* Pods */,
+				755FA85DD143AF20B6F1D701 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -80,6 +91,8 @@
 		223132CE2BBBD9A3009B0CF1 /* FlashThought */ = {
 			isa = PBXGroup;
 			children = (
+				22A6CEF92BBEACD20086AF2B /* LoginService.h */,
+				22A6CEF82BBEACD20086AF2B /* LoginService.m */,
 				223132E92BBBD9B8009B0CF1 /* FlashThoughtManager.h */,
 				223132EA2BBBD9B8009B0CF1 /* FlashThoughtManager.m */,
 				223132E62BBBD9B8009B0CF1 /* GPTVisitor.h */,
@@ -100,6 +113,23 @@
 			path = FlashThoughtTests;
 			sourceTree = "<group>";
 		};
+		755FA85DD143AF20B6F1D701 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				155D7711F87AE9F1AA27BD08 /* libPods-FlashThought.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A3496CA979000E2C7067B037 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				B96BEA6AE4859AE8DA57CF1F /* Pods-FlashThought.debug.xcconfig */,
+				A685C5792DE68BB42DCC53A2 /* Pods-FlashThought.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -109,6 +139,7 @@
 			files = (
 				223132F12BBBD9C2009B0CF1 /* ReminderManager.h in Headers */,
 				223132EB2BBBD9B8009B0CF1 /* GPTVisitor.h in Headers */,
+				22A6CEFB2BBEACD20086AF2B /* LoginService.h in Headers */,
 				223132EE2BBBD9B8009B0CF1 /* FlashThoughtManager.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -120,10 +151,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 223132E02BBBD9A3009B0CF1 /* Build configuration list for PBXNativeTarget "FlashThought" */;
 			buildPhases = (
+				08C9E8AA6A1F0C6CCC57907B /* [CP] Check Pods Manifest.lock */,
 				223132C72BBBD9A3009B0CF1 /* Headers */,
 				223132C82BBBD9A3009B0CF1 /* Sources */,
 				223132C92BBBD9A3009B0CF1 /* Frameworks */,
 				223132CA2BBBD9A3009B0CF1 /* Resources */,
+				E2265202820AEE9A79A5FE3A /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -205,6 +238,48 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		08C9E8AA6A1F0C6CCC57907B /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-FlashThought-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E2265202820AEE9A79A5FE3A /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-FlashThought/Pods-FlashThought-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-FlashThought/Pods-FlashThought-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-FlashThought/Pods-FlashThought-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		223132C82BBBD9A3009B0CF1 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -212,6 +287,7 @@
 			files = (
 				223132EF2BBBD9B8009B0CF1 /* FlashThoughtManager.m in Sources */,
 				223132ED2BBBD9B8009B0CF1 /* ReminderManager.m in Sources */,
+				22A6CEFA2BBEACD20086AF2B /* LoginService.m in Sources */,
 				223132EC2BBBD9B8009B0CF1 /* GPTVisitor.m in Sources */,
 				223132D12BBBD9A3009B0CF1 /* FlashThought.docc in Sources */,
 			);
@@ -360,6 +436,7 @@
 		};
 		223132E12BBBD9A3009B0CF1 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B96BEA6AE4859AE8DA57CF1F /* Pods-FlashThought.debug.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -369,6 +446,7 @@
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				ENABLE_MODULE_VERIFIER = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
@@ -390,6 +468,7 @@
 		};
 		223132E22BBBD9A3009B0CF1 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A685C5792DE68BB42DCC53A2 /* Pods-FlashThought.release.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -399,6 +478,7 @@
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				ENABLE_MODULE_VERIFIER = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";

@@ -9,15 +9,9 @@
 /* Begin PBXBuildFile section */
 		220E954F2BBA65E3007D1C05 /* FlashThoughtAudioCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 220E954E2BBA65E3007D1C05 /* FlashThoughtAudioCell.xib */; };
 		220E95512BBA65F6007D1C05 /* FlashThoughtAudioCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 220E95502BBA65F6007D1C05 /* FlashThoughtAudioCell.m */; };
-		22238F112BBDD99900D1918C /* LoginService.m in Sources */ = {isa = PBXBuildFile; fileRef = 22238F0F2BBDD99900D1918C /* LoginService.m */; };
 		2231325B2BBBB4B3009B0CF1 /* AudioPlayerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2231325A2BBBB4B3009B0CF1 /* AudioPlayerManager.m */; };
 		223132792BBBD1F8009B0CF1 /* ShareViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 223132782BBBD1F8009B0CF1 /* ShareViewController.m */; };
 		2231327C2BBBD1F8009B0CF1 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 2231327B2BBBD1F8009B0CF1 /* Base */; };
-		223132802BBBD1F8009B0CF1 /* FlashThought Share Extension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 223132752BBBD1F8009B0CF1 /* FlashThought Share Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		223132F32BBBD9F6009B0CF1 /* FlashThought.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 223132F22BBBD9F6009B0CF1 /* FlashThought.framework */; };
-		223132F42BBBD9F6009B0CF1 /* FlashThought.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 223132F22BBBD9F6009B0CF1 /* FlashThought.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		223132F92BBBDA03009B0CF1 /* FlashThought.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 223132F82BBBDA03009B0CF1 /* FlashThought.framework */; };
-		223132FA2BBBDA03009B0CF1 /* FlashThought.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 223132F82BBBDA03009B0CF1 /* FlashThought.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		224545492BBD4AE0009A75C7 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 224545482BBD4AE0009A75C7 /* GoogleService-Info.plist */; };
 		225A4BF42BB2FF6800A5304A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 225A4BF32BB2FF6800A5304A /* AppDelegate.m */; };
 		225A4BF72BB2FF6800A5304A /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 225A4BF62BB2FF6800A5304A /* SceneDelegate.m */; };
@@ -34,62 +28,13 @@
 		225A4C222BB47F2600A5304A /* FlashThoughtCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 225A4C212BB47F2600A5304A /* FlashThoughtCell.xib */; };
 		229B4FDF2BB5AD8B009DDAA6 /* NewFlashAudioThoughtViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 229B4FDE2BB5AD8B009DDAA6 /* NewFlashAudioThoughtViewController.storyboard */; };
 		229B4FE12BB5ADA8009DDAA6 /* NewFlashAudioThoughtViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 229B4FE02BB5ADA8009DDAA6 /* NewFlashAudioThoughtViewController.m */; };
-		4CEC70D988B5CD587D7E6E45 /* Pods_FlashThoughts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0758EC4453CD1E403618C524 /* Pods_FlashThoughts.framework */; };
+		B44F0633AC36E8931D23D717 /* libPods-FlashThoughts.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B45C0ED36100090E3768C6F1 /* libPods-FlashThoughts.a */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		2231327E2BBBD1F8009B0CF1 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 225A4BE72BB2FF6800A5304A /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 223132742BBBD1F8009B0CF1;
-			remoteInfo = "FlashThought Share Extension";
-		};
-/* End PBXContainerItemProxy section */
-
-/* Begin PBXCopyFilesBuildPhase section */
-		223132842BBBD1F8009B0CF1 /* Embed Foundation Extensions */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 13;
-			files = (
-				223132802BBBD1F8009B0CF1 /* FlashThought Share Extension.appex in Embed Foundation Extensions */,
-			);
-			name = "Embed Foundation Extensions";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		223132F52BBBD9F6009B0CF1 /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				223132F42BBBD9F6009B0CF1 /* FlashThought.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		223132FB2BBBDA03009B0CF1 /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				223132FA2BBBDA03009B0CF1 /* FlashThought.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
-
 /* Begin PBXFileReference section */
-		0758EC4453CD1E403618C524 /* Pods_FlashThoughts.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FlashThoughts.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		220E954D2BBA65D8007D1C05 /* FlashThoughtAudioCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FlashThoughtAudioCell.h; sourceTree = "<group>"; };
 		220E954E2BBA65E3007D1C05 /* FlashThoughtAudioCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FlashThoughtAudioCell.xib; sourceTree = "<group>"; };
 		220E95502BBA65F6007D1C05 /* FlashThoughtAudioCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FlashThoughtAudioCell.m; sourceTree = "<group>"; };
-		22238F0F2BBDD99900D1918C /* LoginService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoginService.m; sourceTree = "<group>"; };
-		22238F102BBDD99900D1918C /* LoginService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoginService.h; sourceTree = "<group>"; };
 		2231325A2BBBB4B3009B0CF1 /* AudioPlayerManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AudioPlayerManager.m; sourceTree = "<group>"; };
 		2231325C2BBBB4C4009B0CF1 /* AudioPlayerManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AudioPlayerManager.h; sourceTree = "<group>"; };
 		223132752BBBD1F8009B0CF1 /* FlashThought Share Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "FlashThought Share Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -97,10 +42,11 @@
 		223132782BBBD1F8009B0CF1 /* ShareViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ShareViewController.m; sourceTree = "<group>"; };
 		2231327B2BBBD1F8009B0CF1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
 		2231327D2BBBD1F8009B0CF1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		223132F22BBBD9F6009B0CF1 /* FlashThought.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FlashThought.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		223132F82BBBDA03009B0CF1 /* FlashThought.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FlashThought.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		223132FC2BBBF4CB009B0CF1 /* FlashThoughts.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = FlashThoughts.entitlements; sourceTree = "<group>"; };
 		223132FD2BBBF770009B0CF1 /* FlashThought Share Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "FlashThought Share Extension.entitlements"; sourceTree = "<group>"; };
+		2241BFD12BBEA8B1003EA28D /* FlashThought.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FlashThought.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2241BFD82BBEA8BA003EA28D /* FlashThought.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FlashThought.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2241BFDC2BBEA92A003EA28D /* FlashThought.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FlashThought.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		224545482BBD4AE0009A75C7 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		225A4BEF2BB2FF6800A5304A /* FlashThoughts.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlashThoughts.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		225A4BF22BB2FF6800A5304A /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -125,8 +71,11 @@
 		229B4FDE2BB5AD8B009DDAA6 /* NewFlashAudioThoughtViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = NewFlashAudioThoughtViewController.storyboard; sourceTree = "<group>"; };
 		229B4FE02BB5ADA8009DDAA6 /* NewFlashAudioThoughtViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NewFlashAudioThoughtViewController.m; sourceTree = "<group>"; };
 		229B4FE22BB5ADB5009DDAA6 /* NewFlashAudioThoughtViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NewFlashAudioThoughtViewController.h; sourceTree = "<group>"; };
-		BE5C17BBA541C6998C3BF527 /* Pods-FlashThoughts.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FlashThoughts.debug.xcconfig"; path = "Target Support Files/Pods-FlashThoughts/Pods-FlashThoughts.debug.xcconfig"; sourceTree = "<group>"; };
-		EBBA792B7CF782A7AB53D4A9 /* Pods-FlashThoughts.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FlashThoughts.release.xcconfig"; path = "Target Support Files/Pods-FlashThoughts/Pods-FlashThoughts.release.xcconfig"; sourceTree = "<group>"; };
+		22B049742BBEA681001656A9 /* FlashThought.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FlashThought.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		22B049772BBEA689001656A9 /* FlashThought.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FlashThought.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		32F23BF103FE4528314CC3CE /* Pods-FlashThoughts.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FlashThoughts.debug.xcconfig"; path = "Target Support Files/Pods-FlashThoughts/Pods-FlashThoughts.debug.xcconfig"; sourceTree = "<group>"; };
+		51203EF4D0D04410B661B010 /* Pods-FlashThoughts.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FlashThoughts.release.xcconfig"; path = "Target Support Files/Pods-FlashThoughts/Pods-FlashThoughts.release.xcconfig"; sourceTree = "<group>"; };
+		B45C0ED36100090E3768C6F1 /* libPods-FlashThoughts.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-FlashThoughts.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -134,7 +83,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				223132F32BBBD9F6009B0CF1 /* FlashThought.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -143,8 +91,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				225A4C1B2BB460C200A5304A /* LocalAuthentication.framework in Frameworks */,
-				223132F92BBBDA03009B0CF1 /* FlashThought.framework in Frameworks */,
-				4CEC70D988B5CD587D7E6E45 /* Pods_FlashThoughts.framework in Frameworks */,
+				B44F0633AC36E8931D23D717 /* libPods-FlashThoughts.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -188,8 +135,6 @@
 			children = (
 				224545482BBD4AE0009A75C7 /* GoogleService-Info.plist */,
 				223132FC2BBBF4CB009B0CF1 /* FlashThoughts.entitlements */,
-				22238F102BBDD99900D1918C /* LoginService.h */,
-				22238F0F2BBDD99900D1918C /* LoginService.m */,
 				225A4BF22BB2FF6800A5304A /* AppDelegate.h */,
 				225A4BF32BB2FF6800A5304A /* AppDelegate.m */,
 				225A4BF52BB2FF6800A5304A /* SceneDelegate.h */,
@@ -223,10 +168,13 @@
 		225A4C192BB460C200A5304A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				223132F82BBBDA03009B0CF1 /* FlashThought.framework */,
-				223132F22BBBD9F6009B0CF1 /* FlashThought.framework */,
+				2241BFDC2BBEA92A003EA28D /* FlashThought.framework */,
+				2241BFD82BBEA8BA003EA28D /* FlashThought.framework */,
+				2241BFD12BBEA8B1003EA28D /* FlashThought.framework */,
+				22B049772BBEA689001656A9 /* FlashThought.framework */,
+				22B049742BBEA681001656A9 /* FlashThought.framework */,
 				225A4C1A2BB460C200A5304A /* LocalAuthentication.framework */,
-				0758EC4453CD1E403618C524 /* Pods_FlashThoughts.framework */,
+				B45C0ED36100090E3768C6F1 /* libPods-FlashThoughts.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -234,8 +182,8 @@
 		7CFB54FB5370296736E235F9 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				BE5C17BBA541C6998C3BF527 /* Pods-FlashThoughts.debug.xcconfig */,
-				EBBA792B7CF782A7AB53D4A9 /* Pods-FlashThoughts.release.xcconfig */,
+				32F23BF103FE4528314CC3CE /* Pods-FlashThoughts.debug.xcconfig */,
+				51203EF4D0D04410B661B010 /* Pods-FlashThoughts.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -250,7 +198,6 @@
 				223132712BBBD1F8009B0CF1 /* Sources */,
 				223132722BBBD1F8009B0CF1 /* Frameworks */,
 				223132732BBBD1F8009B0CF1 /* Resources */,
-				223132F52BBBD9F6009B0CF1 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -265,18 +212,15 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 225A4C082BB2FF6900A5304A /* Build configuration list for PBXNativeTarget "FlashThoughts" */;
 			buildPhases = (
-				A0FC9481E03E7236B9FAC85F /* [CP] Check Pods Manifest.lock */,
+				F878AA017CD723EA6C5A33F4 /* [CP] Check Pods Manifest.lock */,
 				225A4BEB2BB2FF6800A5304A /* Sources */,
 				225A4BEC2BB2FF6800A5304A /* Frameworks */,
 				225A4BED2BB2FF6800A5304A /* Resources */,
-				223132842BBBD1F8009B0CF1 /* Embed Foundation Extensions */,
-				223132FB2BBBDA03009B0CF1 /* Embed Frameworks */,
-				294A2E1F392EA328ACBF7CB6 /* [CP] Embed Pods Frameworks */,
+				C511E469CCEFE57D430DB3DB /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				2231327F2BBBD1F8009B0CF1 /* PBXTargetDependency */,
 			);
 			name = FlashThoughts;
 			productName = FlashThoughts;
@@ -346,24 +290,24 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		294A2E1F392EA328ACBF7CB6 /* [CP] Embed Pods Frameworks */ = {
+		C511E469CCEFE57D430DB3DB /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-FlashThoughts/Pods-FlashThoughts-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-FlashThoughts/Pods-FlashThoughts-resources-${CONFIGURATION}-input-files.xcfilelist",
 			);
-			name = "[CP] Embed Pods Frameworks";
+			name = "[CP] Copy Pods Resources";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-FlashThoughts/Pods-FlashThoughts-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-FlashThoughts/Pods-FlashThoughts-resources-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-FlashThoughts/Pods-FlashThoughts-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-FlashThoughts/Pods-FlashThoughts-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		A0FC9481E03E7236B9FAC85F /* [CP] Check Pods Manifest.lock */ = {
+		F878AA017CD723EA6C5A33F4 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -406,7 +350,6 @@
 				225A4BFA2BB2FF6800A5304A /* FlashThoughtsViewController.m in Sources */,
 				225A4C0C2BB3E16D00A5304A /* RoundedButtonWithShadow.m in Sources */,
 				225A4BF42BB2FF6800A5304A /* AppDelegate.m in Sources */,
-				22238F112BBDD99900D1918C /* LoginService.m in Sources */,
 				229B4FE12BB5ADA8009DDAA6 /* NewFlashAudioThoughtViewController.m in Sources */,
 				225A4C052BB2FF6900A5304A /* main.m in Sources */,
 				225A4BF72BB2FF6800A5304A /* SceneDelegate.m in Sources */,
@@ -415,14 +358,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		2231327F2BBBD1F8009B0CF1 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 223132742BBBD1F8009B0CF1 /* FlashThought Share Extension */;
-			targetProxy = 2231327E2BBBD1F8009B0CF1 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		2231327A2BBBD1F8009B0CF1 /* MainInterface.storyboard */ = {
@@ -620,7 +555,7 @@
 		};
 		225A4C092BB2FF6900A5304A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = BE5C17BBA541C6998C3BF527 /* Pods-FlashThoughts.debug.xcconfig */;
+			baseConfigurationReference = 32F23BF103FE4528314CC3CE /* Pods-FlashThoughts.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -654,7 +589,7 @@
 		};
 		225A4C0A2BB2FF6900A5304A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = EBBA792B7CF782A7AB53D4A9 /* Pods-FlashThoughts.release.xcconfig */;
+			baseConfigurationReference = 51203EF4D0D04410B661B010 /* Pods-FlashThoughts.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;

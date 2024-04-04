@@ -25,7 +25,7 @@
     NSMutableArray<id<LoginServiceDelegate>> *delegates;
 
 + (instancetype)sharedService;
-- (void)initFIRConfig; 
+- (void)initFIRConfig;
 - (void)loginWithViewController:(UIViewController *)viewController;
 - (BOOL)isLoggedIn;
 - (void)tryRelogin;

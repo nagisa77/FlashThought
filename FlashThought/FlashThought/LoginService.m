@@ -6,9 +6,8 @@
 //
 
 #import "LoginService.h"
-
-@import Firebase;
-@import GoogleSignIn;
+#import <Firebase/Firebase.h>
+#import <GoogleSignIn/GoogleSignIn.h>
 
 @interface LoginService ()
 
@@ -110,11 +109,13 @@
       restorePreviousSignInWithCompletion:^(GIDGoogleUser *_Nullable user,
                                             NSError *_Nullable error) {
         if (error) {
-//          for (id<LoginServiceDelegate> delegate in self.delegates) {
-//            if ([delegate respondsToSelector:@selector(onSignOutSuccess)]) {
-//              [delegate onSignInFailed];
-//            }
-//          }
+          //          for (id<LoginServiceDelegate> delegate in self.delegates)
+          //          {
+          //            if ([delegate
+          //            respondsToSelector:@selector(onSignOutSuccess)]) {
+          //              [delegate onSignInFailed];
+          //            }
+          //          }
           NSLog(@"relogin Google登录失败: %@", error.localizedDescription);
           return;
         }
@@ -124,7 +125,8 @@
 }
 
 - (NSURL *)userAvatarURL {
-  return [GIDSignIn.sharedInstance.currentUser.profile imageURLWithDimension:100];
+  return
+      [GIDSignIn.sharedInstance.currentUser.profile imageURLWithDimension:100];
 }
 
 - (NSString *)username {
@@ -134,9 +136,10 @@
 
 - (void)logout {
   [GIDSignIn.sharedInstance signOut];
-  
+
   // 如果需要，也可以断开连接，这将撤销token并清除应用的权限
-  // [GIDSignIn.sharedInstance disconnectWithCallback:^(NSError * _Nullable error) {
+  // [GIDSignIn.sharedInstance disconnectWithCallback:^(NSError * _Nullable
+  // error) {
   //     if (error != nil) {
   //         // 处理可能发生的错误
   //         NSLog(@"Error in disconnecting: %@", error.localizedDescription);
