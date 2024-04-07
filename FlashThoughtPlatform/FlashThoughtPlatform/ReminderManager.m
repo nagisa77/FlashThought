@@ -33,6 +33,7 @@
                        BOOL granted, NSError *_Nullable error) {
     if (!granted) {
       // 在主线程上回调，因为可能会更新UI
+      FLog(@"reminder no granted");
       dispatch_async(dispatch_get_main_queue(), ^{
         [self.delegate didFinishAddingRemindersWithSuccess:NO
                                                      error:error
@@ -49,6 +50,7 @@
     if (error) {
       // 在主线程上回调错误
       dispatch_async(dispatch_get_main_queue(), ^{
+        FLog(@"dataUsingEncoding error");
         [self.delegate didFinishAddingRemindersWithSuccess:NO
                                                      error:error
                                                  messageID:messageID];
@@ -65,6 +67,7 @@
                             NSLocalizedDescriptionKey :
                                 @"Unable to find or create the reminder list."
                           }];
+      FLog(@"Unable to find or create the reminder list.");
       dispatch_async(dispatch_get_main_queue(), ^{
         [self.delegate didFinishAddingRemindersWithSuccess:NO
                                                      error:listError
@@ -103,6 +106,7 @@
                                          userInfo:userInfo];
 
         dispatch_async(dispatch_get_main_queue(), ^{
+          FLog(@"GPT Return format error");
           [self.delegate didFinishAddingRemindersWithSuccess:NO
                                                        error:error
                                                    messageID:messageID];
@@ -120,6 +124,7 @@
       if (addReminderError) {
         isErrorOccurred = YES;
         *stop = YES;
+        FLog(@"addReminderError");
         dispatch_async(dispatch_get_main_queue(), ^{
           [self.delegate didFinishAddingRemindersWithSuccess:NO
                                                        error:addReminderError
@@ -128,6 +133,8 @@
       }
     }];
 
+                         
+    FLog(@"isErrorOccurred"); 
     if (!isErrorOccurred) {
       // 如果没有错误，发送成功回调
       dispatch_async(dispatch_get_main_queue(), ^{
