@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		22048D892BC28D50003F4A5F /* LogManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 22048D882BC28D50003F4A5F /* LogManager.m */; };
+		22048D8B2BC28D7E003F4A5F /* LogManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 22048D8A2BC28D59003F4A5F /* LogManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		223132D12BBBD9A3009B0CF1 /* FlashThought.docc in Sources */ = {isa = PBXBuildFile; fileRef = 223132D02BBBD9A3009B0CF1 /* FlashThought.docc */; };
 		223132D72BBBD9A3009B0CF1 /* FlashThoughtPlatform.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 223132CC2BBBD9A3009B0CF1 /* FlashThoughtPlatform.framework */; };
 		223132DC2BBBD9A3009B0CF1 /* FlashThoughtTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 223132DB2BBBD9A3009B0CF1 /* FlashThoughtTests.m */; };
@@ -34,6 +36,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		22048D882BC28D50003F4A5F /* LogManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LogManager.m; sourceTree = "<group>"; };
+		22048D8A2BC28D59003F4A5F /* LogManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LogManager.h; sourceTree = "<group>"; };
 		223132CC2BBBD9A3009B0CF1 /* FlashThoughtPlatform.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FlashThoughtPlatform.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		223132D02BBBD9A3009B0CF1 /* FlashThought.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = FlashThought.docc; sourceTree = "<group>"; };
 		223132D62BBBD9A3009B0CF1 /* FlashThoughtPlatformTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FlashThoughtPlatformTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -107,6 +111,8 @@
 				223132E82BBBD9B8009B0CF1 /* ReminderManager.m */,
 				22C47ACD2BBEB406004C4EF6 /* DatabaseManager.h */,
 				22C47ACF2BBEB414004C4EF6 /* DatabaseManager.m */,
+				22048D8A2BC28D59003F4A5F /* LogManager.h */,
+				22048D882BC28D50003F4A5F /* LogManager.m */,
 				223132DA2BBBD9A3009B0CF1 /* FlashThoughtTests */,
 				223132D02BBBD9A3009B0CF1 /* FlashThought.docc */,
 			);
@@ -150,6 +156,7 @@
 				223132F12BBBD9C2009B0CF1 /* ReminderManager.h in Headers */,
 				223132EB2BBBD9B8009B0CF1 /* GPTVisitor.h in Headers */,
 				22A6CEFB2BBEACD20086AF2B /* LoginService.h in Headers */,
+				22048D8B2BC28D7E003F4A5F /* LogManager.h in Headers */,
 				223132EE2BBBD9B8009B0CF1 /* FlashThoughtManager.h in Headers */,
 				22C47ACE2BBEB406004C4EF6 /* DatabaseManager.h in Headers */,
 			);
@@ -296,6 +303,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				22048D892BC28D50003F4A5F /* LogManager.m in Sources */,
 				223132EF2BBBD9B8009B0CF1 /* FlashThoughtManager.m in Sources */,
 				223132ED2BBBD9B8009B0CF1 /* ReminderManager.m in Sources */,
 				22A6CEFA2BBEACD20086AF2B /* LoginService.m in Sources */,

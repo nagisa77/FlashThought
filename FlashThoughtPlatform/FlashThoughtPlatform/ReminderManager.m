@@ -7,6 +7,7 @@
 
 #import "ReminderManager.h"
 #import <Foundation/Foundation.h>
+#import <FlashThoughtPlatform/LogManager.h>
 
 @interface ReminderManager ()
 @property(nonatomic, strong) EKEventStore *eventStore;
@@ -81,7 +82,7 @@
 
       if (![obj isKindOfClass:[NSString class]] ||
           ![key isKindOfClass:[NSString class]]) {
-        NSLog(@"format error");
+        FLog(@"format error");
         isErrorOccurred = YES;
         *stop = YES;
         // 定义错误域和错误代码
@@ -159,7 +160,7 @@
   NSError *error = nil;
   [self.eventStore saveCalendar:newCalendar commit:YES error:&error];
   if (error) {
-    NSLog(@"Error creating calendar: %@", error.localizedDescription);
+    FLog(@"Error creating calendar: %@", error.localizedDescription);
     return nil;
   }
 

@@ -7,6 +7,7 @@
 
 #import "DatabaseManager.h"
 #import <Firebase/Firebase.h>
+#import <FlashThoughtPlatform/LogManager.h>
 
 #define APP_LOCAL_DATABASE_KEY @"FlashThoughts"
 
@@ -34,17 +35,21 @@
 #pragma mark - Public Methods
 
 - (void)observeUserDataWithCompletion:(void (^)(NSData *data))completion {
-    FIRUser *user = [FIRAuth auth].currentUser;
-    if (user) {
-        NSString *uid = user.uid;
-      FIRDatabaseReference *userRef = [[[[FIRDatabase database] reference] child:@"user_data"] child:uid];
-        [userRef observeEventType:FIRDataEventTypeValue withBlock:^(FIRDataSnapshot * _Nonnull snapshot) {
-          [self dealWithDataSnapshot:snapshot completion:completion];
-        }];
-    }
+  FIRUser *user = [FIRAuth auth].currentUser;
+  if (user) {
+    NSString *uid = user.uid;
+    FIRDatabaseReference *userRef =
+        [[[[FIRDatabase database] reference] child:@"user_data"] child:uid];
+    [userRef observeEventType:FIRDataEventTypeValue
+                    withBlock:^(FIRDataSnapshot *_Nonnull snapshot) {
+                      [self dealWithDataSnapshot:snapshot
+                                      completion:completion];
+                    }];
+  }
 }
 
-- (void)dealWithDataSnapshot:(FIRDataSnapshot * _Nonnull)snapshot completion:(void (^)(NSData *data))completion {
+- (void)dealWithDataSnapshot:(FIRDataSnapshot *_Nonnull)snapshot
+                  completion:(void (^)(NSData *data))completion {
   // 检查数据快照是否存在
   if (snapshot.exists) {
     // 尝试从快照中获取数据字典
@@ -52,7 +57,8 @@
     NSString *dataString = value[@"data"];
     if (dataString) {
       // 将Base64字符串解码为NSData
-      NSData *data = [[NSData alloc] initWithBase64EncodedString:dataString options:0];
+      NSData *data = [[NSData alloc] initWithBase64EncodedString:dataString
+                                                         options:0];
       completion(data);
     } else {
       // 如果数据字符串不存在，返回空NSData对象
@@ -70,23 +76,26 @@
     // 获取当前用户的UID
     NSString *uid = user.uid;
     // 获取指向用户数据的数据库引用
-    FIRDatabaseReference *ref = [[[[FIRDatabase database] reference] child:@"user_data"] child:uid];
-    
+    FIRDatabaseReference *ref =
+        [[[[FIRDatabase database] reference] child:@"user_data"] child:uid];
+
     // 监听单次事件
-    [ref observeSingleEventOfType:FIRDataEventTypeValue withBlock:^(FIRDataSnapshot * _Nonnull snapshot) {
-      [self dealWithDataSnapshot:snapshot completion:completion];
-    } withCancelBlock:^(NSError * _Nonnull error) {
-      // 错误处理，返回空NSData对象
-      NSLog(@"Error fetching data: %@", error.localizedDescription);
-      completion([NSData data]);
-    }];
+    [ref observeSingleEventOfType:FIRDataEventTypeValue
+        withBlock:^(FIRDataSnapshot *_Nonnull snapshot) {
+          [self dealWithDataSnapshot:snapshot completion:completion];
+        }
+        withCancelBlock:^(NSError *_Nonnull error) {
+          // 错误处理，返回空NSData对象
+      FLog(@"Error fetching data: %@", error.localizedDescription);
+          completion([NSData data]);
+        }];
   } else {
-    NSUserDefaults *sharedDefaults = [[NSUserDefaults alloc] initWithSuiteName:APP_GROUP_NAME];
+    NSUserDefaults *sharedDefaults =
+        [[NSUserDefaults alloc] initWithSuiteName:APP_GROUP_NAME];
     NSData *storedData = [sharedDefaults objectForKey:APP_LOCAL_DATABASE_KEY];
     completion(storedData);
   }
 }
-
 
 - (void)saveData:(NSData *)data {
   // 确保用户已经登录

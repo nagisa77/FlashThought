@@ -9,8 +9,8 @@
 #define FlashThoughtManager_h
 
 #import <FlashThoughtPlatform/GPTVisitor.h>
-#import <FlashThoughtPlatform/ReminderManager.h>
 #import <FlashThoughtPlatform/LoginService.h>
+#import <FlashThoughtPlatform/ReminderManager.h>
 #import <Foundation/Foundation.h>
 
 typedef NS_ENUM(NSInteger, FlashThoughtType) {
@@ -44,7 +44,8 @@ typedef NS_ENUM(NSInteger, FlashThoughtType) {
 @end
 
 @interface FlashThoughtManager
-    : NSObject <GPTVisitorDelegate, ReminderManagerDelegate, LoginServiceDelegate>
+    : NSObject <GPTVisitorDelegate, ReminderManagerDelegate,
+                LoginServiceDelegate>
 
 @property(nonatomic, weak) id<FlashThoughtManagerDelegate> delegate;
 

@@ -8,6 +8,7 @@
 #import "LoginService.h"
 #import <Firebase/Firebase.h>
 #import <GoogleSignIn/GoogleSignIn.h>
+#import <FlashThoughtPlatform/LogManager.h>
 
 @interface LoginService ()
 
@@ -43,7 +44,7 @@
   // Google Signin
   GIDConfiguration *configuration = [[GIDConfiguration alloc]
       initWithClientID:[FIRApp defaultApp].options.clientID];
-  NSLog(@"clientID: %@", [FIRApp defaultApp].options.clientID);
+  FLog(@"clientID: %@", [FIRApp defaultApp].options.clientID);
   [GIDSignIn.sharedInstance setConfiguration:configuration];
   [GIDSignIn.sharedInstance
       signInWithPresentingViewController:viewController
@@ -58,7 +59,7 @@
                                       [delegate onSignInFailed];
                                     }
                                   }
-                                  NSLog(@"Google登录失败: %@",
+                                  FLog(@"Google登录失败: %@",
                                         error.localizedDescription);
                                   return;
                                 }
@@ -90,7 +91,7 @@
                     return;
                   }
                   // 用户成功登录，继续应用流程
-                  NSLog(@"Google登录成功，用户UID"
+    FLog(@"Google登录成功，用户UID"
                         @": %@",
                         authResult.user.uid);
                   for (id<LoginServiceDelegate> delegate in self.delegates) {
@@ -118,7 +119,7 @@
           //              [delegate onSignInFailed];
           //            }
           //          }
-          NSLog(@"relogin Google登录失败: %@", error.localizedDescription);
+          FLog(@"relogin Google登录失败: %@", error.localizedDescription);
           return;
         }
 
@@ -145,10 +146,10 @@
   // error) {
   //     if (error != nil) {
   //         // 处理可能发生的错误
-  //         NSLog(@"Error in disconnecting: %@", error.localizedDescription);
+  //         FLog(@"Error in disconnecting: %@", error.localizedDescription);
   //     } else {
   //         // 成功断开连接
-  //         NSLog(@"Successfully disconnected");
+  //         FLog(@"Successfully disconnected");
   //     }
   // }];
 

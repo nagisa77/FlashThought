@@ -6,6 +6,7 @@
 //
 
 #import "FlashThoughtAudioCell.h"
+#import <FlashThoughtPlatform/LogManager.h>
 @interface FlashThoughtAudioCell ()
 
 @property(strong, nonatomic) AVAudioPlayer *audioPlayer;
@@ -65,7 +66,7 @@
   self.audioPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:fileURL
                                                             error:&error];
   if (error) {
-    NSLog(@"Error in audioPlayer: %@", [error localizedDescription]);
+    FLog(@"Error in audioPlayer: %@", [error localizedDescription]);
   } else {
     self.audioPlayer.delegate = self;
     [self.audioPlayer prepareToPlay];

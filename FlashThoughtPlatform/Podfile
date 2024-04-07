@@ -7,6 +7,7 @@ target 'FlashThoughtPlatform' do
   pod 'Firebase/Database'
   pod 'Firebase/Auth'
   pod 'GoogleSignIn'
+  pod 'CocoaLumberjack'
 end
 
 post_install do |installer|

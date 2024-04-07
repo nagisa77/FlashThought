@@ -9,6 +9,7 @@
 #import "AudioPlayerManager.h"
 #import <AVFoundation/AVFoundation.h>
 #import <FlashThoughtPlatform/FlashThoughtManager.h>
+#import <FlashThoughtPlatform/LogManager.h>
 #import <Foundation/Foundation.h>
 
 @interface NewFlashAudioThoughtViewController () <AVAudioRecorderDelegate>
@@ -107,7 +108,7 @@
   [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryRecord
                                          error:&error];
   if (error) {
-    NSLog(@"设置录音会话出错: %@", error.localizedDescription);
+    FLog(@"设置录音会话出错: %@", error.localizedDescription);
     return;
   }
 
@@ -124,7 +125,7 @@
                                                    settings:settings
                                                       error:&error];
   if (error) {
-    NSLog(@"创建录音器出错: %@", error.localizedDescription);
+    FLog(@"创建录音器出错: %@", error.localizedDescription);
     return;
   }
 

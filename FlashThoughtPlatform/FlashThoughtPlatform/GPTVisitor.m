@@ -8,6 +8,7 @@
 #import "DatabaseManager.h"
 #import <Firebase/Firebase.h>
 #import <FlashThoughtPlatform/GPTVisitor.h>
+#import <FlashThoughtPlatform/LogManager.h>
 #import <Foundation/Foundation.h>
 
 @implementation GPTVisitor
@@ -67,7 +68,8 @@
   [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
 
   NSDictionary *bodyData = @{
-    @"model" : @"gpt-3.5-turbo",
+    // todo: 给用户选择
+    @"model" : @"gpt-4",
     @"messages" : @[
       @{
         @"role" : @"user",
@@ -97,7 +99,7 @@
             });
           } else {
             NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
-            NSLog(@"Response status code: %ld",
+            FLog(@"Response status code: %ld",
                   (long)[httpResponse statusCode]);
 
             NSError *parseError = nil;
@@ -184,7 +186,7 @@
     [body appendData:fileData];
     [body appendData:[@"\r\n" dataUsingEncoding:NSUTF8StringEncoding]];
   } else {
-    NSLog(@"Error reading file: %@", error);
+    FLog(@"Error reading file: %@", error);
     return;
   }
 
@@ -201,7 +203,7 @@
         completionHandler:^(NSData *data, NSURLResponse *response,
                             NSError *error) {
           if (error) {
-            NSLog(@"Error: %@", error);
+            FLog(@"Error: %@", error);
             dispatch_async(dispatch_get_main_queue(), ^{
               [self.delegate visitor:self
                   didFailToVisitMessageWithMessageId:messageId
@@ -225,7 +227,7 @@
                           withResponse:transcription];
               });
             } else {
-              NSLog(@"Server responded with status code: %ld",
+              FLog(@"Server responded with status code: %ld",
                     (long)[httpResponse statusCode]);
               dispatch_async(dispatch_get_main_queue(), ^{
                 [self.delegate visitor:self
