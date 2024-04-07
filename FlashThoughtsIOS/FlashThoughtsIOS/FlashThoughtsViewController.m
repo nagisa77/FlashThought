@@ -302,6 +302,32 @@
   [self checkAvatar];
 }
 
+- (void)showDebugMenu {
+  UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Debug" message:@"Choose your debug option" preferredStyle:UIAlertControllerStyleAlert];
+
+  UIAlertAction *action1 = [UIAlertAction actionWithTitle:@"Share Logs ⬆️" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+    FLog(@"share logs click ");
+    [self shareLog];
+  }];
+
+  UIAlertAction *action2 = [UIAlertAction actionWithTitle:@"Clear Logs 🔄" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+    FLog(@"clear logs click");
+  }];
+  
+  UIAlertAction *action3 = [UIAlertAction actionWithTitle:@"Upload Logs ↗️" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+    FLog(@"upload logs click");
+  }];
+
+  
+  // 将菜单选项 Actions 添加到 UIAlertController
+  [alertController addAction:action1];
+  [alertController addAction:action2];
+  [alertController addAction:action3];
+
+  [self presentViewController:alertController animated:YES completion:nil];
+
+}
+
 - (void)shareLog {
   NSString *filePath = [[LogManager sharedManager] getLogFilePath];
 
@@ -395,12 +421,12 @@
                                 }];
   }
   
-  UIAction *action4 = [UIAction actionWithTitle:@"Debug Log"
+  UIAction *action4 = [UIAction actionWithTitle:@"Debug"
                                           image:nil
                                      identifier:nil
                                         handler:^(UIAction *_Nonnull action) {
-                                          FLog(@"shareLog click");
-                                          [self shareLog];
+                                          FLog(@"debug click");
+                                          [self showDebugMenu];
                                         }];
 
   return [UIMenu menuWithTitle:@"Settings"
