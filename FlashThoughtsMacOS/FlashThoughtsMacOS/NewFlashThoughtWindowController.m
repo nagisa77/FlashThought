@@ -16,13 +16,14 @@
 @implementation EditableNSTextField
 
 - (BOOL)performKeyEquivalent:(NSEvent *)event {
+    NSUInteger commandKey = NSEventModifierFlagCommand;
     NSUInteger commandShiftKey = NSEventModifierFlagCommand | NSEventModifierFlagShift;
 
-    if (event.type == NSEventModifierFlagCommand) {
+    if (event.type == NSEventTypeKeyDown) {
         NSUInteger modifierFlags = [event modifierFlags] & NSEventModifierFlagDeviceIndependentFlagsMask;
         NSString *key = [event charactersIgnoringModifiers];
 
-        if (modifierFlags == NSEventModifierFlagCommand) {
+        if (modifierFlags == commandKey) {
             if ([key isEqualToString:@"x"]) {
                 if ([NSApp sendAction:@selector(cut:) to:nil from:self]) return YES;
             } else if ([key isEqualToString:@"c"]) {
@@ -38,7 +39,13 @@
             if ([key isEqualToString:@"Z"]) {
                 if ([NSApp sendAction:NSSelectorFromString(@"redo:") to:nil from:self]) return YES;
             }
-        } 
+        }
+
+        // Handling Command+Enter for newline insertion
+        if (modifierFlags == commandKey && [key isEqualToString:@"\r"]) {
+            [self insertNewline:self];
+            return YES;
+        }
     }
     return [super performKeyEquivalent:event];
 }
