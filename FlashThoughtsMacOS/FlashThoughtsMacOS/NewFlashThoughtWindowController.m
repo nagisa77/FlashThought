@@ -16,14 +16,13 @@
 @implementation EditableNSTextField
 
 - (BOOL)performKeyEquivalent:(NSEvent *)event {
-    NSUInteger commandKey = NSEventModifierFlagCommand;
     NSUInteger commandShiftKey = NSEventModifierFlagCommand | NSEventModifierFlagShift;
 
-    if (event.type == NSEventTypeKeyDown) {
+    if (event.type == NSEventModifierFlagCommand) {
         NSUInteger modifierFlags = [event modifierFlags] & NSEventModifierFlagDeviceIndependentFlagsMask;
+        NSString *key = [event charactersIgnoringModifiers];
 
-        if (modifierFlags == commandKey) {
-            NSString *key = [event charactersIgnoringModifiers];
+        if (modifierFlags == NSEventModifierFlagCommand) {
             if ([key isEqualToString:@"x"]) {
                 if ([NSApp sendAction:@selector(cut:) to:nil from:self]) return YES;
             } else if ([key isEqualToString:@"c"]) {
@@ -36,14 +35,14 @@
                 if ([NSApp sendAction:@selector(selectAll:) to:nil from:self]) return YES;
             }
         } else if (modifierFlags == commandShiftKey) {
-            NSString *key = [event charactersIgnoringModifiers];
             if ([key isEqualToString:@"Z"]) {
                 if ([NSApp sendAction:NSSelectorFromString(@"redo:") to:nil from:self]) return YES;
             }
-        }
+        } 
     }
     return [super performKeyEquivalent:event];
 }
+
 @end
 
 
@@ -65,7 +64,7 @@
   if (self.window) {
     [self.window center];
     [self.window setLevel:NSFloatingWindowLevel];
-    [self.window makeKeyAndOrderFront:self];
+    [NSApp activateIgnoringOtherApps:YES];
   }
 }
 
