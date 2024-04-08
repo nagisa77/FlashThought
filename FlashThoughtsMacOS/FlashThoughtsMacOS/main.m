@@ -2,7 +2,7 @@
 //  main.m
 //  FlashThoughtsMacOS
 //
-//  Created by tim on 2024/4/5.
+//  Created by tim on 2024/4/8.
 //
 
 #import <Cocoa/Cocoa.h>

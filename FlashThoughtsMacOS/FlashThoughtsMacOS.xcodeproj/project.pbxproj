@@ -7,87 +7,85 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		222400562BBF1312002080AB /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 222400552BBF1312002080AB /* AppDelegate.m */; };
-		222400592BBF1312002080AB /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 222400582BBF1312002080AB /* ViewController.m */; };
-		2224005B2BBF1313002080AB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2224005A2BBF1313002080AB /* Assets.xcassets */; };
-		2224005E2BBF1313002080AB /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 2224005D2BBF1313002080AB /* Base */; };
-		222400602BBF1313002080AB /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2224005F2BBF1313002080AB /* main.m */; };
-		79E9490E11A5F8FB28BB9EDD /* libPods-FlashThoughtsMacOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D865311EC03919C5EF54DF52 /* libPods-FlashThoughtsMacOS.a */; };
+		2256E8BA2BC30CDE0083FFC3 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2256E8B92BC30CDE0083FFC3 /* AppDelegate.m */; };
+		2256E8BF2BC30CDF0083FFC3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2256E8BE2BC30CDF0083FFC3 /* Assets.xcassets */; };
+		2256E8C22BC30CDF0083FFC3 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 2256E8C12BC30CDF0083FFC3 /* Base */; };
+		2256E8C42BC30CDF0083FFC3 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2256E8C32BC30CDF0083FFC3 /* main.m */; };
+		2256E8CC2BC3919F0083FFC3 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2256E8CB2BC3919F0083FFC3 /* Info.plist */; };
+		664C9E032B20034E2968FE70 /* libPods-FlashThoughtsMacOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 284D86E60842F33A8B8886B3 /* libPods-FlashThoughtsMacOS.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		09AA016D4A8BDAFD093333CD /* Pods-FlashThoughtsMacOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FlashThoughtsMacOS.debug.xcconfig"; path = "Target Support Files/Pods-FlashThoughtsMacOS/Pods-FlashThoughtsMacOS.debug.xcconfig"; sourceTree = "<group>"; };
-		222400512BBF1312002080AB /* FlashThoughtsMacOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlashThoughtsMacOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		222400542BBF1312002080AB /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		222400552BBF1312002080AB /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		222400572BBF1312002080AB /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		222400582BBF1312002080AB /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		2224005A2BBF1313002080AB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		2224005D2BBF1313002080AB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		2224005F2BBF1313002080AB /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		222400612BBF1313002080AB /* FlashThoughtsMacOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = FlashThoughtsMacOS.entitlements; sourceTree = "<group>"; };
-		33D08138998E13A712864259 /* Pods-FlashThoughtsMacOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FlashThoughtsMacOS.release.xcconfig"; path = "Target Support Files/Pods-FlashThoughtsMacOS/Pods-FlashThoughtsMacOS.release.xcconfig"; sourceTree = "<group>"; };
-		D865311EC03919C5EF54DF52 /* libPods-FlashThoughtsMacOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-FlashThoughtsMacOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2256E8B52BC30CDE0083FFC3 /* FlashThoughtsMacOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlashThoughtsMacOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		2256E8B82BC30CDE0083FFC3 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		2256E8B92BC30CDE0083FFC3 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		2256E8BE2BC30CDF0083FFC3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		2256E8C12BC30CDF0083FFC3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		2256E8C32BC30CDF0083FFC3 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		2256E8C52BC30CDF0083FFC3 /* FlashThoughtsMacOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = FlashThoughtsMacOS.entitlements; sourceTree = "<group>"; };
+		2256E8CB2BC3919F0083FFC3 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		284D86E60842F33A8B8886B3 /* libPods-FlashThoughtsMacOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-FlashThoughtsMacOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2D8A6FBBE44C1C82B178B27C /* Pods-FlashThoughtsMacOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FlashThoughtsMacOS.release.xcconfig"; path = "Target Support Files/Pods-FlashThoughtsMacOS/Pods-FlashThoughtsMacOS.release.xcconfig"; sourceTree = "<group>"; };
+		E009D11AB7DBC4B0D3944894 /* Pods-FlashThoughtsMacOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FlashThoughtsMacOS.debug.xcconfig"; path = "Target Support Files/Pods-FlashThoughtsMacOS/Pods-FlashThoughtsMacOS.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		2224004E2BBF1312002080AB /* Frameworks */ = {
+		2256E8B22BC30CDE0083FFC3 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				79E9490E11A5F8FB28BB9EDD /* libPods-FlashThoughtsMacOS.a in Frameworks */,
+				664C9E032B20034E2968FE70 /* libPods-FlashThoughtsMacOS.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		0BD0BE8163E74030475D64BA /* Pods */ = {
+		00E4121152B0400EDB4D367C /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				09AA016D4A8BDAFD093333CD /* Pods-FlashThoughtsMacOS.debug.xcconfig */,
-				33D08138998E13A712864259 /* Pods-FlashThoughtsMacOS.release.xcconfig */,
+				E009D11AB7DBC4B0D3944894 /* Pods-FlashThoughtsMacOS.debug.xcconfig */,
+				2D8A6FBBE44C1C82B178B27C /* Pods-FlashThoughtsMacOS.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
 		};
-		222400482BBF1312002080AB = {
+		2256E8AC2BC30CDE0083FFC3 = {
 			isa = PBXGroup;
 			children = (
-				222400532BBF1312002080AB /* FlashThoughtsMacOS */,
-				222400522BBF1312002080AB /* Products */,
-				0BD0BE8163E74030475D64BA /* Pods */,
-				5DDF8EC53FF721AD20483002 /* Frameworks */,
+				2256E8B72BC30CDE0083FFC3 /* FlashThoughtsMacOS */,
+				2256E8B62BC30CDE0083FFC3 /* Products */,
+				00E4121152B0400EDB4D367C /* Pods */,
+				3801BC7B1227578395A74F92 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
-		222400522BBF1312002080AB /* Products */ = {
+		2256E8B62BC30CDE0083FFC3 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				222400512BBF1312002080AB /* FlashThoughtsMacOS.app */,
+				2256E8B52BC30CDE0083FFC3 /* FlashThoughtsMacOS.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		222400532BBF1312002080AB /* FlashThoughtsMacOS */ = {
+		2256E8B72BC30CDE0083FFC3 /* FlashThoughtsMacOS */ = {
 			isa = PBXGroup;
 			children = (
-				222400542BBF1312002080AB /* AppDelegate.h */,
-				222400552BBF1312002080AB /* AppDelegate.m */,
-				222400572BBF1312002080AB /* ViewController.h */,
-				222400582BBF1312002080AB /* ViewController.m */,
-				2224005A2BBF1313002080AB /* Assets.xcassets */,
-				2224005C2BBF1313002080AB /* Main.storyboard */,
-				2224005F2BBF1313002080AB /* main.m */,
-				222400612BBF1313002080AB /* FlashThoughtsMacOS.entitlements */,
+				2256E8CB2BC3919F0083FFC3 /* Info.plist */,
+				2256E8B82BC30CDE0083FFC3 /* AppDelegate.h */,
+				2256E8B92BC30CDE0083FFC3 /* AppDelegate.m */,
+				2256E8BE2BC30CDF0083FFC3 /* Assets.xcassets */,
+				2256E8C02BC30CDF0083FFC3 /* Main.storyboard */,
+				2256E8C32BC30CDF0083FFC3 /* main.m */,
+				2256E8C52BC30CDF0083FFC3 /* FlashThoughtsMacOS.entitlements */,
 			);
 			path = FlashThoughtsMacOS;
 			sourceTree = "<group>";
 		};
-		5DDF8EC53FF721AD20483002 /* Frameworks */ = {
+		3801BC7B1227578395A74F92 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				D865311EC03919C5EF54DF52 /* libPods-FlashThoughtsMacOS.a */,
+				284D86E60842F33A8B8886B3 /* libPods-FlashThoughtsMacOS.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -95,15 +93,15 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		222400502BBF1312002080AB /* FlashThoughtsMacOS */ = {
+		2256E8B42BC30CDE0083FFC3 /* FlashThoughtsMacOS */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 222400642BBF1313002080AB /* Build configuration list for PBXNativeTarget "FlashThoughtsMacOS" */;
+			buildConfigurationList = 2256E8C82BC30CDF0083FFC3 /* Build configuration list for PBXNativeTarget "FlashThoughtsMacOS" */;
 			buildPhases = (
-				37C767344A9AF701C9E97012 /* [CP] Check Pods Manifest.lock */,
-				2224004D2BBF1312002080AB /* Sources */,
-				2224004E2BBF1312002080AB /* Frameworks */,
-				2224004F2BBF1312002080AB /* Resources */,
-				45AE4000DBF5D013FB29CFD3 /* [CP] Copy Pods Resources */,
+				BE040FFF025E12B72E728FCE /* [CP] Check Pods Manifest.lock */,
+				2256E8B12BC30CDE0083FFC3 /* Sources */,
+				2256E8B22BC30CDE0083FFC3 /* Frameworks */,
+				2256E8B32BC30CDE0083FFC3 /* Resources */,
+				E226434463A9FB67CE4DDDC9 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -111,24 +109,24 @@
 			);
 			name = FlashThoughtsMacOS;
 			productName = FlashThoughtsMacOS;
-			productReference = 222400512BBF1312002080AB /* FlashThoughtsMacOS.app */;
+			productReference = 2256E8B52BC30CDE0083FFC3 /* FlashThoughtsMacOS.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		222400492BBF1312002080AB /* Project object */ = {
+		2256E8AD2BC30CDE0083FFC3 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastUpgradeCheck = 1530;
 				TargetAttributes = {
-					222400502BBF1312002080AB = {
+					2256E8B42BC30CDE0083FFC3 = {
 						CreatedOnToolsVersion = 15.3;
 					};
 				};
 			};
-			buildConfigurationList = 2224004C2BBF1312002080AB /* Build configuration list for PBXProject "FlashThoughtsMacOS" */;
+			buildConfigurationList = 2256E8B02BC30CDE0083FFC3 /* Build configuration list for PBXProject "FlashThoughtsMacOS" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -136,30 +134,31 @@
 				en,
 				Base,
 			);
-			mainGroup = 222400482BBF1312002080AB;
-			productRefGroup = 222400522BBF1312002080AB /* Products */;
+			mainGroup = 2256E8AC2BC30CDE0083FFC3;
+			productRefGroup = 2256E8B62BC30CDE0083FFC3 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				222400502BBF1312002080AB /* FlashThoughtsMacOS */,
+				2256E8B42BC30CDE0083FFC3 /* FlashThoughtsMacOS */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		2224004F2BBF1312002080AB /* Resources */ = {
+		2256E8B32BC30CDE0083FFC3 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2224005B2BBF1313002080AB /* Assets.xcassets in Resources */,
-				2224005E2BBF1313002080AB /* Base in Resources */,
+				2256E8BF2BC30CDF0083FFC3 /* Assets.xcassets in Resources */,
+				2256E8C22BC30CDF0083FFC3 /* Base in Resources */,
+				2256E8CC2BC3919F0083FFC3 /* Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		37C767344A9AF701C9E97012 /* [CP] Check Pods Manifest.lock */ = {
+		BE040FFF025E12B72E728FCE /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -181,7 +180,7 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		45AE4000DBF5D013FB29CFD3 /* [CP] Copy Pods Resources */ = {
+		E226434463A9FB67CE4DDDC9 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -201,23 +200,22 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		2224004D2BBF1312002080AB /* Sources */ = {
+		2256E8B12BC30CDE0083FFC3 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				222400592BBF1312002080AB /* ViewController.m in Sources */,
-				222400602BBF1313002080AB /* main.m in Sources */,
-				222400562BBF1312002080AB /* AppDelegate.m in Sources */,
+				2256E8C42BC30CDF0083FFC3 /* main.m in Sources */,
+				2256E8BA2BC30CDE0083FFC3 /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		2224005C2BBF1313002080AB /* Main.storyboard */ = {
+		2256E8C02BC30CDF0083FFC3 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				2224005D2BBF1313002080AB /* Base */,
+				2256E8C12BC30CDF0083FFC3 /* Base */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -225,7 +223,7 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		222400622BBF1313002080AB /* Debug */ = {
+		2256E8C62BC30CDF0083FFC3 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -286,7 +284,7 @@
 			};
 			name = Debug;
 		};
-		222400632BBF1313002080AB /* Release */ = {
+		2256E8C72BC30CDF0083FFC3 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -340,9 +338,9 @@
 			};
 			name = Release;
 		};
-		222400652BBF1313002080AB /* Debug */ = {
+		2256E8C92BC30CDF0083FFC3 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 09AA016D4A8BDAFD093333CD /* Pods-FlashThoughtsMacOS.debug.xcconfig */;
+			baseConfigurationReference = E009D11AB7DBC4B0D3944894 /* Pods-FlashThoughtsMacOS.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -354,6 +352,7 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = FlashThoughtsMacOS/Info.plist;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INFOPLIST_KEY_NSMainStoryboardFile = Main;
 				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
@@ -368,9 +367,9 @@
 			};
 			name = Debug;
 		};
-		222400662BBF1313002080AB /* Release */ = {
+		2256E8CA2BC30CDF0083FFC3 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 33D08138998E13A712864259 /* Pods-FlashThoughtsMacOS.release.xcconfig */;
+			baseConfigurationReference = 2D8A6FBBE44C1C82B178B27C /* Pods-FlashThoughtsMacOS.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -382,6 +381,7 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = FlashThoughtsMacOS/Info.plist;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INFOPLIST_KEY_NSMainStoryboardFile = Main;
 				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
@@ -399,25 +399,25 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		2224004C2BBF1312002080AB /* Build configuration list for PBXProject "FlashThoughtsMacOS" */ = {
+		2256E8B02BC30CDE0083FFC3 /* Build configuration list for PBXProject "FlashThoughtsMacOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				222400622BBF1313002080AB /* Debug */,
-				222400632BBF1313002080AB /* Release */,
+				2256E8C62BC30CDF0083FFC3 /* Debug */,
+				2256E8C72BC30CDF0083FFC3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		222400642BBF1313002080AB /* Build configuration list for PBXNativeTarget "FlashThoughtsMacOS" */ = {
+		2256E8C82BC30CDF0083FFC3 /* Build configuration list for PBXNativeTarget "FlashThoughtsMacOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				222400652BBF1313002080AB /* Debug */,
-				222400662BBF1313002080AB /* Release */,
+				2256E8C92BC30CDF0083FFC3 /* Debug */,
+				2256E8CA2BC30CDF0083FFC3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = 222400492BBF1312002080AB /* Project object */;
+	rootObject = 2256E8AD2BC30CDE0083FFC3 /* Project object */;
 }
