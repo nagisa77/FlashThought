@@ -7,6 +7,7 @@
 
 #import "AppDelegate.h"
 #import <FlashThoughtPlatform/LogManager.h>
+#import <FlashThoughtPlatform/FlashThoughtManager.h>
 #import <FlashThoughtPlatform/LoginService.h>
 #import "NewFlashThoughtWindowController.h"
 
@@ -22,6 +23,7 @@
 
 - (void)initConfig {
   [[LogManager sharedManager] setupLogger];
+  [FlashThoughtManager sharedManager];
   [[LoginService sharedService] addDelegate:self];
   [[LoginService sharedService] initFIRConfig];
   [[LoginService sharedService] tryRelogin];
