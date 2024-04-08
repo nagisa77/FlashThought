@@ -17,14 +17,21 @@
 
 @implementation NewFlashThoughtWindowController
 
-- (void)awakeFromNib {
+- (void)windowDidLoad {
+  FLog(@"window did load");
 }
 
-- (IBAction)cancelDidClicked:(id)sender {
+- (void)awakeFromNib {
+  FLog(@"awakeFromNib");
+}
+
+- (IBAction)cancelBtnDidClicked:(id)sender {
+  FLog(@"cancelButtonDidClick");
   [self close];
 }
 
-- (IBAction)confirmDidClicked:(id)sender {
+- (IBAction)okButtonDidClick:(id)sender {
+  FLog(@"okButtonDidClicked");; 
   if (![self.textField.stringValue isEqual:@""]) {
     FlashThought *fs =
         [[FlashThought alloc] initWithType:FlashThoughtTypeTextFlashThought

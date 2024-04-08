@@ -14,6 +14,7 @@
 
 @property(strong) NSStatusItem *statusItem;
 @property(strong) NSPanel *loginPanel;
+@property(strong) NewFlashThoughtWindowController *flashThoughtWindowController;
 
 @end
 
@@ -84,8 +85,8 @@
 }
 
 - (void)newFlashThoughtClicked {
-  NewFlashThoughtWindowController *newFlashThoughtWindowController = [[NewFlashThoughtWindowController alloc] initWithWindowNibName:@"NewFlashThoughtWindowController"];
-  [newFlashThoughtWindowController showWindow:nil];
+  self.flashThoughtWindowController = [[NewFlashThoughtWindowController alloc] initWithWindowNibName:@"NewFlashThoughtWindowController"];
+  [self.flashThoughtWindowController showWindow:self];
 }
 
 - (void)showLoginPanel {
@@ -96,7 +97,7 @@
                                               NSWindowStyleMaskClosable)
                                      backing:NSBackingStoreBuffered
                                        defer:NO];
-    [self.loginPanel setIsVisible:NO];
+//    [self.loginPanel setIsVisible:NO];
   }
   self.loginPanel.title = @"Login";
   [self.loginPanel makeKeyAndOrderFront:nil]; // 显示面板
@@ -125,7 +126,6 @@
   [self newFlashThoughtClicked];
 }
 
-// 菜单项"Quit"的点击事件处理
 - (void)quitApp:(id)sender {
   [NSApp terminate:nil];
 }

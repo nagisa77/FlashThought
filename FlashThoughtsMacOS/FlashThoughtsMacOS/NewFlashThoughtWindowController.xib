@@ -5,10 +5,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <customObject id="-2" userLabel="File's Owner" customClass="NewFlashThoughtWindowController">
+        <customObject id="-2" userLabel="File's Owner" customClass="NewFlashThoughtWindowController" customModule="FlashThoughtsMacOS" customModuleProvider="target">
             <connections>
                 <outlet property="textField" destination="gHG-dr-d4V" id="Oqk-y3-V4I"/>
-                <outlet property="window" destination="cU2-sG-oFA" id="3ED-lP-T6n"/>
+                <outlet property="window" destination="cU2-sG-oFA" id="eOp-kg-Vte"/>
             </connections>
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
@@ -17,7 +17,7 @@
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="-2277" y="305" width="480" height="305"/>
-            <rect key="screenRect" x="-2560" y="0.0" width="2560" height="1415"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1512" height="944"/>
             <view key="contentView" id="TD9-NB-ZCL">
                 <rect key="frame" x="0.0" y="0.0" width="480" height="305"/>
                 <autoresizingMask key="autoresizingMask"/>
@@ -31,10 +31,10 @@
                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
-                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fdf-TM-Pup">
+                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HB7-sp-Kw0">
                         <rect key="frame" x="13" y="13" width="76" height="32"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <buttonCell key="cell" type="push" title="Cancel" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="rpK-fo-SBZ">
+                        <buttonCell key="cell" type="push" title="Cancel" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="GcX-NG-bkK">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
                             <string key="keyEquivalent" base64-UTF8="YES">
@@ -42,18 +42,21 @@ Gw
 </string>
                         </buttonCell>
                         <connections>
-                            <action selector="cancelDidClicked:" target="-2" id="oGf-M8-nFh"/>
+                            <action selector="cancelBtnDidClicked:" target="-2" id="TaP-F1-wMX"/>
                         </connections>
                     </button>
-                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pip-t9-VEg">
-                        <rect key="frame" x="384" y="13" width="83" height="32"/>
+                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NoN-Pa-y2c">
+                        <rect key="frame" x="414" y="13" width="53" height="32"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <buttonCell key="cell" type="push" title="Confirm" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="oyg-S6-Ica">
+                        <buttonCell key="cell" type="push" title="OK" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="NgS-BF-alh">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
+                            <string key="keyEquivalent" base64-UTF8="YES">
+DQ
+</string>
                         </buttonCell>
                         <connections>
-                            <action selector="confirmDidClicked:" target="-2" id="luj-GC-ps4"/>
+                            <action selector="okButtonDidClick:" target="-2" id="zfg-xY-vnx"/>
                         </connections>
                     </button>
                 </subviews>
