@@ -23,10 +23,10 @@
 
 - (void)initConfig {
   [[LogManager sharedManager] setupLogger];
-  [FlashThoughtManager sharedManager];
   [[LoginService sharedService] addDelegate:self];
   [[LoginService sharedService] initFIRConfig];
   [[LoginService sharedService] tryRelogin];
+  [FlashThoughtManager sharedManager];
 }
 
 - (void)updateMenu {
