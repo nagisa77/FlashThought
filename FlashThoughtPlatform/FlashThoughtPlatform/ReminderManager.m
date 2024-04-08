@@ -25,6 +25,12 @@
   return sharedInstance;
 }
 
+- (NSString *)washJsonString:(NSString *)jsonString {
+    jsonString = [jsonString stringByReplacingOccurrencesOfString:@"，" withString:@","];
+    jsonString = [jsonString stringByReplacingOccurrencesOfString:@"。" withString:@"."];
+    return jsonString;
+}
+
 - (void)addRemindersFromJsonString:(NSString *)jsonString
                        toListNamed:(NSString *)listName
                             withID:(NSUInteger)messageID {
@@ -42,9 +48,9 @@
       return;
     }
 
-    // 解析JSON字符串
+    NSString *washedJsonString = [self washJsonString:jsonString];
     NSDictionary *remindersDict = [NSJSONSerialization
-        JSONObjectWithData:[jsonString dataUsingEncoding:NSUTF8StringEncoding]
+        JSONObjectWithData:[washedJsonString dataUsingEncoding:NSUTF8StringEncoding]
                    options:kNilOptions
                      error:&error];
     if (error) {

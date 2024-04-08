@@ -85,8 +85,9 @@
                                                        error:&error];
   [request setHTTPBody:postData];
 
-  // 发送请求
-  NSURLSession *session = [NSURLSession sharedSession];
+  NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
+  configuration.timeoutIntervalForRequest = 120; // API太垃圾，准备等待久一点
+  NSURLSession *session = [NSURLSession sessionWithConfiguration:configuration];
   NSURLSessionDataTask *dataTask = [session
       dataTaskWithRequest:request
         completionHandler:^(NSData *data, NSURLResponse *response,
