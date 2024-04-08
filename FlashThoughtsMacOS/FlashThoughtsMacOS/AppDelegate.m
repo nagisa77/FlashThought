@@ -40,17 +40,22 @@
     [menu addItemWithTitle:[NSString stringWithFormat:@"id: %@", [[LoginService sharedService] username]]
                     action:nil
              keyEquivalent:@""];
-    [menu addItemWithTitle:@"Sign Out"
-                    action:@selector(signOutClicked:)
-             keyEquivalent:@"s"];
     [menu addItemWithTitle:@"New Flash Though"
                     action:@selector(newFlashThoughtClicked:)
              keyEquivalent:@"n"];
+    
+    [menu addItemWithTitle:@"Sign Out"
+                    action:@selector(signOutClicked:)
+             keyEquivalent:@"s"];
   } else {
     [menu addItemWithTitle:@"Login"
                     action:@selector(loginClicked:)
              keyEquivalent:@"l"];
   }
+  
+  [menu addItemWithTitle:@"Debug With Log"
+                  action:@selector(debugWithLog:)
+           keyEquivalent:@"d"];
 
   [menu addItemWithTitle:@"Quit"
                   action:@selector(quitApp:)
@@ -85,6 +90,9 @@
 }
 
 - (void)newFlashThoughtClicked {
+  if (self.flashThoughtWindowController) {
+    [self.flashThoughtWindowController close];
+  }
   self.flashThoughtWindowController = [[NewFlashThoughtWindowController alloc] initWithWindowNibName:@"NewFlashThoughtWindowController"];
   [self.flashThoughtWindowController showWindow:self];
 }
@@ -97,7 +105,7 @@
                                               NSWindowStyleMaskClosable)
                                      backing:NSBackingStoreBuffered
                                        defer:NO];
-//    [self.loginPanel setIsVisible:NO];
+    [self.loginPanel setIsVisible:NO];
   }
   self.loginPanel.title = @"Login";
   [self.loginPanel makeKeyAndOrderFront:nil]; // 显示面板
@@ -128,6 +136,16 @@
 
 - (void)quitApp:(id)sender {
   [NSApp terminate:nil];
+}
+
+- (void)openLogFolder {
+  NSURL *fileURL = [NSURL fileURLWithPath:[[LogManager sharedManager] getLogFilePath]];
+  NSWorkspace *workspace = [NSWorkspace sharedWorkspace];
+  [workspace activateFileViewerSelectingURLs:@[fileURL]];
+}
+
+- (void)debugWithLog:(id)sender {
+  [self openLogFolder];
 }
 
 - (void)onSignInSuccess {
