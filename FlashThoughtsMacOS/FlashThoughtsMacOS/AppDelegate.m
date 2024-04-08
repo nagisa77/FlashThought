@@ -8,8 +8,9 @@
 #import "AppDelegate.h"
 #import <FlashThoughtPlatform/LogManager.h>
 #import <FlashThoughtPlatform/LoginService.h>
+#import "NewFlashThoughtWindowController.h"
 
-@interface AppDelegate ()
+@interface AppDelegate () <LoginServiceDelegate>
 
 @property(strong) NSStatusItem *statusItem;
 @property(strong) NSPanel *loginPanel;
@@ -20,42 +21,58 @@
 
 - (void)initConfig {
   [[LogManager sharedManager] setupLogger];
+  [[LoginService sharedService] addDelegate:self];
   [[LoginService sharedService] initFIRConfig];
   [[LoginService sharedService] tryRelogin];
+}
+
+- (void)updateMenu {
+  NSMenu *menu = nil;
+  if (self.statusItem.menu) {
+    menu = self.statusItem.menu;
+    [menu removeAllItems];
+  } else {
+    NSMenu *menu = [[NSMenu alloc] init];
+    self.statusItem.menu = menu;
+  }
+  if ([[LoginService sharedService] isLoggedIn]) {
+    [menu addItemWithTitle:[NSString stringWithFormat:@"id: %@", [[LoginService sharedService] username]]
+                    action:nil
+             keyEquivalent:@""];
+    [menu addItemWithTitle:@"Sign Out"
+                    action:@selector(signOutClicked:)
+             keyEquivalent:@"s"];
+    [menu addItemWithTitle:@"New Flash Though"
+                    action:@selector(newFlashThoughtClicked:)
+             keyEquivalent:@"n"];
+  } else {
+    [menu addItemWithTitle:@"Login"
+                    action:@selector(loginClicked:)
+             keyEquivalent:@"l"];
+  }
+
+  [menu addItemWithTitle:@"Quit"
+                  action:@selector(quitApp:)
+           keyEquivalent:@"q"];
 }
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
   [self initConfig];
 
-  // 获取系统状态栏实例
   NSStatusBar *statusBar = [NSStatusBar systemStatusBar];
 
-  // 创建一个可变长度的状态项
   self.statusItem = [statusBar statusItemWithLength:NSVariableStatusItemLength];
   if (self.statusItem) {
     FLog(@"Status item has been created successfully.");
 
-    // 设置状态项的图标
     self.statusItem.button.image = [NSImage imageNamed:@"Status"];
     if (!self.statusItem.button.image) {
       FLog(@"Failed to load the image. Make sure 'Status' is correct and "
            @"the image is added to the project.");
     }
 
-    // 设置点击状态项时的动作
     self.statusItem.button.action = @selector(statusItemClicked:);
-
-    // 创建菜单
-    NSMenu *menu = [[NSMenu alloc] init];
-    [menu addItemWithTitle:@"Login"
-                    action:@selector(loginClicked:)
-             keyEquivalent:@""];
-    [menu addItemWithTitle:@"Quit"
-                    action:@selector(quitApp:)
-             keyEquivalent:@""];
-
-    // 将菜单关联到状态项
-    self.statusItem.menu = menu;
+    [self updateMenu];
   } else {
     FLog(@"Failed to create status item.");
   }
@@ -66,6 +83,11 @@
   FLog(@"Status item clicked.");
 }
 
+- (void)newFlashThoughtClicked {
+  NewFlashThoughtWindowController *newFlashThoughtWindowController = [[NewFlashThoughtWindowController alloc] initWithWindowNibName:@"NewFlashThoughtWindowController"];
+  [newFlashThoughtWindowController showWindow:nil];
+}
+
 - (void)showLoginPanel {
   if (!self.loginPanel) {
     self.loginPanel =
@@ -74,7 +96,7 @@
                                               NSWindowStyleMaskClosable)
                                      backing:NSBackingStoreBuffered
                                        defer:NO];
-    [self.loginPanel setIsVisible:NO]; 
+    [self.loginPanel setIsVisible:NO];
   }
   self.loginPanel.title = @"Login";
   [self.loginPanel makeKeyAndOrderFront:nil]; // 显示面板
@@ -88,14 +110,36 @@
   });
 }
 
+- (void)signOutClicked:(id)sender {
+  FLog(@"sign out clicked.");
+  [[LoginService sharedService] logout];
+}
+
 - (void)loginClicked:(id)sender {
   FLog(@"login clicked.");
   [self showLoginPanel];
 }
 
+- (void)newFlashThoughtClicked:(id)sender {
+  FLog(@"new flash thought clicked.");
+  [self newFlashThoughtClicked];
+}
+
 // 菜单项"Quit"的点击事件处理
 - (void)quitApp:(id)sender {
   [NSApp terminate:nil];
+}
+
+- (void)onSignInSuccess {
+  [self updateMenu];
+}
+
+- (void)onSignInFailed {
+  [self updateMenu];
+}
+
+- (void)onSignOutSuccess {
+  [self updateMenu];
 }
 
 @end

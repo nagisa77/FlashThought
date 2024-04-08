@@ -154,7 +154,7 @@
 
 - (NSString *)username {
   // Implement retrieval of username
-  return @"";
+  return GIDSignIn.sharedInstance.currentUser.profile.name;
 }
 
 - (void)logout {

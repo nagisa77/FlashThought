@@ -14,6 +14,8 @@
 		2256E8C42BC30CDF0083FFC3 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2256E8C32BC30CDF0083FFC3 /* main.m */; };
 		2256E8CC2BC3919F0083FFC3 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2256E8CB2BC3919F0083FFC3 /* Info.plist */; };
 		6B19BB082BC3C002003B3C20 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6B19BB072BC3C002003B3C20 /* GoogleService-Info.plist */; };
+		6B19BB0A2BC3CD95003B3C20 /* NewFlashThoughtWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6B19BB092BC3CD95003B3C20 /* NewFlashThoughtWindowController.xib */; };
+		6B19BB0C2BC3CDF2003B3C20 /* NewFlashThoughtWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B19BB0B2BC3CDF2003B3C20 /* NewFlashThoughtWindowController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +28,9 @@
 		2256E8C52BC30CDF0083FFC3 /* FlashThoughtsMacOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = FlashThoughtsMacOS.entitlements; sourceTree = "<group>"; };
 		2256E8CB2BC3919F0083FFC3 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6B19BB072BC3C002003B3C20 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		6B19BB092BC3CD95003B3C20 /* NewFlashThoughtWindowController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewFlashThoughtWindowController.xib; sourceTree = "<group>"; };
+		6B19BB0B2BC3CDF2003B3C20 /* NewFlashThoughtWindowController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NewFlashThoughtWindowController.m; sourceTree = "<group>"; };
+		6B19BB0D2BC3CDFE003B3C20 /* NewFlashThoughtWindowController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NewFlashThoughtWindowController.h; sourceTree = "<group>"; };
 		7E872B339CF8E687FBCB5678 /* Pods-FlashThoughtsMacOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FlashThoughtsMacOS.debug.xcconfig"; path = "Target Support Files/Pods-FlashThoughtsMacOS/Pods-FlashThoughtsMacOS.debug.xcconfig"; sourceTree = "<group>"; };
 		A2D9B309B45DE8BDC2EBE7C7 /* Pods-FlashThoughtsMacOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FlashThoughtsMacOS.release.xcconfig"; path = "Target Support Files/Pods-FlashThoughtsMacOS/Pods-FlashThoughtsMacOS.release.xcconfig"; sourceTree = "<group>"; };
 		E969C44F33D76FF2A7E3B803 /* libPods-FlashThoughtsMacOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-FlashThoughtsMacOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -81,6 +86,9 @@
 				2256E8C02BC30CDF0083FFC3 /* Main.storyboard */,
 				2256E8C32BC30CDF0083FFC3 /* main.m */,
 				2256E8C52BC30CDF0083FFC3 /* FlashThoughtsMacOS.entitlements */,
+				6B19BB092BC3CD95003B3C20 /* NewFlashThoughtWindowController.xib */,
+				6B19BB0B2BC3CDF2003B3C20 /* NewFlashThoughtWindowController.m */,
+				6B19BB0D2BC3CDFE003B3C20 /* NewFlashThoughtWindowController.h */,
 			);
 			path = FlashThoughtsMacOS;
 			sourceTree = "<group>";
@@ -154,6 +162,7 @@
 			files = (
 				2256E8BF2BC30CDF0083FFC3 /* Assets.xcassets in Resources */,
 				6B19BB082BC3C002003B3C20 /* GoogleService-Info.plist in Resources */,
+				6B19BB0A2BC3CD95003B3C20 /* NewFlashThoughtWindowController.xib in Resources */,
 				2256E8C22BC30CDF0083FFC3 /* Base in Resources */,
 				2256E8CC2BC3919F0083FFC3 /* Info.plist in Resources */,
 			);
@@ -208,6 +217,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6B19BB0C2BC3CDF2003B3C20 /* NewFlashThoughtWindowController.m in Sources */,
 				2256E8C42BC30CDF0083FFC3 /* main.m in Sources */,
 				2256E8BA2BC30CDE0083FFC3 /* AppDelegate.m in Sources */,
 			);
