@@ -9,7 +9,7 @@
 
 @interface LogManager ()
 
-@property (strong) DDFileLogger* fileLogger;
+@property(strong) DDFileLogger *fileLogger;
 
 @end
 
@@ -25,26 +25,28 @@
 }
 
 + (NSURL *)URLFromFileName:(NSString *)fileName {
-  NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+  NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,
+                                                       NSUserDomainMask, YES);
   NSString *documentsDirectory = [paths objectAtIndex:0];
-  NSString *filePath = [documentsDirectory stringByAppendingPathComponent:fileName];
+  NSString *filePath =
+      [documentsDirectory stringByAppendingPathComponent:fileName];
   return [NSURL fileURLWithPath:filePath];
 }
 
 - (void)setupLogger {
   [DDLog addLogger:[DDOSLogger sharedInstance]];
-  
+
   self.fileLogger = [[DDFileLogger alloc] init];
   self.fileLogger.rollingFrequency = 60 * 60 * 24;
   self.fileLogger.logFileManager.maximumNumberOfLogFiles = 7;
   [DDLog addLogger:self.fileLogger];
-  
-  FLog(@"*** New Process ***, log_path:%@", self.fileLogger.currentLogFileInfo.filePath);
+
+  FLog(@"*** New Process ***, log_path:%@",
+       self.fileLogger.currentLogFileInfo.filePath);
 }
 
 - (NSString *)getLogFilePath {
-  return self.fileLogger.currentLogFileInfo.filePath; 
+  return self.fileLogger.currentLogFileInfo.filePath;
 }
-
 
 @end

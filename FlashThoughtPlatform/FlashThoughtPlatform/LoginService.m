@@ -7,8 +7,8 @@
 
 #import "LoginService.h"
 #import <Firebase/Firebase.h>
-#import <GoogleSignIn/GoogleSignIn.h>
 #import <FlashThoughtPlatform/LogManager.h>
+#import <GoogleSignIn/GoogleSignIn.h>
 
 @interface LoginService ()
 
@@ -39,6 +39,21 @@
   [FIRApp configure];
 }
 
+- (void)gidSignInCompletionWithSignInResult:
+            (GIDSignInResult *_Nullable)signInResult
+                                      error:(NSError *_Nullable)error {
+  if (error) {
+    for (id<LoginServiceDelegate> delegate in self.delegates) {
+      if ([delegate respondsToSelector:@selector(onSignOutSuccess)]) {
+        [delegate onSignInFailed];
+      }
+    }
+    FLog(@"Google登录失败: %@", error.localizedDescription);
+    return;
+  }
+  [self firAuthWithGoogleUser:signInResult.user];
+}
+
 #if TARGET_OS_IPHONE
 - (void)loginWithViewController:(UIViewController *)viewController {
   // Google Signin
@@ -51,20 +66,25 @@
                               completion:^(
                                   GIDSignInResult *_Nullable signInResult,
                                   NSError *_Nullable error) {
-                                if (error) {
-                                  for (id<LoginServiceDelegate> delegate in self
-                                           .delegates) {
-                                    if ([delegate respondsToSelector:@selector
-                                                  (onSignOutSuccess)]) {
-                                      [delegate onSignInFailed];
-                                    }
-                                  }
-                                  FLog(@"Google登录失败: %@",
-                                        error.localizedDescription);
-                                  return;
-                                }
-                                [self firAuthWithGoogleUser:signInResult.user];
+                                [self
+                                    gidSignInCompletionWithSignInResult:
+                                        signInResult
+                                                                  error:error];
                               }];
+}
+#elif TARGET_OS_OSX
+- (void)loginWithWindow:(NSWindow *)window {
+  GIDConfiguration *configuration = [[GIDConfiguration alloc]
+      initWithClientID:[FIRApp defaultApp].options.clientID];
+  FLog(@"clientID: %@", [FIRApp defaultApp].options.clientID);
+  [GIDSignIn.sharedInstance setConfiguration:configuration];
+  [GIDSignIn.sharedInstance
+      signInWithPresentingWindow:window
+                      completion:^(GIDSignInResult *_Nullable signInResult,
+                                   NSError *_Nullable error) {
+                        [self gidSignInCompletionWithSignInResult:signInResult
+                                                            error:error];
+                      }];
 }
 #endif
 
@@ -91,9 +111,9 @@
                     return;
                   }
                   // 用户成功登录，继续应用流程
-    FLog(@"Google登录成功，用户UID"
-                        @": %@",
-                        authResult.user.uid);
+                  FLog(@"Google登录成功，用户UID"
+                       @": %@",
+                       authResult.user.uid);
                   for (id<LoginServiceDelegate> delegate in self.delegates) {
                     if ([delegate
                             respondsToSelector:@selector(onSignInSuccess)]) {

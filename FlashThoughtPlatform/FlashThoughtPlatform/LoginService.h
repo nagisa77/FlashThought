@@ -11,6 +11,8 @@
 #import <Foundation/Foundation.h>
 #if TARGET_OS_IPHONE
 #import <UIKit/UIKit.h>
+#elif TARGET_OS_OSX
+#import <AppKit/AppKit.h>
 #endif
 
 @protocol LoginServiceDelegate <NSObject>
@@ -30,6 +32,8 @@
 - (void)initFIRConfig;
 #if TARGET_OS_IPHONE
 - (void)loginWithViewController:(UIViewController *)viewController;
+#elif TARGET_OS_OSX
+- (void)loginWithWindow:(NSWindow *)window;
 #endif
 - (BOOL)isLoggedIn;
 - (void)tryRelogin;

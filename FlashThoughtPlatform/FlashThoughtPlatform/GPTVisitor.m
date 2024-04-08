@@ -99,8 +99,7 @@
             });
           } else {
             NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
-            FLog(@"Response status code: %ld",
-                  (long)[httpResponse statusCode]);
+            FLog(@"Response status code: %ld", (long)[httpResponse statusCode]);
 
             NSError *parseError = nil;
             NSDictionary *responseDictionary =
@@ -228,7 +227,7 @@
               });
             } else {
               FLog(@"Server responded with status code: %ld",
-                    (long)[httpResponse statusCode]);
+                   (long)[httpResponse statusCode]);
               dispatch_async(dispatch_get_main_queue(), ^{
                 [self.delegate visitor:self
                     didFailToVisitMessageWithMessageId:messageId

@@ -6,8 +6,8 @@
 //
 
 #import "ReminderManager.h"
-#import <Foundation/Foundation.h>
 #import <FlashThoughtPlatform/LogManager.h>
+#import <Foundation/Foundation.h>
 
 @interface ReminderManager ()
 @property(nonatomic, strong) EKEventStore *eventStore;
@@ -133,8 +133,7 @@
       }
     }];
 
-                         
-    FLog(@"isErrorOccurred"); 
+    FLog(@"isErrorOccurred");
     if (!isErrorOccurred) {
       // 如果没有错误，发送成功回调
       dispatch_async(dispatch_get_main_queue(), ^{

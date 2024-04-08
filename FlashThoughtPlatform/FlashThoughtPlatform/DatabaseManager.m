@@ -86,7 +86,7 @@
         }
         withCancelBlock:^(NSError *_Nonnull error) {
           // 错误处理，返回空NSData对象
-      FLog(@"Error fetching data: %@", error.localizedDescription);
+          FLog(@"Error fetching data: %@", error.localizedDescription);
           completion([NSData data]);
         }];
   } else {

@@ -362,13 +362,15 @@ NSString *audioPrompt =
     didVisitMessage:(NSString *)message
           messageId:(NSUInteger)messageId
        withResponse:(NSString *)response {
-  FLog(@"GPT response: %@, messageId: %ld, message: %@", response, messageId, message);
+  FLog(@"GPT response: %@, messageId: %ld, message: %@", response, messageId,
+       message);
 
   NSNumber *key = @(messageId);
   FLog(@"key: %@", key);
   if ([self.gptTextToRemindersRequests objectForKey:key] != nil ||
       [self.gptAudioTextToRemindersRequests objectForKey:key] != nil) {
-    FLog(@"it is gptTextToRemindersRequests or gptAudioTextToRemindersRequests");
+    FLog(
+        @"it is gptTextToRemindersRequests or gptAudioTextToRemindersRequests");
     [[ReminderManager sharedManager] addRemindersFromJsonString:response
                                                     toListNamed:@"FlashThought"
                                                          withID:messageId];
@@ -379,10 +381,10 @@ NSString *audioPrompt =
     [self updateThought:thought
                withType:FlashThoughtTypeAudioToTextFlashThought
                 content:response];
-    
+
     FLog(@"self.gptAudioToTextRequests: %@", self.gptAudioToTextRequests);
     [self.gptAudioToTextRequests removeObjectForKey:key];
-    
+
     if (self.gptAudioToTextRequests.count == 0) {
       NSArray<FlashThought *> *thoughts = [self allThoughts];
       NSString *audioMidString = @"";

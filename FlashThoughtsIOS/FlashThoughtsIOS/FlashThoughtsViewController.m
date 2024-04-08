@@ -11,9 +11,9 @@
 #import "MBProgressHUD.h"
 #import "NewFlashThoughtsViewController.h"
 #import <AVFoundation/AVFoundation.h>
+#import <FlashThoughtPlatform/LogManager.h>
 #import <LocalAuthentication/LocalAuthentication.h>
 #import <UIKit/UIKit.h>
-#import <FlashThoughtPlatform/LogManager.h>
 
 @interface FlashThoughtsViewController ()
 
@@ -33,10 +33,10 @@
 - (void)userAuth {
   // 创建一个新的LAContext实例
   LAContext *context = [[LAContext alloc] init];
-  
+
   // 定义一个错误对象
   NSError *error = nil;
-  
+
   // 检查设备是否支持设备所有者身份验证（包括生物识别和密码）
   if ([context canEvaluatePolicy:LAPolicyDeviceOwnerAuthentication
                            error:&error]) {
@@ -44,14 +44,14 @@
     [context evaluatePolicy:LAPolicyDeviceOwnerAuthentication
             localizedReason:@"请验证以继续"
                       reply:^(BOOL success, NSError *error) {
-      dispatch_async(dispatch_get_main_queue(), ^{
-        if (success) {
-          [self.passwordView setHidden:YES];
-        } else {
-          // 认证失败，可以选择处理错误或者什么都不做
-        }
-      });
-    }];
+                        dispatch_async(dispatch_get_main_queue(), ^{
+                          if (success) {
+                            [self.passwordView setHidden:YES];
+                          } else {
+                            // 认证失败，可以选择处理错误或者什么都不做
+                          }
+                        });
+                      }];
   } else {
     [self.passwordView setHidden:YES];
   }
@@ -61,13 +61,13 @@
                      content:(NSString *)content
                   completion:(void (^)(void))completionBlock {
   UIImpactFeedbackGenerator *mediumGenerator =
-  [[UIImpactFeedbackGenerator alloc]
-   initWithStyle:UIImpactFeedbackStyleMedium];
+      [[UIImpactFeedbackGenerator alloc]
+          initWithStyle:UIImpactFeedbackStyleMedium];
   [mediumGenerator prepare];
   [mediumGenerator impactOccurred];
-  
+
   MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-  
+
   // Set the text mode to show only text.
   hud.mode = MBProgressHUDModeText;
   hud.label.text = NSLocalizedString(content, title);
@@ -75,7 +75,7 @@
   hud.offset = CGPointMake(0.f, 250.f);
   hud.animationType = MBProgressHUDAnimationZoom;
   [hud setCompletionBlock:completionBlock];
-  
+
   [hud hideAnimated:YES afterDelay:3.f];
 }
 
@@ -90,7 +90,7 @@
   // 从上下文中获取修改后的图像
   UIImage *roundedImage = UIGraphicsGetImageFromCurrentImageContext();
   UIGraphicsEndImageContext();
-  
+
   return roundedImage;
 }
 
@@ -99,52 +99,52 @@
   boundSize.width -= 4;
   boundSize.height -= 4;
   NSURLSessionTask *task = [[NSURLSession sharedSession]
-                            dataTaskWithURL:url
-                            completionHandler:^(NSData *_Nullable data,
-                                                NSURLResponse *_Nullable response,
-                                                NSError *_Nullable error) {
-    if (data) {
-      UIImage *image = [UIImage imageWithData:data];
-      UIImage *resizedImage = [self resizeAndRoundImage:image
-                                                 toSize:boundSize];
-      if (resizedImage) {
-        dispatch_async(dispatch_get_main_queue(), ^{
-          [self.avaterButton setImage:resizedImage
-                             forState:UIControlStateNormal];
-        });
-      }
-    }
-  }];
+        dataTaskWithURL:url
+      completionHandler:^(NSData *_Nullable data,
+                          NSURLResponse *_Nullable response,
+                          NSError *_Nullable error) {
+        if (data) {
+          UIImage *image = [UIImage imageWithData:data];
+          UIImage *resizedImage = [self resizeAndRoundImage:image
+                                                     toSize:boundSize];
+          if (resizedImage) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+              [self.avaterButton setImage:resizedImage
+                                 forState:UIControlStateNormal];
+            });
+          }
+        }
+      }];
   [task resume];
 }
 
 - (void)viewDidLoad {
   [super viewDidLoad];
-  
+
   [[FlashThoughtManager sharedManager] setDelegate:self];
   [[LoginService sharedService] addDelegate:self];
-  
+
   self.tableView.delegate = self;
   self.tableView.dataSource = self;
   self.tableView.sectionHeaderHeight = 0.0;
   self.tableView.sectionFooterHeight = 0.0;
   self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-  
+
   [self checkAvatar];
-  
+
   self.topLeftLabel.alpha = 0.0;
-  
+
   UILongPressGestureRecognizer *longPressGesture =
-  [[UILongPressGestureRecognizer alloc]
-   initWithTarget:self
-   action:@selector(handleLongPress:)];
+      [[UILongPressGestureRecognizer alloc]
+          initWithTarget:self
+                  action:@selector(handleLongPress:)];
   longPressGesture.minimumPressDuration = 1;
   [self.addButton addGestureRecognizer:longPressGesture];
-  
+
   if (@available(iOS 13.0, *)) {
     {
       UIContextMenuInteraction *contextMenuInteraction =
-      [[UIContextMenuInteraction alloc] initWithDelegate:self];
+          [[UIContextMenuInteraction alloc] initWithDelegate:self];
       [self.summaryButton addInteraction:contextMenuInteraction];
     }
     // 头像先不支持长按
@@ -154,10 +154,10 @@
     //      [self.avaterButton addInteraction:contextMenuInteraction];
     //    }
   }
-  
+
   [self userAuth];
   [self.loadingView setHidden:YES];
-  
+
   // 注册XIB
   {
     UINib *cellNib = [UINib nibWithNibName:@"FlashThoughtCell" bundle:nil];
@@ -169,18 +169,18 @@
     [self.tableView registerNib:cellNib
          forCellReuseIdentifier:@"FlashThoughtAudioCell"];
   }
-  
+
   [[NSNotificationCenter defaultCenter]
-   addObserver:self
-   selector:@selector(appWillEnterForeground:)
-   name:UIApplicationWillEnterForegroundNotification
-   object:nil];
-  
+      addObserver:self
+         selector:@selector(appWillEnterForeground:)
+             name:UIApplicationWillEnterForegroundNotification
+           object:nil];
+
   [[NSNotificationCenter defaultCenter]
-   addObserver:self
-   selector:@selector(appDidEnterBackground:)
-   name:UIApplicationDidEnterBackgroundNotification
-   object:nil];
+      addObserver:self
+         selector:@selector(appDidEnterBackground:)
+             name:UIApplicationDidEnterBackgroundNotification
+           object:nil];
 }
 
 - (void)checkAvatar {
@@ -189,8 +189,8 @@
     [self.avaterButton setHidden:NO];
     [UIView animateWithDuration:0.5
                      animations:^{
-      self.avaterButton.alpha = 1.0;
-    }];
+                       self.avaterButton.alpha = 1.0;
+                     }];
     [self loadAvatarFromURL:[[LoginService sharedService] userAvatarURL]];
   } else {
     [self.avaterButton setHidden:YES];
@@ -232,44 +232,44 @@
 // todo: 重构这里
 - (void)showAPIKeySettings {
   UIImpactFeedbackGenerator *lightGenerator = [[UIImpactFeedbackGenerator alloc]
-                                               initWithStyle:UIImpactFeedbackStyleLight];
+      initWithStyle:UIImpactFeedbackStyleLight];
   [lightGenerator impactOccurred];
   UIAlertController *alertController =
-  [UIAlertController alertControllerWithTitle:@"OpenAI API key"
-                                      message:@"Need the key to "
-   @"summary your "
-   @"flash thoughts"
-                               preferredStyle:UIAlertControllerStyleAlert];
-  
+      [UIAlertController alertControllerWithTitle:@"OpenAI API key"
+                                          message:@"Need the key to "
+                                                  @"summary your "
+                                                  @"flash thoughts"
+                                   preferredStyle:UIAlertControllerStyleAlert];
+
   [alertController
-   addTextFieldWithConfigurationHandler:^(UITextField *textField) {
-    textField.placeholder = @"api key...";
-    NSString *apiKey = [[GPTVisitor sharedInstance] getAPIKey];
-    if (apiKey != nil) {
-      [textField setText:apiKey];
-    }
-  }];
-  
+      addTextFieldWithConfigurationHandler:^(UITextField *textField) {
+        textField.placeholder = @"api key...";
+        NSString *apiKey = [[GPTVisitor sharedInstance] getAPIKey];
+        if (apiKey != nil) {
+          [textField setText:apiKey];
+        }
+      }];
+
   UIAlertAction *confirmAction = [UIAlertAction
-                                  actionWithTitle:@"Confirm"
-                                  style:UIAlertActionStyleDefault
-                                  handler:^(UIAlertAction *action) {
-    // 获取输入框的内容
-    UITextField *textField = alertController.textFields[0];
-    if (![textField.text isEqual:@""]) {
-      [lightGenerator impactOccurred];
-      [[GPTVisitor sharedInstance] updateAPIKey:textField.text];
-    }
-  }];
-  
+      actionWithTitle:@"Confirm"
+                style:UIAlertActionStyleDefault
+              handler:^(UIAlertAction *action) {
+                // 获取输入框的内容
+                UITextField *textField = alertController.textFields[0];
+                if (![textField.text isEqual:@""]) {
+                  [lightGenerator impactOccurred];
+                  [[GPTVisitor sharedInstance] updateAPIKey:textField.text];
+                }
+              }];
+
   UIAlertAction *cancelAction =
-  [UIAlertAction actionWithTitle:@"Cancel"
-                           style:UIAlertActionStyleCancel
-                         handler:nil];
-  
+      [UIAlertAction actionWithTitle:@"Cancel"
+                               style:UIAlertActionStyleCancel
+                             handler:nil];
+
   [alertController addAction:confirmAction];
   [alertController addAction:cancelAction];
-  
+
   [self presentViewController:alertController animated:YES completion:nil];
 }
 
@@ -303,29 +303,39 @@
 }
 
 - (void)showDebugMenu {
-  UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Debug" message:@"Choose your debug option" preferredStyle:UIAlertControllerStyleAlert];
+  UIAlertController *alertController =
+      [UIAlertController alertControllerWithTitle:@"Debug"
+                                          message:@"Choose your debug option"
+                                   preferredStyle:UIAlertControllerStyleAlert];
 
-  UIAlertAction *action1 = [UIAlertAction actionWithTitle:@"Share Logs ⬆️" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-    FLog(@"share logs click ");
-    [self shareLog];
-  }];
+  UIAlertAction *action1 =
+      [UIAlertAction actionWithTitle:@"Share Logs ⬆️"
+                               style:UIAlertActionStyleDefault
+                             handler:^(UIAlertAction *_Nonnull action) {
+                               FLog(@"share logs click ");
+                               [self shareLog];
+                             }];
 
-  UIAlertAction *action2 = [UIAlertAction actionWithTitle:@"Clear Logs 🔄" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-    FLog(@"clear logs click");
-  }];
-  
-  UIAlertAction *action3 = [UIAlertAction actionWithTitle:@"Upload Logs ↗️" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-    FLog(@"upload logs click");
-  }];
+  UIAlertAction *action2 =
+      [UIAlertAction actionWithTitle:@"Clear Logs 🔄"
+                               style:UIAlertActionStyleDefault
+                             handler:^(UIAlertAction *_Nonnull action) {
+                               FLog(@"clear logs click");
+                             }];
 
-  
+  UIAlertAction *action3 =
+      [UIAlertAction actionWithTitle:@"Upload Logs ↗️"
+                               style:UIAlertActionStyleDefault
+                             handler:^(UIAlertAction *_Nonnull action) {
+                               FLog(@"upload logs click");
+                             }];
+
   // 将菜单选项 Actions 添加到 UIAlertController
   [alertController addAction:action1];
   [alertController addAction:action2];
   [alertController addAction:action3];
 
   [self presentViewController:alertController animated:YES completion:nil];
-
 }
 
 - (void)shareLog {
@@ -333,7 +343,9 @@
 
   NSURL *fileURL = [NSURL fileURLWithPath:filePath];
   if (fileURL) {
-    UIActivityViewController *activityVC = [[UIActivityViewController alloc] initWithActivityItems:@[fileURL] applicationActivities:nil];
+    UIActivityViewController *activityVC =
+        [[UIActivityViewController alloc] initWithActivityItems:@[ fileURL ]
+                                          applicationActivities:nil];
 
     [self presentViewController:activityVC animated:YES completion:nil];
   } else {
@@ -420,7 +432,7 @@
                                   });
                                 }];
   }
-  
+
   UIAction *action4 = [UIAction actionWithTitle:@"Debug"
                                           image:nil
                                      identifier:nil
