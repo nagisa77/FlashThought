@@ -51,7 +51,6 @@ typedef NS_ENUM(NSInteger, FlashThoughtType) {
 
 @property(nonatomic, assign) BOOL isHandlingAllThoughts;
 
-+ (NSURL *)audioRecordingURLFromFileName:(NSString *)fileName;
 + (instancetype)sharedManager;
 
 - (void)loadStoredThoughts;

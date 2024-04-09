@@ -536,8 +536,8 @@
 
       cell.dateLabel.text = nowDate;
       [cell setupAudioPlayerWithURL:
-                [FlashThoughtManager
-                    audioRecordingURLFromFileName:thought.audioFileName]];
+                [LogManager
+                 URLFromFileName:thought.audioFileName]];
       cell.selectionStyle = UITableViewCellSelectionStyleNone;
       return cell;
     } else {

@@ -237,7 +237,14 @@ NSString *audioPrompt =
 }
 
 - (void)updateThought:(FlashThought *)thought withContent:(NSString *)content {
-  NSUInteger index = [self.thoughts indexOfObject:thought];
+  NSInteger index = NSNotFound;
+  for (NSInteger i = 0; i < self.thoughts.count; ++i) {
+    if ([self.thoughts[i].date isEqual:thought.date]) {
+      index = i;
+      break;
+    }
+  }
+  assert((index != NSNotFound));
   if (index != NSNotFound) {
     FlashThought *existingThought = self.thoughts[index];
     existingThought.content = content;
@@ -249,13 +256,21 @@ NSString *audioPrompt =
 - (void)updateThought:(FlashThought *)thought
              withType:(FlashThoughtType)type
               content:(NSString *)content {
-  NSUInteger index = [self.thoughts indexOfObject:thought];
+  NSInteger index = NSNotFound;
+  for (NSInteger i = 0; i < self.thoughts.count; ++i) {
+    if ([self.thoughts[i].date isEqual:thought.date]) {
+      index = i;
+      break;
+    }
+  }
+  FLog(@"update updateThought");
+  assert((index != NSNotFound));
   if (index != NSNotFound) {
-    FlashThought *existingThought = self.thoughts[index];
-    existingThought.content = content;
-    existingThought.type = type;
+    FLog(@"found index, update content '%@'", content);
+    self.thoughts[index].content = content;
+    self.thoughts[index].type = type;
     [self saveThoughts];
-    [self.delegate thoughtManagerDidUpdateThought:existingThought];
+    [self.delegate thoughtManagerDidUpdateThought:self.thoughts[index]];
   }
 }
 
@@ -362,8 +377,10 @@ NSString *audioPrompt =
     didVisitMessage:(NSString *)message
           messageId:(NSUInteger)messageId
        withResponse:(NSString *)response {
-  FLog(@"GPT response: %@, messageId: %ld, message: %@", response, messageId,
+  FLog(@"GPT response: %@, messageId: %luld, message: %@", response, (unsigned long)messageId,
        message);
+  
+  FLog(@"=====GPT response: %@, messageId: %luld", response, (unsigned long)messageId);
 
   NSNumber *key = @(messageId);
   FLog(@"key: %@", key);
@@ -386,17 +403,21 @@ NSString *audioPrompt =
     [self.gptAudioToTextRequests removeObjectForKey:key];
 
     if (self.gptAudioToTextRequests.count == 0) {
+      FLog(@"self.gptAudioToTextRequests.count is 0");
       NSArray<FlashThought *> *thoughts = [self allThoughts];
       NSString *audioMidString = @"";
       NSMutableArray<FlashThought *> *audioTextThoughts =
           [[NSMutableArray alloc] init];
       for (FlashThought *thought in thoughts) {
+        FLog(@"thought type: %ld", (long)thought.type);
         if (thought.type == FlashThoughtTypeAudioToTextFlashThought) {
           [audioTextThoughts addObject:thought];
           audioMidString =
               [audioMidString stringByAppendingString:thought.content];
           audioMidString = [audioMidString
               stringByAppendingString:@"\n''''''''''''''''''''''''\n"];
+          
+          FLog(@"-- add %@", thought.content);
         }
       }
 
@@ -407,12 +428,14 @@ NSString *audioPrompt =
 
         [self.gptAudioTextToRemindersRequests setObject:audioTextThoughts
                                                  forKey:@(prompt.hash)];
+        FLog(@"audioTextThoughts.count is not 0, visit GPT with json");
         [[GPTVisitor sharedInstance] visitGPTWithMessage:prompt
                                                messageId:prompt.hash];
         [self.delegate thoughtsDidSentToAI:audioTextThoughts];
       }
     }
   }
+  FLog(@"=====GPT response: %@, messageId: %luld", response, (unsigned long)messageId);
   [self checkAllThoughtDoneFrom:@"didVisitMessage"];
 }
 
