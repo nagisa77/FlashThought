@@ -14,10 +14,16 @@
 
 @interface DatabaseManager : NSObject
 
-+ (instancetype)sharedManager;
-- (void)observeUserDataWithCompletion:(void (^)(NSData *data))completion;
++ (instancetype)sharedManager; // todo: (reconstruct)
+- (void)observeUserBase64DataWithCompletion:(void (^)(NSData *data))completion;
+- (void)observeUserAPIKeyCompletion:(void (^)(NSString *apikey))completion;
+- (void)observeUserHostWithCompletion:(void (^)(NSString *host))completion;
 - (void)loadAllDataWithCompletion:(void (^)(NSData *data))completion;
+- (void)loadAPIKeyWithCompletion:(void (^)(NSString *apiKey))completion;
+- (void)loadHostWithCompletion:(void (^)(NSString *host))completion;
 - (void)saveData:(NSData *)data;
+- (void)saveAPIKey:(NSString *)apiKey;
+- (void)saveHost:(NSString *)host; 
 
 @end
 

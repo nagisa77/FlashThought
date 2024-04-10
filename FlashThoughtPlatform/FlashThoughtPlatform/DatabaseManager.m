@@ -34,7 +34,7 @@
 
 #pragma mark - Public Methods
 
-- (void)observeUserDataWithCompletion:(void (^)(NSData *data))completion {
+- (void)observeUserBase64DataWithCompletion:(void (^)(NSData *data))completion {
   FIRUser *user = [FIRAuth auth].currentUser;
   if (user) {
     NSString *uid = user.uid;
@@ -42,13 +42,79 @@
         [[[[FIRDatabase database] reference] child:@"user_data"] child:uid];
     [userRef observeEventType:FIRDataEventTypeValue
                     withBlock:^(FIRDataSnapshot *_Nonnull snapshot) {
-                      [self dealWithDataSnapshot:snapshot
+                      [self parseAllThoughtDataWithDataSnapshot:snapshot
                                       completion:completion];
                     }];
   }
 }
 
-- (void)dealWithDataSnapshot:(FIRDataSnapshot *_Nonnull)snapshot
+- (void)observeUserAPIKeyCompletion:(void (^)(NSString *apikey))completion {
+  FIRUser *user = [FIRAuth auth].currentUser;
+  if (user) {
+    NSString *uid = user.uid;
+    FIRDatabaseReference *userRef =
+        [[[[FIRDatabase database] reference] child:@"user_data"] child:uid];
+    [userRef observeEventType:FIRDataEventTypeValue
+                    withBlock:^(FIRDataSnapshot *_Nonnull snapshot) {
+                      [self parseAPIKeyWithDataSnapshot:snapshot
+                                      completion:completion];
+                    }];
+  }
+}
+
+- (void)observeUserHostWithCompletion:(void (^)(NSString *host))completion {
+  FIRUser *user = [FIRAuth auth].currentUser;
+  if (user) {
+    NSString *uid = user.uid;
+    FIRDatabaseReference *userRef =
+        [[[[FIRDatabase database] reference] child:@"user_data"] child:uid];
+    [userRef observeEventType:FIRDataEventTypeValue
+                    withBlock:^(FIRDataSnapshot *_Nonnull snapshot) {
+                      [self parseHostWithDataSnapshot:snapshot
+                                      completion:completion];
+                    }];
+  }
+}
+
+- (void)parseAPIKeyWithDataSnapshot:(FIRDataSnapshot *_Nonnull)snapshot
+                  completion:(void (^)(NSString *apiKey))completion {
+  // 检查数据快照是否存在
+  if (snapshot.exists) {
+    // 尝试从快照中获取数据字典
+    NSDictionary *value = snapshot.value;
+    NSString *apiKey = value[@"apikey"];
+    if (apiKey) {
+      completion(apiKey);
+    } else {
+      // 如果数据字符串不存在，返回空NSData对象
+      completion(@"");
+    }
+  } else {
+    // 如果快照不存在数据，返回空NSData对象
+    completion(@"");
+  }
+}
+
+- (void)parseHostWithDataSnapshot:(FIRDataSnapshot *_Nonnull)snapshot
+                  completion:(void (^)(NSString *host))completion {
+  // 检查数据快照是否存在
+  if (snapshot.exists) {
+    // 尝试从快照中获取数据字典
+    NSDictionary *value = snapshot.value;
+    NSString *apiKey = value[@"host"];
+    if (apiKey) {
+      completion(apiKey);
+    } else {
+      // 如果数据字符串不存在，返回空NSData对象
+      completion(@"");
+    }
+  } else {
+    // 如果快照不存在数据，返回空NSData对象
+    completion(@"");
+  }
+}
+
+- (void)parseAllThoughtDataWithDataSnapshot:(FIRDataSnapshot *_Nonnull)snapshot
                   completion:(void (^)(NSData *data))completion {
   // 检查数据快照是否存在
   if (snapshot.exists) {
@@ -82,7 +148,7 @@
     // 监听单次事件
     [ref observeSingleEventOfType:FIRDataEventTypeValue
         withBlock:^(FIRDataSnapshot *_Nonnull snapshot) {
-          [self dealWithDataSnapshot:snapshot completion:completion];
+          [self parseAllThoughtDataWithDataSnapshot:snapshot completion:completion];
         }
         withCancelBlock:^(NSError *_Nonnull error) {
           // 错误处理，返回空NSData对象
@@ -94,6 +160,64 @@
         [[NSUserDefaults alloc] initWithSuiteName:APP_GROUP_NAME];
     NSData *storedData = [sharedDefaults objectForKey:APP_LOCAL_DATABASE_KEY];
     completion(storedData);
+  }
+}
+
+- (void)loadHostWithCompletion:(void (^)(NSString *host))completion {
+  FIRUser *user = [FIRAuth auth].currentUser;
+  if (user) {
+    // 获取当前用户的UID
+    NSString *uid = user.uid;
+    // 获取指向用户数据的数据库引用
+    FIRDatabaseReference *ref =
+        [[[[FIRDatabase database] reference]
+          child:@"user_data"]
+          child:uid];
+
+    // 监听单次事件
+    [ref observeSingleEventOfType:FIRDataEventTypeValue
+        withBlock:^(FIRDataSnapshot *_Nonnull snapshot) {
+      [self parseHostWithDataSnapshot:snapshot completion:completion];
+    }
+        withCancelBlock:^(NSError *_Nonnull error) {
+          FLog(@"Error fetching data: %@", error.localizedDescription);
+          completion(@"");
+        }];
+  } else {
+    NSUserDefaults *defaults =
+        [[NSUserDefaults alloc] initWithSuiteName:APP_GROUP_NAME];
+    NSString *retrievedOpenaiKey = [defaults stringForKey:@"proxy"];
+    
+    completion(retrievedOpenaiKey);
+  }
+}
+
+- (void)loadAPIKeyWithCompletion:(void (^)(NSString *apiKey))completion {
+  FIRUser *user = [FIRAuth auth].currentUser;
+  if (user) {
+    // 获取当前用户的UID
+    NSString *uid = user.uid;
+    // 获取指向用户数据的数据库引用
+    FIRDatabaseReference *ref =
+        [[[[FIRDatabase database] reference]
+          child:@"user_data"]
+          child:uid];
+
+    // 监听单次事件
+    [ref observeSingleEventOfType:FIRDataEventTypeValue
+        withBlock:^(FIRDataSnapshot *_Nonnull snapshot) {
+      [self parseAPIKeyWithDataSnapshot:snapshot completion:completion];
+    }
+        withCancelBlock:^(NSError *_Nonnull error) {
+          FLog(@"Error fetching data: %@", error.localizedDescription);
+          completion(@"");
+        }];
+  } else {
+    NSUserDefaults *defaults =
+        [[NSUserDefaults alloc] initWithSuiteName:APP_GROUP_NAME];
+    NSString *retrievedOpenaiKey = [defaults stringForKey:@"openaiKey"];
+    
+    completion(retrievedOpenaiKey);
   }
 }
 
@@ -117,6 +241,35 @@
     NSUserDefaults *defaults =
         [[NSUserDefaults alloc] initWithSuiteName:APP_GROUP_NAME];
     [defaults setObject:data forKey:APP_LOCAL_DATABASE_KEY];
+    [defaults synchronize];
+  }
+}
+
+- (void)saveAPIKey:(NSString *)apiKey {
+  // 确保用户已经登录
+  FIRUser *user = [FIRAuth auth].currentUser;
+  if (user) {
+    NSString *uid = user.uid;
+    FIRDatabaseReference *ref = [[FIRDatabase database] reference];
+    [[[ref child:@"user_data"] child:uid] setValue:@{@"apikey" : apiKey}];
+  } else {
+    NSUserDefaults *defaults =
+        [[NSUserDefaults alloc] initWithSuiteName:APP_GROUP_NAME];
+    [defaults setObject:apiKey forKey:@"openaiKey"];
+    [defaults synchronize];
+  }
+}
+
+- (void)saveHost:(NSString *)host {
+  FIRUser *user = [FIRAuth auth].currentUser;
+  if (user) {
+    NSString *uid = user.uid;
+    FIRDatabaseReference *ref = [[FIRDatabase database] reference];
+    [[[ref child:@"user_data"] child:uid] setValue:@{@"host" : host}];
+  } else {
+    NSUserDefaults *defaults =
+        [[NSUserDefaults alloc] initWithSuiteName:APP_GROUP_NAME];
+    [defaults setObject:host forKey:@"proxy"];
     [defaults synchronize];
   }
 }

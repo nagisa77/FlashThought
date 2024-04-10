@@ -129,10 +129,6 @@ NSString *audioPrompt =
     [GPTVisitor sharedInstance].delegate = sharedInstance;
     [ReminderManager sharedManager].delegate = sharedInstance;
     [[LoginService sharedService] addDelegate:sharedInstance];
-    [[DatabaseManager sharedManager]
-        observeUserDataWithCompletion:^(NSData *data) {
-          [sharedInstance dealWithAllDataReload:data];
-        }];
   });
 
   return sharedInstance;
@@ -495,6 +491,10 @@ NSString *audioPrompt =
 
 - (void)onSignInSuccess {
   [self loadStoredThoughts];
+  [[DatabaseManager sharedManager]
+      observeUserBase64DataWithCompletion:^(NSData *data) {
+        [self dealWithAllDataReload:data];
+      }];
 }
 
 - (void)onSignInFailed {

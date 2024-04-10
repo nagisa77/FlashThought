@@ -11,6 +11,11 @@
 #import <FlashThoughtPlatform/LogManager.h>
 #import <Foundation/Foundation.h>
 
+@interface GPTVisitor ()
+@property (strong) NSString *apiKey;
+@property (strong) NSString *host;
+@end
+
 @implementation GPTVisitor
 
 + (instancetype)sharedInstance {
@@ -18,41 +23,34 @@
   static dispatch_once_t onceToken;
   dispatch_once(&onceToken, ^{
     sharedInstance = [[self alloc] init];
+    
+    [[DatabaseManager sharedManager] observeUserAPIKeyCompletion:^(NSString *apikey) {
+      sharedInstance.apiKey = apikey;
+    }];
+    [[DatabaseManager sharedManager] observeUserHostWithCompletion:^(NSString *host) {
+      sharedInstance.host = host;
+    }];
   });
   return sharedInstance;
 }
 
 - (NSString *)getAPIKey {
-  NSUserDefaults *defaults =
-      [[NSUserDefaults alloc] initWithSuiteName:APP_GROUP_NAME];
-  NSString *retrievedOpenaiKey = [defaults stringForKey:@"openaiKey"];
-  return retrievedOpenaiKey;
+  return self.apiKey;
 }
 
 - (void)updateAPIKey:(NSString *)apiKey {
-  // 获取NSUserDefaults实例
-  NSUserDefaults *defaults =
-      [[NSUserDefaults alloc] initWithSuiteName:APP_GROUP_NAME];
-  [defaults setObject:apiKey forKey:@"openaiKey"];
-  [defaults synchronize];
+  [[DatabaseManager sharedManager] saveAPIKey:apiKey];
 }
 
 - (NSString *)getProxyHost {
-  NSUserDefaults *defaults =
-      [[NSUserDefaults alloc] initWithSuiteName:APP_GROUP_NAME];
-  NSString *retrievedProxyHost = [defaults stringForKey:@"proxy"];
-
-  if (retrievedProxyHost == nil) {
+  if (self.host == nil) {
     return @"https://api.openai.com/";
   }
-  return retrievedProxyHost;
+  return self.host;
 }
 
 - (void)updateProxyHost:(NSString *)proxy {
-  NSUserDefaults *defaults =
-      [[NSUserDefaults alloc] initWithSuiteName:APP_GROUP_NAME];
-  [defaults setObject:proxy forKey:@"proxy"];
-  [defaults synchronize];
+  [[DatabaseManager sharedManager] saveHost:proxy];
 }
 
 - (void)visitGPTWithMessage:(NSString *)message
