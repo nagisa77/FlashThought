@@ -63,14 +63,49 @@
 
 - (void)windowDidLoad {
   FLog(@"window did load");
+  
+  [self.window setLevel:NSFloatingWindowLevel];
+  [self.window setOpaque:NO];
+  [self.window setBackgroundColor:[NSColor clearColor]];
+  [self.window setStyleMask:self.window.styleMask
+      & ~NSWindowStyleMaskClosable
+      & ~NSWindowStyleMaskMiniaturizable
+      & ~NSWindowStyleMaskResizable];
+  
+  NSRect screenFrame = [[NSScreen mainScreen] frame];
+  NSRect windowFrame = [self.window  frame];
+  CGFloat newY = screenFrame.size.height - windowFrame.size.height;
+  CGFloat newX = (screenFrame.size.width - windowFrame.size.width) / 2;
+  NSRect startFrame = NSMakeRect(newX, newY - 300, windowFrame.size.width, windowFrame.size.height);
+  NSRect finalFrame = NSMakeRect(newX, newY, windowFrame.size.width, windowFrame.size.height);
+
+  [self.window setFrame:startFrame display:YES];
+  self.window.alphaValue = .0;
+  
+  // 执行滑入动画
+  [NSAnimationContext runAnimationGroup:^(NSAnimationContext *context) {
+    context.duration = .3; // 动画时长
+    [[self.window animator] setFrame:finalFrame display:YES];
+    [self.window animator].alphaValue = 1.0;
+  } completionHandler:^{
+    FLog(@"Animation completed");
+    NSRect frame = self.window.frame;
+    frame.size.width += 1;
+    [self.window setFrame:frame display:YES animate:NO];
+    frame.size.width -= 1;
+    [self.window setFrame:frame display:YES animate:NO];
+  }];
 }
 
 - (void)awakeFromNib {
   FLog(@"awakeFromNib");
 
   if (self.window) {
-    [self.window center];
-    [self.window setLevel:NSFloatingWindowLevel];
+    NSVisualEffectView *visualEffectView = (NSVisualEffectView *)self.window.contentView;
+    visualEffectView.material = NSVisualEffectMaterialFullScreenUI;
+    visualEffectView.blendingMode = NSVisualEffectBlendingModeBehindWindow;
+    visualEffectView.state = NSVisualEffectStateActive;
+    
     [NSApp activateIgnoringOtherApps:YES];
   }
 }
