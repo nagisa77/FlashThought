@@ -77,7 +77,7 @@
   CGFloat newY = screenFrame.size.height - windowFrame.size.height;
   CGFloat newX = (screenFrame.size.width - windowFrame.size.width) / 2;
   NSRect startFrame = NSMakeRect(newX, newY - 300, windowFrame.size.width, windowFrame.size.height);
-  NSRect finalFrame = NSMakeRect(newX, newY, windowFrame.size.width, windowFrame.size.height);
+  NSRect finalFrame = NSMakeRect(newX, newY - 60, windowFrame.size.width, windowFrame.size.height);
 
   [self.window setFrame:startFrame display:YES];
   self.window.alphaValue = .0;
@@ -99,7 +99,9 @@
 
 - (void)awakeFromNib {
   FLog(@"awakeFromNib");
-
+  
+  self.textField.placeholderString = @"Please input your thought :) \n\ne.g.\n'I want to learn swift language tonight!'\n'Why is the earth round? It’s amazing😳!!'";
+  
   if (self.window) {
     NSVisualEffectView *visualEffectView = (NSVisualEffectView *)self.window.contentView;
     visualEffectView.material = NSVisualEffectMaterialFullScreenUI;

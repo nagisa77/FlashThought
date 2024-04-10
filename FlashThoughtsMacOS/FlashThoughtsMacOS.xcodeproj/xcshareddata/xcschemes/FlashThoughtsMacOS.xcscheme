@@ -15,10 +15,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "225A4BEE2BB2FF6800A5304A"
-               BuildableName = "FlashThoughtsIOS.app"
-               BlueprintName = "FlashThoughtsIOS"
-               ReferencedContainer = "container:FlashThoughtsIOS.xcodeproj">
+               BlueprintIdentifier = "2256E8B42BC30CDE0083FFC3"
+               BuildableName = "FlashThoughtsMacOS.app"
+               BlueprintName = "FlashThoughtsMacOS"
+               ReferencedContainer = "container:FlashThoughtsMacOS.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -44,10 +44,10 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "225A4BEE2BB2FF6800A5304A"
-            BuildableName = "FlashThoughtsIOS.app"
-            BlueprintName = "FlashThoughtsIOS"
-            ReferencedContainer = "container:FlashThoughtsIOS.xcodeproj">
+            BlueprintIdentifier = "2256E8B42BC30CDE0083FFC3"
+            BuildableName = "FlashThoughtsMacOS.app"
+            BlueprintName = "FlashThoughtsMacOS"
+            ReferencedContainer = "container:FlashThoughtsMacOS.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -61,10 +61,10 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "225A4BEE2BB2FF6800A5304A"
-            BuildableName = "FlashThoughtsIOS.app"
-            BlueprintName = "FlashThoughtsIOS"
-            ReferencedContainer = "container:FlashThoughtsIOS.xcodeproj">
+            BlueprintIdentifier = "2256E8B42BC30CDE0083FFC3"
+            BuildableName = "FlashThoughtsMacOS.app"
+            BlueprintName = "FlashThoughtsMacOS"
+            ReferencedContainer = "container:FlashThoughtsMacOS.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
