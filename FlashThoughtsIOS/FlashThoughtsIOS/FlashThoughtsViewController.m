@@ -14,6 +14,7 @@
 #import <FlashThoughtPlatform/LogManager.h>
 #import <LocalAuthentication/LocalAuthentication.h>
 #import <UIKit/UIKit.h>
+#import <UserNotifications/UserNotifications.h>
 
 @interface FlashThoughtsViewController ()
 
@@ -29,6 +30,14 @@
 @end
 
 @implementation FlashThoughtsViewController
+
+- (void)requestNotification {
+  UNUserNotificationCenter *center = [UNUserNotificationCenter currentNotificationCenter];
+  [center requestAuthorizationWithOptions:(UNAuthorizationOptionAlert + UNAuthorizationOptionSound)
+                        completionHandler:^(BOOL granted, NSError * _Nullable error) {
+                            // Enable or disable features based on authorization
+                        }];
+}
 
 - (void)userAuth {
   // 创建一个新的LAContext实例
@@ -118,6 +127,27 @@
   [task resume];
 }
 
+- (void)notifyUserWithTitle:(NSString *)title body:(NSString *)body {
+  UNMutableNotificationContent *content = [[UNMutableNotificationContent alloc] init];
+  content.title = [NSString localizedUserNotificationStringForKey:title arguments:nil];
+  content.body = [NSString localizedUserNotificationStringForKey:body
+  arguments:nil];
+  content.sound = [UNNotificationSound defaultSound];
+
+  UNTimeIntervalNotificationTrigger *trigger = [UNTimeIntervalNotificationTrigger
+                                                triggerWithTimeInterval:1 repeats:NO];
+
+  UNNotificationRequest *request = [UNNotificationRequest requestWithIdentifier:@"UYLLocalNotification"
+                                                                        content:content trigger:trigger];
+
+  UNUserNotificationCenter *center = [UNUserNotificationCenter currentNotificationCenter];
+  [center addNotificationRequest:request withCompletionHandler:^(NSError * _Nullable error) {
+      if (error != nil) {
+          FLog(@"Something went wrong: %@", error);
+      }
+  }];
+}
+
 - (void)viewDidLoad {
   [super viewDidLoad];
 
@@ -156,6 +186,8 @@
   }
 
   [self userAuth];
+  [self requestNotification];
+  [self notifyUserWithTitle:@"Hello" body:@"hello world"];
   [self.loadingView setHidden:YES];
 
   // 注册XIB
@@ -690,6 +722,7 @@
   [self showMessageWithTitle:@"save complete"
                      content:@"Saved to Reminders :)"
                   completion:nil];
+  [self notifyUserWithTitle:@"Saved" body:@"Saved to Reminders :) Please check~"];
 }
 
 - (void)thoughtManagerDidRemoveThought:(FlashThought *)thought {
