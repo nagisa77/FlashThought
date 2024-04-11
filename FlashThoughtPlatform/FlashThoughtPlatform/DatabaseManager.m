@@ -236,7 +236,7 @@
 
     // 将数据保存到数据库的指定位置
     // 这里我们存储在"user_data"节点下，你可以根据需要调整路径
-    [[[ref child:@"user_data"] child:uid] setValue:@{@"data" : dataString}];
+    [[[ref child:@"user_data"] child:uid] updateChildValues:@{@"data" : dataString}];
   } else {
     NSUserDefaults *defaults =
         [[NSUserDefaults alloc] initWithSuiteName:APP_GROUP_NAME];
@@ -251,7 +251,7 @@
   if (user) {
     NSString *uid = user.uid;
     FIRDatabaseReference *ref = [[FIRDatabase database] reference];
-    [[[ref child:@"user_data"] child:uid] setValue:@{@"apikey" : apiKey}];
+    [[[ref child:@"user_data"] child:uid] updateChildValues:@{@"apikey" : apiKey}];
   } else {
     NSUserDefaults *defaults =
         [[NSUserDefaults alloc] initWithSuiteName:APP_GROUP_NAME];
@@ -265,7 +265,7 @@
   if (user) {
     NSString *uid = user.uid;
     FIRDatabaseReference *ref = [[FIRDatabase database] reference];
-    [[[ref child:@"user_data"] child:uid] setValue:@{@"host" : host}];
+    [[[ref child:@"user_data"] child:uid] updateChildValues:@{@"host" : host}];
   } else {
     NSUserDefaults *defaults =
         [[NSUserDefaults alloc] initWithSuiteName:APP_GROUP_NAME];

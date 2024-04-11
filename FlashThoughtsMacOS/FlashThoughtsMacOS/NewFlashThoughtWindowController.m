@@ -53,7 +53,7 @@
 @end
 
 
-@interface NewFlashThoughtWindowController ()
+@interface NewFlashThoughtWindowController () <NSWindowDelegate>
 
 @property IBOutlet NSTextField *textField;
 
@@ -63,6 +63,8 @@
 
 - (void)windowDidLoad {
   FLog(@"window did load");
+  
+  self.window.delegate = self;
   
   [self.window setLevel:NSFloatingWindowLevel];
   [self.window setOpaque:NO];
@@ -114,7 +116,7 @@
 
 - (IBAction)cancelBtnDidClicked:(id)sender {
   FLog(@"cancelButtonDidClick");
-  [self close];
+  [self runAnamiteAndClose];
 }
 
 - (IBAction)okButtonDidClick:(id)sender {
@@ -127,12 +129,38 @@
     FLog(@"add a flash thought %@", fs.content);
     [[FlashThoughtManager sharedManager] addThought:fs];
   }
-  [self close];
+  [self runAnamiteAndClose];
 }
 
 - (void)close {
   FLog(@"close");
-  [super close];
+  [self runAnamiteAndClose];
 }
+
+- (void)runAnamiteAndClose {
+  NSRect windowFrame = [self.window  frame];
+  NSRect finalFrame = NSMakeRect(windowFrame.origin.x,
+                                 windowFrame.origin.y - 60,
+                                 windowFrame.size.width,
+                                 windowFrame.size.height);
+
+  
+  // 执行滑出动画
+  [NSAnimationContext runAnimationGroup:^(NSAnimationContext *context) {
+    context.duration = .3; // 动画时长
+    [[self.window animator] setFrame:finalFrame display:YES];
+    [self.window animator].alphaValue = 0.0;
+  } completionHandler:^{
+    FLog(@"Animation completed");
+    [self.window close];
+  }];
+}
+
+- (BOOL)windowShouldClose:(NSWindow *)sender {
+  [self runAnamiteAndClose];
+    // 返回 NO，因为我们要在动画完成后手动关闭窗口
+    return NO;
+}
+
 
 @end

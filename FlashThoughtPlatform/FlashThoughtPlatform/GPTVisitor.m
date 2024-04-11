@@ -39,17 +39,19 @@
 }
 
 - (void)updateAPIKey:(NSString *)apiKey {
+  self.apiKey = apiKey;
   [[DatabaseManager sharedManager] saveAPIKey:apiKey];
 }
 
 - (NSString *)getProxyHost {
-  if (self.host == nil) {
+  if (self.host == nil || [self.host isEqual:@""]) {
     return @"https://api.openai.com/";
   }
   return self.host;
 }
 
 - (void)updateProxyHost:(NSString *)proxy {
+  self.host = proxy;
   [[DatabaseManager sharedManager] saveHost:proxy];
 }
 

@@ -663,7 +663,7 @@
 }
 
 - (IBAction)summaryButtonDidClicked:(id)sender {
-  if ([[GPTVisitor sharedInstance] getAPIKey] == nil) {
+  if ([[[GPTVisitor sharedInstance] getAPIKey] isEqual:@""]) {
     [self showAPIKeySettings];
     return;
   }
