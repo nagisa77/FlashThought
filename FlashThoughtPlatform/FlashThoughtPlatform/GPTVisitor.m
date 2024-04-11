@@ -12,8 +12,8 @@
 #import <Foundation/Foundation.h>
 
 @interface GPTVisitor ()
-@property (strong) NSString *apiKey;
-@property (strong) NSString *host;
+@property(strong) NSString *apiKey;
+@property(strong) NSString *host;
 @end
 
 @implementation GPTVisitor
@@ -23,13 +23,15 @@
   static dispatch_once_t onceToken;
   dispatch_once(&onceToken, ^{
     sharedInstance = [[self alloc] init];
-    
-    [[DatabaseManager sharedManager] observeUserAPIKeyCompletion:^(NSString *apikey) {
-      sharedInstance.apiKey = apikey;
-    }];
-    [[DatabaseManager sharedManager] observeUserHostWithCompletion:^(NSString *host) {
-      sharedInstance.host = host;
-    }];
+
+    [[DatabaseManager sharedManager]
+        observeUserAPIKeyCompletion:^(NSString *apikey) {
+          sharedInstance.apiKey = apikey;
+        }];
+    [[DatabaseManager sharedManager]
+        observeUserHostWithCompletion:^(NSString *host) {
+          sharedInstance.host = host;
+        }];
   });
   return sharedInstance;
 }
@@ -85,7 +87,8 @@
                                                        error:&error];
   [request setHTTPBody:postData];
 
-  NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
+  NSURLSessionConfiguration *configuration =
+      [NSURLSessionConfiguration defaultSessionConfiguration];
   configuration.timeoutIntervalForRequest = 120; // API太垃圾，准备等待久一点
   NSURLSession *session = [NSURLSession sessionWithConfiguration:configuration];
   NSURLSessionDataTask *dataTask = [session

@@ -26,32 +26,37 @@
 }
 
 - (NSString *)washJsonString:(NSString *)jsonString {
-    // 定义两种可能的前缀和一个公共后缀
-    NSString *prefixJson = @"```json";
-    NSString *prefix = @"```";
-    NSString *suffix = @"```";
-    
-    // 检查并去除```json前缀和```后缀
-    if ([jsonString hasPrefix:prefixJson] && [jsonString hasSuffix:suffix]) {
-        NSRange rangeToRemove = NSMakeRange(0, prefixJson.length);
-        jsonString = [jsonString stringByReplacingCharactersInRange:rangeToRemove withString:@""];
-        
-        rangeToRemove = NSMakeRange(jsonString.length - suffix.length, suffix.length);
-        jsonString = [jsonString stringByReplacingCharactersInRange:rangeToRemove withString:@""];
-    }
-    // 检查并去除```前缀和```后缀，适用于非json特定的情况
-    else if ([jsonString hasPrefix:prefix] && [jsonString hasSuffix:suffix]) {
-        NSRange rangeToRemove = NSMakeRange(0, prefix.length);
-        jsonString = [jsonString stringByReplacingCharactersInRange:rangeToRemove withString:@""];
-        
-        rangeToRemove = NSMakeRange(jsonString.length - suffix.length, suffix.length);
-        jsonString = [jsonString stringByReplacingCharactersInRange:rangeToRemove withString:@""];
-    }
-    
-    // 返回处理后的字符串
-    return jsonString;
-}
+  // 定义两种可能的前缀和一个公共后缀
+  NSString *prefixJson = @"```json";
+  NSString *prefix = @"```";
+  NSString *suffix = @"```";
 
+  // 检查并去除```json前缀和```后缀
+  if ([jsonString hasPrefix:prefixJson] && [jsonString hasSuffix:suffix]) {
+    NSRange rangeToRemove = NSMakeRange(0, prefixJson.length);
+    jsonString = [jsonString stringByReplacingCharactersInRange:rangeToRemove
+                                                     withString:@""];
+
+    rangeToRemove =
+        NSMakeRange(jsonString.length - suffix.length, suffix.length);
+    jsonString = [jsonString stringByReplacingCharactersInRange:rangeToRemove
+                                                     withString:@""];
+  }
+  // 检查并去除```前缀和```后缀，适用于非json特定的情况
+  else if ([jsonString hasPrefix:prefix] && [jsonString hasSuffix:suffix]) {
+    NSRange rangeToRemove = NSMakeRange(0, prefix.length);
+    jsonString = [jsonString stringByReplacingCharactersInRange:rangeToRemove
+                                                     withString:@""];
+
+    rangeToRemove =
+        NSMakeRange(jsonString.length - suffix.length, suffix.length);
+    jsonString = [jsonString stringByReplacingCharactersInRange:rangeToRemove
+                                                     withString:@""];
+  }
+
+  // 返回处理后的字符串
+  return jsonString;
+}
 
 - (void)addRemindersFromJsonString:(NSString *)jsonString
                        toListNamed:(NSString *)listName
@@ -72,7 +77,8 @@
 
     NSString *washedJsonString = [self washJsonString:jsonString];
     NSDictionary *remindersDict = [NSJSONSerialization
-        JSONObjectWithData:[washedJsonString dataUsingEncoding:NSUTF8StringEncoding]
+        JSONObjectWithData:[washedJsonString
+                               dataUsingEncoding:NSUTF8StringEncoding]
                    options:kNilOptions
                      error:&error];
     if (error) {

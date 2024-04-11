@@ -113,8 +113,7 @@
   }
 
   // 配置录音器
-  NSURL *recordingURL =
-      [LogManager URLFromFileName:self.fileName];
+  NSURL *recordingURL = [LogManager URLFromFileName:self.fileName];
   NSDictionary *settings = @{
     AVFormatIDKey : @(kAudioFormatMPEG4AAC),
     AVSampleRateKey : @44100,

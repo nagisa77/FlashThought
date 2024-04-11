@@ -373,10 +373,11 @@ NSString *audioPrompt =
     didVisitMessage:(NSString *)message
           messageId:(NSUInteger)messageId
        withResponse:(NSString *)response {
-  FLog(@"GPT response: %@, messageId: %luld, message: %@", response, (unsigned long)messageId,
-       message);
-  
-  FLog(@"=====GPT response: %@, messageId: %luld", response, (unsigned long)messageId);
+  FLog(@"GPT response: %@, messageId: %luld, message: %@", response,
+       (unsigned long)messageId, message);
+
+  FLog(@"=====GPT response: %@, messageId: %luld", response,
+       (unsigned long)messageId);
 
   NSNumber *key = @(messageId);
   FLog(@"key: %@", key);
@@ -412,7 +413,7 @@ NSString *audioPrompt =
               [audioMidString stringByAppendingString:thought.content];
           audioMidString = [audioMidString
               stringByAppendingString:@"\n''''''''''''''''''''''''\n"];
-          
+
           FLog(@"-- add %@", thought.content);
         }
       }
@@ -431,7 +432,8 @@ NSString *audioPrompt =
       }
     }
   }
-  FLog(@"=====GPT response: %@, messageId: %luld", response, (unsigned long)messageId);
+  FLog(@"=====GPT response: %@, messageId: %luld", response,
+       (unsigned long)messageId);
   [self checkAllThoughtDoneFrom:@"didVisitMessage"];
 }
 

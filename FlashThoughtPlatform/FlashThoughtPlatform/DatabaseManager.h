@@ -23,7 +23,7 @@
 - (void)loadHostWithCompletion:(void (^)(NSString *host))completion;
 - (void)saveData:(NSData *)data;
 - (void)saveAPIKey:(NSString *)apiKey;
-- (void)saveHost:(NSString *)host; 
+- (void)saveHost:(NSString *)host;
 
 @end
 

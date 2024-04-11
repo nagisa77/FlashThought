@@ -6,10 +6,10 @@
 //
 
 #import "AppDelegate.h"
-#import <FlashThoughtPlatform/LogManager.h>
-#import <FlashThoughtPlatform/FlashThoughtManager.h>
-#import <FlashThoughtPlatform/LoginService.h>
 #import "NewFlashThoughtWindowController.h"
+#import <FlashThoughtPlatform/FlashThoughtManager.h>
+#import <FlashThoughtPlatform/LogManager.h>
+#import <FlashThoughtPlatform/LoginService.h>
 
 @interface AppDelegate () <LoginServiceDelegate>
 
@@ -39,13 +39,16 @@
     self.statusItem.menu = menu;
   }
   if ([[LoginService sharedService] isLoggedIn]) {
-    [menu addItemWithTitle:[NSString stringWithFormat:@"id: %@", [[LoginService sharedService] username]]
+    [menu addItemWithTitle:[NSString
+                               stringWithFormat:@"id: %@",
+                                                [[LoginService sharedService]
+                                                    username]]
                     action:nil
              keyEquivalent:@""];
     [menu addItemWithTitle:@"New Flash Though"
                     action:@selector(newFlashThoughtClicked:)
              keyEquivalent:@"n"];
-    
+
     [menu addItemWithTitle:@"Sign Out"
                     action:@selector(signOutClicked:)
              keyEquivalent:@"s"];
@@ -54,14 +57,12 @@
                     action:@selector(loginClicked:)
              keyEquivalent:@"l"];
   }
-  
+
   [menu addItemWithTitle:@"Debug With Log"
                   action:@selector(debugWithLog:)
            keyEquivalent:@"d"];
 
-  [menu addItemWithTitle:@"Quit"
-                  action:@selector(quitApp:)
-           keyEquivalent:@"q"];
+  [menu addItemWithTitle:@"Quit" action:@selector(quitApp:) keyEquivalent:@"q"];
 }
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
@@ -95,7 +96,8 @@
   if (self.flashThoughtWindowController) {
     [self.flashThoughtWindowController close];
   }
-  self.flashThoughtWindowController = [[NewFlashThoughtWindowController alloc] initWithWindowNibName:@"NewFlashThoughtWindowController"];
+  self.flashThoughtWindowController = [[NewFlashThoughtWindowController alloc]
+      initWithWindowNibName:@"NewFlashThoughtWindowController"];
   [self.flashThoughtWindowController showWindow:self];
 }
 
@@ -141,9 +143,10 @@
 }
 
 - (void)openLogFolder {
-  NSURL *fileURL = [NSURL fileURLWithPath:[[LogManager sharedManager] getLogFilePath]];
+  NSURL *fileURL =
+      [NSURL fileURLWithPath:[[LogManager sharedManager] getLogFilePath]];
   NSWorkspace *workspace = [NSWorkspace sharedWorkspace];
-  [workspace activateFileViewerSelectingURLs:@[fileURL]];
+  [workspace activateFileViewerSelectingURLs:@[ fileURL ]];
 }
 
 - (void)debugWithLog:(id)sender {

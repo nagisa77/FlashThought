@@ -43,7 +43,7 @@
     [userRef observeEventType:FIRDataEventTypeValue
                     withBlock:^(FIRDataSnapshot *_Nonnull snapshot) {
                       [self parseAllThoughtDataWithDataSnapshot:snapshot
-                                      completion:completion];
+                                                     completion:completion];
                     }];
   }
 }
@@ -57,7 +57,7 @@
     [userRef observeEventType:FIRDataEventTypeValue
                     withBlock:^(FIRDataSnapshot *_Nonnull snapshot) {
                       [self parseAPIKeyWithDataSnapshot:snapshot
-                                      completion:completion];
+                                             completion:completion];
                     }];
   }
 }
@@ -71,13 +71,13 @@
     [userRef observeEventType:FIRDataEventTypeValue
                     withBlock:^(FIRDataSnapshot *_Nonnull snapshot) {
                       [self parseHostWithDataSnapshot:snapshot
-                                      completion:completion];
+                                           completion:completion];
                     }];
   }
 }
 
 - (void)parseAPIKeyWithDataSnapshot:(FIRDataSnapshot *_Nonnull)snapshot
-                  completion:(void (^)(NSString *apiKey))completion {
+                         completion:(void (^)(NSString *apiKey))completion {
   // 检查数据快照是否存在
   if (snapshot.exists) {
     // 尝试从快照中获取数据字典
@@ -96,7 +96,7 @@
 }
 
 - (void)parseHostWithDataSnapshot:(FIRDataSnapshot *_Nonnull)snapshot
-                  completion:(void (^)(NSString *host))completion {
+                       completion:(void (^)(NSString *host))completion {
   // 检查数据快照是否存在
   if (snapshot.exists) {
     // 尝试从快照中获取数据字典
@@ -115,7 +115,7 @@
 }
 
 - (void)parseAllThoughtDataWithDataSnapshot:(FIRDataSnapshot *_Nonnull)snapshot
-                  completion:(void (^)(NSData *data))completion {
+                                 completion:(void (^)(NSData *data))completion {
   // 检查数据快照是否存在
   if (snapshot.exists) {
     // 尝试从快照中获取数据字典
@@ -148,7 +148,8 @@
     // 监听单次事件
     [ref observeSingleEventOfType:FIRDataEventTypeValue
         withBlock:^(FIRDataSnapshot *_Nonnull snapshot) {
-          [self parseAllThoughtDataWithDataSnapshot:snapshot completion:completion];
+          [self parseAllThoughtDataWithDataSnapshot:snapshot
+                                         completion:completion];
         }
         withCancelBlock:^(NSError *_Nonnull error) {
           // 错误处理，返回空NSData对象
@@ -170,15 +171,13 @@
     NSString *uid = user.uid;
     // 获取指向用户数据的数据库引用
     FIRDatabaseReference *ref =
-        [[[[FIRDatabase database] reference]
-          child:@"user_data"]
-          child:uid];
+        [[[[FIRDatabase database] reference] child:@"user_data"] child:uid];
 
     // 监听单次事件
     [ref observeSingleEventOfType:FIRDataEventTypeValue
         withBlock:^(FIRDataSnapshot *_Nonnull snapshot) {
-      [self parseHostWithDataSnapshot:snapshot completion:completion];
-    }
+          [self parseHostWithDataSnapshot:snapshot completion:completion];
+        }
         withCancelBlock:^(NSError *_Nonnull error) {
           FLog(@"Error fetching data: %@", error.localizedDescription);
           completion(@"");
@@ -187,7 +186,7 @@
     NSUserDefaults *defaults =
         [[NSUserDefaults alloc] initWithSuiteName:APP_GROUP_NAME];
     NSString *retrievedOpenaiKey = [defaults stringForKey:@"proxy"];
-    
+
     completion(retrievedOpenaiKey);
   }
 }
@@ -199,15 +198,13 @@
     NSString *uid = user.uid;
     // 获取指向用户数据的数据库引用
     FIRDatabaseReference *ref =
-        [[[[FIRDatabase database] reference]
-          child:@"user_data"]
-          child:uid];
+        [[[[FIRDatabase database] reference] child:@"user_data"] child:uid];
 
     // 监听单次事件
     [ref observeSingleEventOfType:FIRDataEventTypeValue
         withBlock:^(FIRDataSnapshot *_Nonnull snapshot) {
-      [self parseAPIKeyWithDataSnapshot:snapshot completion:completion];
-    }
+          [self parseAPIKeyWithDataSnapshot:snapshot completion:completion];
+        }
         withCancelBlock:^(NSError *_Nonnull error) {
           FLog(@"Error fetching data: %@", error.localizedDescription);
           completion(@"");
@@ -216,7 +213,7 @@
     NSUserDefaults *defaults =
         [[NSUserDefaults alloc] initWithSuiteName:APP_GROUP_NAME];
     NSString *retrievedOpenaiKey = [defaults stringForKey:@"openaiKey"];
-    
+
     completion(retrievedOpenaiKey);
   }
 }
@@ -236,7 +233,8 @@
 
     // 将数据保存到数据库的指定位置
     // 这里我们存储在"user_data"节点下，你可以根据需要调整路径
-    [[[ref child:@"user_data"] child:uid] updateChildValues:@{@"data" : dataString}];
+    [[[ref child:@"user_data"] child:uid]
+        updateChildValues:@{@"data" : dataString}];
   } else {
     NSUserDefaults *defaults =
         [[NSUserDefaults alloc] initWithSuiteName:APP_GROUP_NAME];
@@ -251,7 +249,8 @@
   if (user) {
     NSString *uid = user.uid;
     FIRDatabaseReference *ref = [[FIRDatabase database] reference];
-    [[[ref child:@"user_data"] child:uid] updateChildValues:@{@"apikey" : apiKey}];
+    [[[ref child:@"user_data"] child:uid]
+        updateChildValues:@{@"apikey" : apiKey}];
   } else {
     NSUserDefaults *defaults =
         [[NSUserDefaults alloc] initWithSuiteName:APP_GROUP_NAME];
