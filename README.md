@@ -4,6 +4,12 @@
 
 FlashThoughts is a cross-platform application designed for both iOS and macOS that empowers users to effortlessly record their daily thoughts in various formats including text and voice. A notable feature in development is the ability to capture thoughts as images. One of the core functionalities of FlashThoughts is its ability to summarize these recorded thoughts into a to-do list, which can then be integrated into reminders for easy tracking and organization. Supporting Google sign-in, FlashThoughts ensures your data is synchronized across all devices, offering a seamless user experience.
 
+#### MacOS
+![](./ReadmeResourses/Picture_MacOS_introduce.png "Title")
+#### IOS
+![](./ReadmeResourses/Picture_IOS_introduce.jpg "Title")
+
+
 ## Table of Contents
 
 - [Installation](#installation)
