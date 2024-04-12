@@ -6,7 +6,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <FlashThoughtPlatform/FlashThoughtManager.h>
 
-@interface AppDelegate : UIResponder <UIApplicationDelegate>
+@interface AppDelegate : UIResponder <UIApplicationDelegate, FlashThoughtManagerDelegate>
 
 @end

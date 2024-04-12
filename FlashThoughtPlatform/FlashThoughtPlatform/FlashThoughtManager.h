@@ -47,7 +47,8 @@ typedef NS_ENUM(NSInteger, FlashThoughtType) {
     : NSObject <GPTVisitorDelegate, ReminderManagerDelegate,
                 LoginServiceDelegate>
 
-@property(nonatomic, weak) id<FlashThoughtManagerDelegate> delegate;
+@property(nonatomic, strong)
+    NSMutableArray<id<FlashThoughtManagerDelegate>> *delegates;
 
 @property(nonatomic, assign) BOOL isHandlingAllThoughts;
 
@@ -60,6 +61,9 @@ typedef NS_ENUM(NSInteger, FlashThoughtType) {
 - (void)updateThought:(FlashThought *)thought withContent:(NSString *)content;
 - (BOOL)sendAllThoughtsToAI;
 - (void)cancelSendAllThoughtsToAI;
+
+- (void)addDelegate:(id<FlashThoughtManagerDelegate>)delegate;
+- (void)removeDelegate:(id<FlashThoughtManagerDelegate>)delegate;
 
 @end
 

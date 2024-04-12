@@ -119,6 +119,7 @@ NSString *audioPrompt =
   dispatch_once(&onceToken, ^{
     sharedInstance = [[self alloc] init];
     sharedInstance.thoughts = [[NSMutableArray alloc] init];
+    sharedInstance.delegates = [[NSMutableArray alloc] init];
     sharedInstance.gptTextToRemindersRequests =
         [[NSMutableDictionary alloc] init];
     sharedInstance.gptAudioToTextRequests = [[NSMutableDictionary alloc] init];
@@ -184,7 +185,11 @@ NSString *audioPrompt =
       FLog(@"Failed to load thoughts: %@", error.localizedDescription);
     }
 
-    [self.delegate shouldReloadData];
+    for (id<FlashThoughtManagerDelegate> delegate in self.delegates) {
+      if ([delegate respondsToSelector:@selector(shouldReloadData)]) {
+        [delegate shouldReloadData];
+      }
+    }
   }
 }
 
@@ -202,7 +207,11 @@ NSString *audioPrompt =
 - (void)addThought:(FlashThought *)thought {
   [self.thoughts addObject:thought];
   [self saveThoughts];
-  [self.delegate thoughtManagerDidAddThought:thought];
+  for (id<FlashThoughtManagerDelegate> delegate in self.delegates) {
+    if ([delegate respondsToSelector:@selector(thoughtManagerDidAddThought:)]) {
+      [delegate thoughtManagerDidAddThought:thought];
+    }
+  }
 }
 
 - (NSInteger)removeThought:(FlashThought *)thought {
@@ -226,7 +235,11 @@ NSString *audioPrompt =
     }
     [self.thoughts removeObjectAtIndex:index];
     [self saveThoughts];
-    [self.delegate thoughtManagerDidRemoveThought:thought];
+    for (id<FlashThoughtManagerDelegate> delegate in self.delegates) {
+      if ([delegate respondsToSelector:@selector(thoughtManagerDidRemoveThought:)]) {
+        [delegate thoughtManagerDidRemoveThought:thought];
+      }
+    }
   }
 
   return index;
@@ -245,7 +258,11 @@ NSString *audioPrompt =
     FlashThought *existingThought = self.thoughts[index];
     existingThought.content = content;
     [self saveThoughts];
-    [self.delegate thoughtManagerDidUpdateThought:existingThought];
+    for (id<FlashThoughtManagerDelegate> delegate in self.delegates) {
+      if ([delegate respondsToSelector:@selector(thoughtManagerDidUpdateThought:)]) {
+        [delegate thoughtManagerDidUpdateThought:thought];
+      }
+    }
   }
 }
 
@@ -266,7 +283,12 @@ NSString *audioPrompt =
     self.thoughts[index].content = content;
     self.thoughts[index].type = type;
     [self saveThoughts];
-    [self.delegate thoughtManagerDidUpdateThought:self.thoughts[index]];
+    
+    for (id<FlashThoughtManagerDelegate> delegate in self.delegates) {
+      if ([delegate respondsToSelector:@selector(thoughtManagerDidUpdateThought:)]) {
+        [delegate thoughtManagerDidUpdateThought:thought];
+      }
+    }
   }
 }
 
@@ -293,7 +315,11 @@ NSString *audioPrompt =
   if (self.thoughtsHandled == self.countOfAllThoughts) {
     FLog(@"done");
     self.isHandlingAllThoughts = NO;
-    [self.delegate allThoughtsDidHandle];
+    for (id<FlashThoughtManagerDelegate> delegate in self.delegates) {
+      if ([delegate respondsToSelector:@selector(allThoughtsDidHandle)]) {
+        [delegate allThoughtsDidHandle];
+      }
+    }
   }
 }
 
@@ -351,7 +377,11 @@ NSString *audioPrompt =
                                         forKey:@(prompt.hash)];
     [[GPTVisitor sharedInstance] visitGPTWithMessage:prompt
                                            messageId:prompt.hash];
-    [self.delegate thoughtsDidSentToAI:textThoughts];
+    for (id<FlashThoughtManagerDelegate> delegate in self.delegates) {
+      if ([delegate respondsToSelector:@selector(thoughtsDidSentToAI:)]) {
+        [delegate thoughtsDidSentToAI:textThoughts];
+      }
+    }
   }
 
   if (audioTextThoughts.count != 0) {
@@ -363,7 +393,11 @@ NSString *audioPrompt =
                                              forKey:@(prompt.hash)];
     [[GPTVisitor sharedInstance] visitGPTWithMessage:prompt
                                            messageId:prompt.hash];
-    [self.delegate thoughtsDidSentToAI:audioTextThoughts];
+    for (id<FlashThoughtManagerDelegate> delegate in self.delegates) {
+      if ([delegate respondsToSelector:@selector(thoughtsDidSentToAI:)]) {
+        [delegate thoughtsDidSentToAI:audioTextThoughts];
+      }
+    }
   }
 
   return YES;
@@ -428,7 +462,12 @@ NSString *audioPrompt =
         FLog(@"audioTextThoughts.count is not 0, visit GPT with json");
         [[GPTVisitor sharedInstance] visitGPTWithMessage:prompt
                                                messageId:prompt.hash];
-        [self.delegate thoughtsDidSentToAI:audioTextThoughts];
+        
+        for (id<FlashThoughtManagerDelegate> delegate in self.delegates) {
+          if ([delegate respondsToSelector:@selector(thoughtsDidSentToAI:)]) {
+            [delegate thoughtsDidSentToAI:audioTextThoughts];
+          }
+        }
       }
     }
   }
@@ -441,7 +480,11 @@ NSString *audioPrompt =
     didFailToVisitMessageWithMessageId:(NSUInteger)messageId
                                  error:(NSError *)error {
   if (error.code == NSURLErrorUnsupportedURL) {
-    [self.delegate shouldStopHandlingThoughtsByError:error];
+    for (id<FlashThoughtManagerDelegate> delegate in self.delegates) {
+      if ([delegate respondsToSelector:@selector(shouldStopHandlingThoughtsByError:)]) {
+        [delegate shouldStopHandlingThoughtsByError:error];
+      }
+    }
   }
   NSNumber *key = @(messageId);
   FLog(@"didFailToVisitMessageWithMessageId: %ld, key: %@", messageId, key);
@@ -473,14 +516,22 @@ NSString *audioPrompt =
     if ([self.gptTextToRemindersRequests objectForKey:key] != nil) {
       NSArray<FlashThought *> *thoughts =
           [self.gptTextToRemindersRequests objectForKey:key];
-      [self.delegate thoughtsDidSaveToReminders:thoughts];
+      for (id<FlashThoughtManagerDelegate> delegate in self.delegates) {
+        if ([delegate respondsToSelector:@selector(thoughtsDidSaveToReminders:)]) {
+          [delegate thoughtsDidSaveToReminders:thoughts];
+        }
+      }
       self.thoughtsHandled += thoughts.count;
       FLog(@"thoughtsHandled1 += %d", (int)thoughts.count);
     }
     if ([self.gptAudioTextToRemindersRequests objectForKey:key] != nil) {
       NSArray<FlashThought *> *thoughts =
           [self.gptAudioTextToRemindersRequests objectForKey:key];
-      [self.delegate thoughtsDidSaveToReminders:thoughts];
+      for (id<FlashThoughtManagerDelegate> delegate in self.delegates) {
+        if ([delegate respondsToSelector:@selector(thoughtsDidSaveToReminders:)]) {
+          [delegate thoughtsDidSaveToReminders:thoughts];
+        }
+      }
       self.thoughtsHandled += thoughts.count;
       FLog(@"thoughtsHandled2 += %d", (int)thoughts.count);
     }
@@ -505,6 +556,16 @@ NSString *audioPrompt =
 
 - (void)onSignOutSuccess {
   [self loadStoredThoughts];
+}
+
+- (void)addDelegate:(id<FlashThoughtManagerDelegate>)delegate {
+  if (![self.delegates containsObject:delegate]) {
+    [self.delegates addObject:delegate];
+  }
+}
+
+- (void)removeDelegate:(id<FlashThoughtManagerDelegate>)delegate {
+  [self.delegates removeObject:delegate];
 }
 
 @end

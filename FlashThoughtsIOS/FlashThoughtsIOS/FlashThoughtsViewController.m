@@ -151,7 +151,7 @@
 - (void)viewDidLoad {
   [super viewDidLoad];
 
-  [[FlashThoughtManager sharedManager] setDelegate:self];
+  [[FlashThoughtManager sharedManager] addDelegate:self];
   [[LoginService sharedService] addDelegate:self];
 
   self.tableView.delegate = self;
@@ -240,7 +240,7 @@
 }
 
 - (void)dealloc {
-  [[FlashThoughtManager sharedManager] setDelegate:nil];
+  [[FlashThoughtManager sharedManager] removeDelegate:self];
   [[LoginService sharedService] removeDelegate:self];
   self.tableView.delegate = nil;
   [[NSNotificationCenter defaultCenter] removeObserver:self];

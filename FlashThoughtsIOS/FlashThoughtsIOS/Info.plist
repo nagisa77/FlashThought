@@ -2,13 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-  <key>UIBackgroundModes</key>
-  <array>
-      <string>fetch</string>
-      <string>processing</string>
-  </array>
-  <key>UIUserInterfaceStyle</key>
-  <string>Light</string>
 	<key>CFBundleURLTypes</key>
 	<array>
 		<dict>
@@ -17,7 +10,7 @@
 			<key>CFBundleURLSchemes</key>
 			<array>
 				<string>flashThoughts</string>
-        <string>com.googleusercontent.apps.973946872425-fbfuapnoq2hv5sqjl6dtpmi0g0aldte8</string>
+				<string>com.googleusercontent.apps.973946872425-fbfuapnoq2hv5sqjl6dtpmi0g0aldte8</string>
 			</array>
 		</dict>
 	</array>
@@ -40,5 +33,16 @@
 			</array>
 		</dict>
 	</dict>
+	<key>UIBackgroundModes</key>
+	<array>
+		<string>audio</string>
+		<string>location</string>
+		<string>voip</string>
+		<string>newsstand-content</string>
+		<string>external-accessory</string>
+		<string>fetch</string>
+		<string>remote-notification</string>
+		<string>processing</string>
+	</array>
 </dict>
 </plist>
