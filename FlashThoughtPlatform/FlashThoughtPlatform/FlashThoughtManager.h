@@ -57,6 +57,7 @@ typedef NS_ENUM(NSInteger, FlashThoughtType) {
 - (void)loadStoredThoughts;
 - (NSArray<FlashThought *> *)allThoughts;
 - (void)addThought:(FlashThought *)thought;
+- (void)addThought:(FlashThought *)thought reload:(BOOL)reload;
 - (NSInteger)removeThought:(FlashThought *)thought;
 - (void)updateThought:(FlashThought *)thought withContent:(NSString *)content;
 - (BOOL)sendAllThoughtsToAI;

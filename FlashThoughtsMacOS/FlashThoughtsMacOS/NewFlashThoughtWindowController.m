@@ -141,7 +141,7 @@
                                       date:[NSDate date]];
     fs.content = self.textField.stringValue;
     FLog(@"add a flash thought %@", fs.content);
-    [[FlashThoughtManager sharedManager] addThought:fs];
+    [[FlashThoughtManager sharedManager] addThought:fs reload:YES];
   }
   [self runAnamiteAndClose];
 }

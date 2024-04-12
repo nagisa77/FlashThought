@@ -193,18 +193,26 @@ NSString *audioPrompt =
   }
 }
 
-- (void)loadStoredThoughts {
+- (void)loadStoredThoughtsWithCompletion:(void (^)(void))completion {
   [[DatabaseManager sharedManager]
       loadAllDataWithCompletion:^(NSData *storedData) {
         [self dealWithAllDataReload:storedData];
-      }];
+        if (completion) {
+          completion();
+        }
+  }];
+}
+
+- (void)loadStoredThoughts {
+  [self loadStoredThoughtsWithCompletion:nil];
+
 }
 
 - (NSArray<FlashThought *> *)allThoughts {
   return [self.thoughts copy];
 }
 
-- (void)addThought:(FlashThought *)thought {
+- (void)addThoughtInner:(FlashThought *)thought {
   [self.thoughts addObject:thought];
   [self saveThoughts];
   for (id<FlashThoughtManagerDelegate> delegate in self.delegates) {
@@ -212,6 +220,20 @@ NSString *audioPrompt =
       [delegate thoughtManagerDidAddThought:thought];
     }
   }
+}
+
+- (void)addThought:(FlashThought *)thought reload:(BOOL)reload {
+  if (reload) {
+    [self loadStoredThoughtsWithCompletion:^{
+      [self addThoughtInner:thought];
+    }];
+  } else {
+    [self addThoughtInner:thought];
+  }
+}
+
+- (void)addThought:(FlashThought *)thought {
+  [self addThought:thought reload:NO];
 }
 
 - (NSInteger)removeThought:(FlashThought *)thought {
