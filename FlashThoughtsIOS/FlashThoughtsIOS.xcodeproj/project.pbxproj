@@ -45,7 +45,7 @@
 		223132FC2BBBF4CB009B0CF1 /* FlashThoughtsIOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = FlashThoughtsIOS.entitlements; sourceTree = "<group>"; };
 		223132FD2BBBF770009B0CF1 /* FlashThought Share Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "FlashThought Share Extension.entitlements"; sourceTree = "<group>"; };
 		224545482BBD4AE0009A75C7 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		225A4BEF2BB2FF6800A5304A /* FlashThoughtsIOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlashThoughtsIOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		225A4BEF2BB2FF6800A5304A /* FlashThought.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlashThought.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		225A4BF22BB2FF6800A5304A /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		225A4BF32BB2FF6800A5304A /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		225A4BF52BB2FF6800A5304A /* SceneDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SceneDelegate.h; sourceTree = "<group>"; };
@@ -121,7 +121,7 @@
 		225A4BF02BB2FF6800A5304A /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				225A4BEF2BB2FF6800A5304A /* FlashThoughtsIOS.app */,
+				225A4BEF2BB2FF6800A5304A /* FlashThought.app */,
 				223132752BBBD1F8009B0CF1 /* FlashThought Share Extension.appex */,
 			);
 			name = Products;
@@ -218,7 +218,7 @@
 			);
 			name = FlashThoughtsIOS;
 			productName = FlashThoughts;
-			productReference = 225A4BEF2BB2FF6800A5304A /* FlashThoughtsIOS.app */;
+			productReference = 225A4BEF2BB2FF6800A5304A /* FlashThought.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -579,7 +579,7 @@
 				);
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = tim.FlashThoughtsIOS;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = FlashThought;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -618,7 +618,7 @@
 				);
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = tim.FlashThoughtsIOS;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = FlashThought;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
