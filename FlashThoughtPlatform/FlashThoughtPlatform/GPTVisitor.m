@@ -9,29 +9,45 @@
 #import <Firebase/Firebase.h>
 #import <FlashThoughtPlatform/GPTVisitor.h>
 #import <FlashThoughtPlatform/LogManager.h>
+#import <FlashThoughtPlatform/LoginService.h>
 #import <Foundation/Foundation.h>
 
-@interface GPTVisitor ()
+@interface GPTVisitor () <LoginServiceDelegate>
 @property(strong) NSString *apiKey;
 @property(strong) NSString *host;
 @end
 
 @implementation GPTVisitor
 
+- (void)onSignInSuccess {
+  [self observeAPIKeysAndProxy];
+}
+
+- (void)onSignInFailed {
+  
+}
+
+- (void)onSignOutSuccess {
+  
+}
+
+- (void)observeAPIKeysAndProxy {
+  [[DatabaseManager sharedManager]
+      observeUserAPIKeyCompletion:^(NSString *apikey) {
+        self.apiKey = apikey;
+      }];
+  [[DatabaseManager sharedManager]
+      observeUserHostWithCompletion:^(NSString *host) {
+    self.host = host;
+      }];
+}
+
 + (instancetype)sharedInstance {
   static GPTVisitor *sharedInstance = nil;
   static dispatch_once_t onceToken;
   dispatch_once(&onceToken, ^{
     sharedInstance = [[self alloc] init];
-
-    [[DatabaseManager sharedManager]
-        observeUserAPIKeyCompletion:^(NSString *apikey) {
-          sharedInstance.apiKey = apikey;
-        }];
-    [[DatabaseManager sharedManager]
-        observeUserHostWithCompletion:^(NSString *host) {
-          sharedInstance.host = host;
-        }];
+    [sharedInstance observeAPIKeysAndProxy];
   });
   return sharedInstance;
 }

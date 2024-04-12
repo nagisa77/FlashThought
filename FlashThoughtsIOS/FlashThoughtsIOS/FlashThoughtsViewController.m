@@ -426,6 +426,13 @@
   [self presentViewController:alertController animated:YES completion:nil];
 }
 
+- (void)makeNetworkRequest {
+  NSURL *url = [NSURL URLWithString:@"https://api.example.com/data"];
+    NSURLSessionTask *task = [[NSURLSession sharedSession] dataTaskWithURL:url completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+    }];
+    [task resume];
+}
+
 - (UIMenu *)summaryButtonActionsMenu {
   UIAction *action1 = [UIAction actionWithTitle:@"API Key Setting"
                                           image:nil
@@ -450,6 +457,7 @@
                                 handler:^(UIAction *_Nonnull action) {
                                   dispatch_async(dispatch_get_main_queue(), ^{
                                     FLog(@"signout click");
+                                    [self makeNetworkRequest];
                                     [self signout];
                                   });
                                 }];
@@ -460,6 +468,7 @@
                                 handler:^(UIAction *_Nonnull action) {
                                   dispatch_async(dispatch_get_main_queue(), ^{
                                     FLog(@"signInWithGoogle click");
+                                    [self makeNetworkRequest];
                                     [self signInWithGoogle];
                                   });
                                 }];
