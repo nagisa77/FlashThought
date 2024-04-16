@@ -1,19 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
-  <dict>
-    <key>LSUIElement</key>
-    <string>YES</string>
-    <key>CFBundleURLTypes</key>
-    <array>
-      <dict>
-        <key>CFBundleURLSchemes</key>
-        <array>
-          <string>flashThoughts</string>
-          <string>com.googleusercontent.apps.973946872425-33i3jtdt035s812c6642v3t618g1ern0</string>
-        </array>
-      </dict>
-    </array>
-  </dict>
+<dict>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>flashThoughts</string>
+				<string>com.googleusercontent.apps.973946872425-33i3jtdt035s812c6642v3t618g1ern0</string>
+			</array>
+		</dict>
+	</array>
+</dict>
 </plist>
-

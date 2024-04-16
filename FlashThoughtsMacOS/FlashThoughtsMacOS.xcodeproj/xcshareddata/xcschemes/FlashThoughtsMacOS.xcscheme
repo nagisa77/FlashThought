@@ -16,7 +16,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "2256E8B42BC30CDE0083FFC3"
-               BuildableName = "FlashThoughtsMacOS.app"
+               BuildableName = "FlashThoughts.app"
                BlueprintName = "FlashThoughtsMacOS"
                ReferencedContainer = "container:FlashThoughtsMacOS.xcodeproj">
             </BuildableReference>
@@ -45,7 +45,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "2256E8B42BC30CDE0083FFC3"
-            BuildableName = "FlashThoughtsMacOS.app"
+            BuildableName = "FlashThoughts.app"
             BlueprintName = "FlashThoughtsMacOS"
             ReferencedContainer = "container:FlashThoughtsMacOS.xcodeproj">
          </BuildableReference>
@@ -62,7 +62,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "2256E8B42BC30CDE0083FFC3"
-            BuildableName = "FlashThoughtsMacOS.app"
+            BuildableName = "FlashThoughts.app"
             BlueprintName = "FlashThoughtsMacOS"
             ReferencedContainer = "container:FlashThoughtsMacOS.xcodeproj">
          </BuildableReference>
