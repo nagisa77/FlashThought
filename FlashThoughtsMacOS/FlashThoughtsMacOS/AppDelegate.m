@@ -14,8 +14,10 @@
 @interface AppDelegate () <LoginServiceDelegate>
 
 @property(strong) NSStatusItem *statusItem;
+@property(strong) NSMenu *menu;
 @property(strong) NSPanel *loginPanel;
 @property(strong) NewFlashThoughtWindowController *flashThoughtWindowController;
+
 
 @end
 
@@ -30,39 +32,35 @@
 }
 
 - (void)updateMenu {
-  NSMenu *menu = nil;
-  if (self.statusItem.menu) {
-    menu = self.statusItem.menu;
-    [menu removeAllItems];
-  } else {
-    NSMenu *menu = [[NSMenu alloc] init];
-    self.statusItem.menu = menu;
+  if (!self.menu) {
+    self.menu = [[NSMenu alloc] init];
   }
+  [self.menu removeAllItems];
   if ([[LoginService sharedService] isLoggedIn]) {
-    [menu addItemWithTitle:[NSString
+    [self.menu addItemWithTitle:[NSString
                                stringWithFormat:@"id: %@",
                                                 [[LoginService sharedService]
                                                     username]]
                     action:nil
              keyEquivalent:@""];
-    [menu addItemWithTitle:@"New Flash Though"
+    [self.menu addItemWithTitle:@"New Flash Though"
                     action:@selector(newFlashThoughtClicked:)
              keyEquivalent:@"n"];
 
-    [menu addItemWithTitle:@"Sign Out"
+    [self.menu addItemWithTitle:@"Sign Out"
                     action:@selector(signOutClicked:)
              keyEquivalent:@"s"];
   } else {
-    [menu addItemWithTitle:@"Login"
+    [self.menu addItemWithTitle:@"Login"
                     action:@selector(loginClicked:)
              keyEquivalent:@"l"];
   }
 
-  [menu addItemWithTitle:@"Debug With Log"
+  [self.menu addItemWithTitle:@"Debug With Log"
                   action:@selector(debugWithLog:)
            keyEquivalent:@"d"];
 
-  [menu addItemWithTitle:@"Quit" action:@selector(quitApp:) keyEquivalent:@"q"];
+  [self.menu addItemWithTitle:@"Quit" action:@selector(quitApp:) keyEquivalent:@"q"];
 }
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
@@ -70,7 +68,7 @@
 
   NSStatusBar *statusBar = [NSStatusBar systemStatusBar];
 
-  self.statusItem = [statusBar statusItemWithLength:NSVariableStatusItemLength];
+  self.statusItem = [statusBar statusItemWithLength:NSSquareStatusItemLength];
   if (self.statusItem) {
     FLog(@"Status item has been created successfully.");
 
@@ -79,8 +77,10 @@
       FLog(@"Failed to load the image. Make sure 'Status' is correct and "
            @"the image is added to the project.");
     }
-
+//    
+    self.statusItem.button.target = self;
     self.statusItem.button.action = @selector(statusItemClicked:);
+    FLog(@"statusItem is Visible: %d", self.statusItem.isVisible);
     [self updateMenu];
   } else {
     FLog(@"Failed to create status item.");
@@ -90,7 +90,19 @@
 // 状态栏图标点击事件处理
 - (void)statusItemClicked:(id)sender {
   FLog(@"Status item clicked.");
+
+  if (!self.menu) {
+    [self updateMenu];
+  }
+
+  NSRect buttonRect = self.statusItem.button.frame;
+  NSPoint menuOrigin = NSMakePoint(NSMidX(buttonRect) - self.menu.size.width / 2, 0);
+
+  [self.menu popUpMenuPositioningItem:nil
+                           atLocation:menuOrigin
+                               inView:self.statusItem.button];
 }
+
 
 - (void)newFlashThoughtClicked {
   if (self.flashThoughtWindowController) {
