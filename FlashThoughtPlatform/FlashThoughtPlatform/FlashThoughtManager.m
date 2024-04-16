@@ -578,6 +578,10 @@ NSString *audioPrompt =
 
 - (void)onSignOutSuccess {
   [self loadStoredThoughts];
+  [[DatabaseManager sharedManager]
+      observeUserBase64DataWithCompletion:^(NSData *data) {
+        [self dealWithAllDataReload:data];
+      }];
 }
 
 - (void)addDelegate:(id<FlashThoughtManagerDelegate>)delegate {

@@ -19,6 +19,7 @@
 @implementation AppDelegate
 
 - (void)allThoughtsDidHandle {
+  FLog(@"all tasks handled");
   BOOL isInBackground = [UIApplication sharedApplication].applicationState == UIApplicationStateBackground;
   if (isInBackground) {
     [self endBackgroundUpdateTask];
@@ -31,15 +32,24 @@
   [[LoginService sharedService] initFIRConfig];
   [[LoginService sharedService] tryRelogin];
   [[FlashThoughtManager sharedManager] addDelegate:self];
+  
+  [[NSNotificationCenter defaultCenter]
+      addObserver:self
+         selector:@selector(appDidEnterBackground:)
+             name:UIApplicationDidEnterBackgroundNotification
+           object:nil];
+  
   return YES;
 }
 
 - (void)endBackgroundUpdateTask {
+  FLog(@"endBackgroundUpdateTask");
     [[UIApplication sharedApplication] endBackgroundTask:self.backgroundTaskIdentifier];
     self.backgroundTaskIdentifier = UIBackgroundTaskInvalid;
 }
 
 - (void)beginBackgroundUpdateTask {
+  FLog(@"beginBackgroundUpdateTask");
     self.backgroundTaskIdentifier = [[UIApplication sharedApplication] beginBackgroundTaskWithExpirationHandler:^{
         // 当额外获得的时间即将耗尽时，这个block会被调用
         // 在这里结束任务，清理环境
@@ -47,9 +57,10 @@
     }];
 }
 
-- (void)applicationDidEnterBackground:(UIApplication *)application {
+- (void)appDidEnterBackground:(NSNotification *)notification {
   if ([[FlashThoughtManager sharedManager] isHandlingAllThoughts]) {
     FLog(@"Is still handling tasks...");
+    [self beginBackgroundUpdateTask];
   }
 }
 

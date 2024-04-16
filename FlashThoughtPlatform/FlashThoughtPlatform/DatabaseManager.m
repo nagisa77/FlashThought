@@ -45,6 +45,11 @@
                       [self parseAllThoughtDataWithDataSnapshot:snapshot
                                                      completion:completion];
                     }];
+  } else {
+    NSUserDefaults *sharedDefaults =
+        [[NSUserDefaults alloc] initWithSuiteName:APP_GROUP_NAME];
+    NSData *storedData = [sharedDefaults objectForKey:APP_LOCAL_DATABASE_KEY];
+    completion(storedData);
   }
 }
 
@@ -59,6 +64,12 @@
                       [self parseAPIKeyWithDataSnapshot:snapshot
                                              completion:completion];
                     }];
+  } else {
+    NSUserDefaults *defaults =
+        [[NSUserDefaults alloc] initWithSuiteName:APP_GROUP_NAME];
+    NSString *retrievedOpenaiKey = [defaults stringForKey:@"openaiKey"];
+
+    completion(retrievedOpenaiKey);
   }
 }
 
@@ -73,6 +84,12 @@
                       [self parseHostWithDataSnapshot:snapshot
                                            completion:completion];
                     }];
+  } else {
+    NSUserDefaults *defaults =
+        [[NSUserDefaults alloc] initWithSuiteName:APP_GROUP_NAME];
+    NSString *retrievedProxy = [defaults stringForKey:@"proxy"];
+
+    completion(retrievedProxy);
   }
 }
 
@@ -185,9 +202,9 @@
   } else {
     NSUserDefaults *defaults =
         [[NSUserDefaults alloc] initWithSuiteName:APP_GROUP_NAME];
-    NSString *retrievedOpenaiKey = [defaults stringForKey:@"proxy"];
+    NSString *retrievedProxy = [defaults stringForKey:@"proxy"];
 
-    completion(retrievedOpenaiKey);
+    completion(retrievedProxy);
   }
 }
 

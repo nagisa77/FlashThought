@@ -703,7 +703,8 @@
 }
 
 - (IBAction)summaryButtonDidClicked:(id)sender {
-  if ([[[GPTVisitor sharedInstance] getAPIKey] isEqual:@""]) {
+  NSString *apiKey = [[GPTVisitor sharedInstance] getAPIKey];
+  if (!apiKey || [apiKey isEqual:@""]) {
     [self showAPIKeySettings];
     return;
   }
