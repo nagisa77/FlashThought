@@ -421,7 +421,13 @@ NSString *audioPrompt =
       }
     }
   }
-
+  
+  for (id<FlashThoughtManagerDelegate> delegate in self.delegates) {
+    if ([delegate respondsToSelector:@selector(thoughtsDidHendledWithProcess:)]) {
+      [delegate thoughtsDidHendledWithProcess:0.2];
+    }
+  }
+  
   return YES;
 }
 
@@ -527,6 +533,12 @@ NSString *audioPrompt =
   [self.gptAudioToTextRequests removeObjectForKey:key];
   [self.gptAudioTextToRemindersRequests removeObjectForKey:key];
   [self checkAllThoughtDoneFrom:@"didFailToVisitMessageWithMessageId"];
+  
+  for (id<FlashThoughtManagerDelegate> delegate in self.delegates) {
+    if ([delegate respondsToSelector:@selector(thoughtsDidHendledWithProcess:)]) {
+      [delegate thoughtsDidHendledWithProcess:0.2 + 0.8 * ((double)self.thoughtsHandled / self.countOfAllThoughts)];
+    }
+  }
 }
 
 - (void)didFinishAddingRemindersWithSuccess:(BOOL)success
@@ -562,6 +574,12 @@ NSString *audioPrompt =
   [self.gptAudioTextToRemindersRequests removeObjectForKey:key];
 
   [self checkAllThoughtDoneFrom:@"didFinishAddingRemindersWithSuccess"];
+  
+  for (id<FlashThoughtManagerDelegate> delegate in self.delegates) {
+    if ([delegate respondsToSelector:@selector(thoughtsDidHendledWithProcess:)]) {
+      [delegate thoughtsDidHendledWithProcess:0.2 + 0.8 * ((double)self.thoughtsHandled / self.countOfAllThoughts)];
+    }
+  }
 }
 
 - (void)onSignInSuccess {

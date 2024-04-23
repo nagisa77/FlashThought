@@ -771,6 +771,10 @@
 - (void)thoughtsDidSentToAI:(NSArray<FlashThought *> *)thoughts {
 }
 
+- (void)thoughtsDidHendledWithProcess:(double)process {
+  
+}
+
 - (void)showAlertWithTitle:(NSString *)title
                    message:(NSString *)message
             confirmHandler:(void (^)(UIAlertAction *action))confirmHandler {

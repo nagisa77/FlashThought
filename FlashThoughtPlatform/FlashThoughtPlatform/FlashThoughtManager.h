@@ -38,6 +38,7 @@ typedef NS_ENUM(NSInteger, FlashThoughtType) {
 - (void)thoughtsDidSentToAI:(NSArray<FlashThought *> *)thoughts;
 - (void)thoughtsDidSaveToReminders:(NSArray<FlashThought *> *)thoughts;
 - (void)allThoughtsDidHandle;
+- (void)thoughtsDidHendledWithProcess:(double)process;
 - (void)shouldReloadData;
 - (void)shouldStopHandlingThoughtsByError:(NSError *)error;
 
