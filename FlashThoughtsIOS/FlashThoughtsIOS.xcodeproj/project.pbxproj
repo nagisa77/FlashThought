@@ -9,6 +9,16 @@
 /* Begin PBXBuildFile section */
 		220E954F2BBA65E3007D1C05 /* FlashThoughtAudioCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 220E954E2BBA65E3007D1C05 /* FlashThoughtAudioCell.xib */; };
 		220E95512BBA65F6007D1C05 /* FlashThoughtAudioCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 220E95502BBA65F6007D1C05 /* FlashThoughtAudioCell.m */; };
+		222119142BD7A4D80052140E /* ActivityKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 222119132BD7A4D80052140E /* ActivityKit.framework */; };
+		2221191B2BD7A5D70052140E /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2221191A2BD7A5D70052140E /* WidgetKit.framework */; };
+		2221191D2BD7A5D70052140E /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2221191C2BD7A5D70052140E /* SwiftUI.framework */; };
+		2221192C2BD7A5D90052140E /* FlashThoughtProgressExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 222119192BD7A5D70052140E /* FlashThoughtProgressExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		222119362BD7A6090052140E /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2221191A2BD7A5D70052140E /* WidgetKit.framework */; };
+		222119372BD7A6090052140E /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2221191C2BD7A5D70052140E /* SwiftUI.framework */; };
+		222119462BD7A60A0052140E /* FlashThoughtProgressExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 222119352BD7A6090052140E /* FlashThoughtProgressExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		2221194F2BD7A63F0052140E /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2221191A2BD7A5D70052140E /* WidgetKit.framework */; };
+		222119502BD7A63F0052140E /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2221191C2BD7A5D70052140E /* SwiftUI.framework */; };
+		2221195F2BD7A6400052140E /* FlashThoughtProgressExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 2221194E2BD7A63F0052140E /* FlashThoughtProgressExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		2231325B2BBBB4B3009B0CF1 /* AudioPlayerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2231325A2BBBB4B3009B0CF1 /* AudioPlayerManager.m */; };
 		223132792BBBD1F8009B0CF1 /* ShareViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 223132782BBBD1F8009B0CF1 /* ShareViewController.m */; };
 		2231327C2BBBD1F8009B0CF1 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 2231327B2BBBD1F8009B0CF1 /* Base */; };
@@ -31,10 +41,56 @@
 		F6FA7C4D85B60C0535AC0832 /* libPods-FlashThoughtsIOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D0CD51966256CDBF3A931B3 /* libPods-FlashThoughtsIOS.a */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		2221192A2BD7A5D90052140E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 225A4BE72BB2FF6800A5304A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 222119182BD7A5D70052140E;
+			remoteInfo = FlashThoughtProgressExtension;
+		};
+		222119442BD7A60A0052140E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 225A4BE72BB2FF6800A5304A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 222119342BD7A6090052140E;
+			remoteInfo = FlashThoughtProgressExtension;
+		};
+		2221195D2BD7A6400052140E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 225A4BE72BB2FF6800A5304A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 2221194D2BD7A63F0052140E;
+			remoteInfo = FlashThoughtProgressExtension;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		222119302BD7A5D90052140E /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				222119462BD7A60A0052140E /* FlashThoughtProgressExtension.appex in Embed Foundation Extensions */,
+				2221195F2BD7A6400052140E /* FlashThoughtProgressExtension.appex in Embed Foundation Extensions */,
+				2221192C2BD7A5D90052140E /* FlashThoughtProgressExtension.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		220E954D2BBA65D8007D1C05 /* FlashThoughtAudioCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FlashThoughtAudioCell.h; sourceTree = "<group>"; };
 		220E954E2BBA65E3007D1C05 /* FlashThoughtAudioCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FlashThoughtAudioCell.xib; sourceTree = "<group>"; };
 		220E95502BBA65F6007D1C05 /* FlashThoughtAudioCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FlashThoughtAudioCell.m; sourceTree = "<group>"; };
+		222119132BD7A4D80052140E /* ActivityKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ActivityKit.framework; path = System/Library/Frameworks/ActivityKit.framework; sourceTree = SDKROOT; };
+		222119192BD7A5D70052140E /* FlashThoughtProgressExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = FlashThoughtProgressExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		2221191A2BD7A5D70052140E /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
+		2221191C2BD7A5D70052140E /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
+		222119352BD7A6090052140E /* FlashThoughtProgressExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = FlashThoughtProgressExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		2221194E2BD7A63F0052140E /* FlashThoughtProgressExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = FlashThoughtProgressExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		2231325A2BBBB4B3009B0CF1 /* AudioPlayerManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AudioPlayerManager.m; sourceTree = "<group>"; };
 		2231325C2BBBB4C4009B0CF1 /* AudioPlayerManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AudioPlayerManager.h; sourceTree = "<group>"; };
 		223132752BBBD1F8009B0CF1 /* FlashThought Share Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "FlashThought Share Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -76,6 +132,33 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		222119162BD7A5D70052140E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2221191D2BD7A5D70052140E /* SwiftUI.framework in Frameworks */,
+				2221191B2BD7A5D70052140E /* WidgetKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		222119322BD7A6090052140E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				222119372BD7A6090052140E /* SwiftUI.framework in Frameworks */,
+				222119362BD7A6090052140E /* WidgetKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2221194B2BD7A63F0052140E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				222119502BD7A63F0052140E /* SwiftUI.framework in Frameworks */,
+				2221194F2BD7A63F0052140E /* WidgetKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		223132722BBBD1F8009B0CF1 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -87,6 +170,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				222119142BD7A4D80052140E /* ActivityKit.framework in Frameworks */,
 				225A4C1B2BB460C200A5304A /* LocalAuthentication.framework in Frameworks */,
 				F6FA7C4D85B60C0535AC0832 /* libPods-FlashThoughtsIOS.a in Frameworks */,
 			);
@@ -123,6 +207,9 @@
 			children = (
 				225A4BEF2BB2FF6800A5304A /* FlashThought.app */,
 				223132752BBBD1F8009B0CF1 /* FlashThought Share Extension.appex */,
+				222119192BD7A5D70052140E /* FlashThoughtProgressExtension.appex */,
+				222119352BD7A6090052140E /* FlashThoughtProgressExtension.appex */,
+				2221194E2BD7A63F0052140E /* FlashThoughtProgressExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -165,8 +252,11 @@
 		225A4C192BB460C200A5304A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				222119132BD7A4D80052140E /* ActivityKit.framework */,
 				225A4C1A2BB460C200A5304A /* LocalAuthentication.framework */,
 				3D0CD51966256CDBF3A931B3 /* libPods-FlashThoughtsIOS.a */,
+				2221191A2BD7A5D70052140E /* WidgetKit.framework */,
+				2221191C2BD7A5D70052140E /* SwiftUI.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -185,6 +275,57 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		222119182BD7A5D70052140E /* FlashThoughtProgressExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2221192D2BD7A5D90052140E /* Build configuration list for PBXNativeTarget "FlashThoughtProgressExtension" */;
+			buildPhases = (
+				222119152BD7A5D70052140E /* Sources */,
+				222119162BD7A5D70052140E /* Frameworks */,
+				222119172BD7A5D70052140E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = FlashThoughtProgressExtension;
+			productName = FlashThoughtProgressExtension;
+			productReference = 222119192BD7A5D70052140E /* FlashThoughtProgressExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+		222119342BD7A6090052140E /* FlashThoughtProgressExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 222119472BD7A60A0052140E /* Build configuration list for PBXNativeTarget "FlashThoughtProgressExtension" */;
+			buildPhases = (
+				222119312BD7A6090052140E /* Sources */,
+				222119322BD7A6090052140E /* Frameworks */,
+				222119332BD7A6090052140E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = FlashThoughtProgressExtension;
+			productName = FlashThoughtProgressExtension;
+			productReference = 222119352BD7A6090052140E /* FlashThoughtProgressExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+		2221194D2BD7A63F0052140E /* FlashThoughtProgressExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 222119602BD7A6400052140E /* Build configuration list for PBXNativeTarget "FlashThoughtProgressExtension" */;
+			buildPhases = (
+				2221194A2BD7A63F0052140E /* Sources */,
+				2221194B2BD7A63F0052140E /* Frameworks */,
+				2221194C2BD7A63F0052140E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = FlashThoughtProgressExtension;
+			productName = FlashThoughtProgressExtension;
+			productReference = 2221194E2BD7A63F0052140E /* FlashThoughtProgressExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		223132742BBBD1F8009B0CF1 /* FlashThought Share Extension */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 223132812BBBD1F8009B0CF1 /* Build configuration list for PBXNativeTarget "FlashThought Share Extension" */;
@@ -211,10 +352,14 @@
 				225A4BEC2BB2FF6800A5304A /* Frameworks */,
 				225A4BED2BB2FF6800A5304A /* Resources */,
 				E93D0E4622E8444CFA1EA653 /* [CP] Copy Pods Resources */,
+				222119302BD7A5D90052140E /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				2221192B2BD7A5D90052140E /* PBXTargetDependency */,
+				222119452BD7A60A0052140E /* PBXTargetDependency */,
+				2221195E2BD7A6400052140E /* PBXTargetDependency */,
 			);
 			name = FlashThoughtsIOS;
 			productName = FlashThoughts;
@@ -228,8 +373,18 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1530;
 				LastUpgradeCheck = 1530;
 				TargetAttributes = {
+					222119182BD7A5D70052140E = {
+						CreatedOnToolsVersion = 15.3;
+					};
+					222119342BD7A6090052140E = {
+						CreatedOnToolsVersion = 15.3;
+					};
+					2221194D2BD7A63F0052140E = {
+						CreatedOnToolsVersion = 15.3;
+					};
 					223132742BBBD1F8009B0CF1 = {
 						CreatedOnToolsVersion = 15.3;
 					};
@@ -253,11 +408,35 @@
 			targets = (
 				225A4BEE2BB2FF6800A5304A /* FlashThoughtsIOS */,
 				223132742BBBD1F8009B0CF1 /* FlashThought Share Extension */,
+				222119182BD7A5D70052140E /* FlashThoughtProgressExtension */,
+				222119342BD7A6090052140E /* FlashThoughtProgressExtension */,
+				2221194D2BD7A63F0052140E /* FlashThoughtProgressExtension */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		222119172BD7A5D70052140E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		222119332BD7A6090052140E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2221194C2BD7A63F0052140E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		223132732BBBD1F8009B0CF1 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -326,6 +505,27 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		222119152BD7A5D70052140E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		222119312BD7A6090052140E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2221194A2BD7A63F0052140E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		223132712BBBD1F8009B0CF1 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -352,6 +552,24 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		2221192B2BD7A5D90052140E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 222119182BD7A5D70052140E /* FlashThoughtProgressExtension */;
+			targetProxy = 2221192A2BD7A5D90052140E /* PBXContainerItemProxy */;
+		};
+		222119452BD7A60A0052140E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 222119342BD7A6090052140E /* FlashThoughtProgressExtension */;
+			targetProxy = 222119442BD7A60A0052140E /* PBXContainerItemProxy */;
+		};
+		2221195E2BD7A6400052140E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 2221194D2BD7A63F0052140E /* FlashThoughtProgressExtension */;
+			targetProxy = 2221195D2BD7A6400052140E /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		2231327A2BBBD1F8009B0CF1 /* MainInterface.storyboard */ = {
@@ -381,6 +599,183 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		2221192E2BD7A5D90052140E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = F3UT7A6X54;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = FlashThoughtProgress/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = FlashThoughtProgress;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = tim.FlashThoughtsIOS.FlashThoughtProgress;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		2221192F2BD7A5D90052140E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = F3UT7A6X54;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = FlashThoughtProgress/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = FlashThoughtProgress;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = tim.FlashThoughtsIOS.FlashThoughtProgress;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		222119482BD7A60A0052140E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = F3UT7A6X54;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = FlashThoughtProgress/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = FlashThoughtProgress;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = tim.FlashThoughtsIOS.FlashThoughtProgress;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		222119492BD7A60A0052140E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = F3UT7A6X54;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = FlashThoughtProgress/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = FlashThoughtProgress;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = tim.FlashThoughtsIOS.FlashThoughtProgress;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		222119612BD7A6400052140E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = F3UT7A6X54;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = FlashThoughtProgress/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = FlashThoughtProgress;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = tim.FlashThoughtsIOS.FlashThoughtProgress;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		222119622BD7A6400052140E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = F3UT7A6X54;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = FlashThoughtProgress/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = FlashThoughtProgress;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = tim.FlashThoughtsIOS.FlashThoughtProgress;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		223132822BBBD1F8009B0CF1 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -628,6 +1023,33 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		2221192D2BD7A5D90052140E /* Build configuration list for PBXNativeTarget "FlashThoughtProgressExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2221192E2BD7A5D90052140E /* Debug */,
+				2221192F2BD7A5D90052140E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		222119472BD7A60A0052140E /* Build configuration list for PBXNativeTarget "FlashThoughtProgressExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				222119482BD7A60A0052140E /* Debug */,
+				222119492BD7A60A0052140E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		222119602BD7A6400052140E /* Build configuration list for PBXNativeTarget "FlashThoughtProgressExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				222119612BD7A6400052140E /* Debug */,
+				222119622BD7A6400052140E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		223132812BBBD1F8009B0CF1 /* Build configuration list for PBXNativeTarget "FlashThought Share Extension" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

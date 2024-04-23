@@ -642,10 +642,13 @@
     [self.loadingView startAnimating];
 
     self.loadingHud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    self.loadingHud.mode = MBProgressHUDModeDeterminate;
     self.loadingHud.backgroundView.style =
         MBProgressHUDBackgroundStyleSolidColor;
     self.loadingHud.backgroundView.color = [UIColor colorWithWhite:0.f
                                                              alpha:0.1f];
+    self.loadingHud.progress = 0.0f;
+    self.loadingHud.label.text = NSLocalizedString(@"Summarizing...", @"HUD loading title");
 
     [self.addButton setEnabled:NO];
   } else {
@@ -772,7 +775,7 @@
 }
 
 - (void)thoughtsDidHendledWithProcess:(double)process {
-  
+  self.loadingHud.progress = process;
 }
 
 - (void)showAlertWithTitle:(NSString *)title
